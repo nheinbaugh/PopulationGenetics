@@ -34,7 +34,6 @@ namespace PopulationGenetics.Client
         private void ComposeObjects()
         {
             Current.MainWindow = container.Get<MainWindow>();
-            Current.MainWindow.Title = "DI with Ninject";
         }
     }
 }

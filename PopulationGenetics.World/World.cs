@@ -22,6 +22,7 @@ namespace PopulationGenetics.Library
         public World(List<IPerson> pop)
         {
             population = pop;
+            SeedWorld(9);
         }
 
         public World(int seedSize)
@@ -31,7 +32,10 @@ namespace PopulationGenetics.Library
 
         private void SeedWorld(int seedSize)
         {
-
+            for (int i = 0; i < seedSize; i++)
+            {
+                population.Add(new Person());
+            }
         }
 
         public void ProcessTurn()
