@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 
 namespace PopulationGenetics.Common
 {
-    public class NinjectKernel : NinjectModule
+    public class GeneticsModule : NinjectModule
     {
         public override void Load()
         {
             Bind<IWorld>().To<World>();
+            Bind<IPerson>().To<Person>();
+            Bind<IAllele>().To<Allele>();
+            Bind<IGene>().To<Gene>();
         }
     }
 }

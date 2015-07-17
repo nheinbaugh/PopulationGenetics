@@ -1,4 +1,5 @@
 ﻿using PopulationGenetics.Common;
+using PopulationGenetics.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,11 @@ namespace PopulationGenetics.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
+        private IWorld _world;
 
+        public MainWindow(IWorld world)
+        {
+            this._world = world;
         }
     }
 }

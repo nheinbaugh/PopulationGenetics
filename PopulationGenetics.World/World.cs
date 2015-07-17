@@ -19,6 +19,11 @@ namespace PopulationGenetics.Library
             set { population = value; }
         }
 
+        public World(List<IPerson> pop)
+        {
+            population = pop;
+        }
+
         public World(int seedSize)
         {
             SeedWorld(seedSize);

@@ -1,4 +1,6 @@
-﻿using PopulationGenetics.Common;
+﻿using Ninject;
+using PopulationGenetics.Common;
+using PopulationGenetics.Library;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,7 +16,7 @@ namespace PopulationGenetics.Client
     /// </summary>
     public partial class App : Application
     {
-        NinjectKernel container;
+        IKernel container;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -25,12 +27,13 @@ namespace PopulationGenetics.Client
 
         private void ConfigureContainer()
         {
-            this.container = new NinjectKernel();
+            container = new StandardKernel(new GeneticsModule());
+            container.Bind<MainWindow>().ToSelf();
         }
 
         private void ComposeObjects()
         {
-            Current.MainWindow = this.container.Get<MainWindow>();
+            Current.MainWindow = container.Get<MainWindow>();
             Current.MainWindow.Title = "DI with Ninject";
         }
     }

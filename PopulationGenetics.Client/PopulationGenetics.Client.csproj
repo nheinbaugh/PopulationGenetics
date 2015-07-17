@@ -105,6 +105,10 @@
       <Project>{2bf28322-72bc-4101-963d-16f5aeb2b707}</Project>
       <Name>PopulationGenetics.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.csproj">
+      <Project>{e91c3cc1-0a63-4e6a-a8fd-9faf06ccee4b}</Project>
+      <Name>PopulationGenetics.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
