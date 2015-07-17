@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace PopulationGenetics.World
+namespace PopulationGenetics.Library
 {
 
     public interface IWorld

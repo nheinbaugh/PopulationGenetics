@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PopulationGenetics.World
+namespace PopulationGenetics.Library
 {
 	public interface IAllele
     {
