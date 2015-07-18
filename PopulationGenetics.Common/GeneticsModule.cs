@@ -12,7 +12,8 @@ namespace PopulationGenetics.Common
     {
         public override void Load()
         {
-            Bind<IWorld>().To<World>();
+            Bind<IGeneBank>().To<GeneBank>().InSingletonScope();
+            Bind<IAlleleManager>().To<AlleleManager>();
             Bind<IPerson>().To<Person>();
             Bind<IAllele>().To<Allele>();
             Bind<IGene>().To<Gene>();
