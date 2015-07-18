@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PopulationGenetics.Library.SeedMaterial;
+using System;
 using System.Collections.Generic;
 namespace PopulationGenetics.Library
 {
@@ -29,6 +30,8 @@ namespace PopulationGenetics.Library
         {
             population = pop;
             _registeredGenes = genes;
+            //TODO Question: should I pass in the gene bank and add the stuff behind the scenes or should I make it obvious? I can always just rename the method to AddBaseGenes...
+            WorldSeeds.BaseGenes(_registeredGenes);
             SeedWorld(9);
         }
 
