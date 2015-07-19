@@ -7,9 +7,9 @@ namespace PopulationGenetics.Library.SeedMaterial
     {
         public static void BaseGenes(IGeneBank geneBank)
         {
-            var genes = new List<IGene>();
+            var geneLocations = new List<ILocus>();
             // TODO generate the genes!
-            foreach (var gene in genes)
+            foreach (var gene in geneLocations)
             {
                 geneBank.AddToBank(gene);
             }

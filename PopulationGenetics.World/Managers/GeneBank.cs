@@ -5,16 +5,16 @@ namespace PopulationGenetics.Library
 {
     public interface IGeneBank
     {
-        List<IGene> Genes { get; }
-        void AddToBank(IGene newGene);
+        List<ILocus> Genes { get; }
+        void AddToBank(ILocus newGene);
         void AddToBank();
     }
 
     public class GeneBank : IGeneBank
     {
-        private List<IGene> _genes;
+        private List<ILocus> _genes;
 
-        public List<IGene> Genes
+        public List<ILocus> Genes
         {
             get { return _genes; }
         }
@@ -27,7 +27,7 @@ namespace PopulationGenetics.Library
         /// Use to add a predefined gene to the gene pool
         /// </summary>
         /// <param name="newGene"></param>
-        public void AddToBank(IGene newGene)
+        public void AddToBank(ILocus newGene)
         {
             throw new NotImplementedException();
         }
