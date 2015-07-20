@@ -24,8 +24,9 @@ namespace PopulationGenetics.Client
     {
         private IWorld _world;
 
-        public MainWindow()
+        public MainWindow(IWorld world)
         {
+            this._world = world;
             InitializeComponent();
         }
     }

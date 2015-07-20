@@ -3,20 +3,20 @@ using System.Collections.Generic;
 
 namespace PopulationGenetics.Library
 {
-    public interface IAlleleManager
+    public interface ILocusManager
     {
         List<IAllele> Alleles { get; }
     } 
 
-    public class AlleleManager : IAlleleManager
+    public class LocusManager : ILocusManager
     {
         private List<IAllele> _alleles;
 
         public List<IAllele> Alleles { get { return _alleles; } }
 
-        public AlleleManager()
+        public LocusManager()
         {
-
+            _alleles = new List<IAllele>();
         }
     }
 }

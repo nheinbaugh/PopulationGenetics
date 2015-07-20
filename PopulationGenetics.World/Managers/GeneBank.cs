@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PopulationGenetics.Library
 {
     public interface IGeneBank
     {
         List<ILocus> Genes { get; }
-        void AddToBank(ILocus newGene);
+        void AddToBank(ILocus newLocus);
         void AddToBank();
     }
-
+    /// <summary>
+    /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
+    /// Each locus will have all alleles that are registered to it. 
+    /// </summary>
     public class GeneBank : IGeneBank
     {
         private List<ILocus> _genes;
@@ -21,15 +25,16 @@ namespace PopulationGenetics.Library
 
         public GeneBank()
         {
-
+            _genes = new List<ILocus>();
         }
+
         /// <summary>
         /// Use to add a predefined gene to the gene pool
         /// </summary>
-        /// <param name="newGene"></param>
-        public void AddToBank(ILocus newGene)
+        /// <param name="newLocus">The locus to be added to the pool of known gene positions</param>
+        public void AddToBank(ILocus newLocus)
         {
-            throw new NotImplementedException();
+            _genes.Add(newLocus);
         }
 
         /// <summary>
@@ -38,6 +43,11 @@ namespace PopulationGenetics.Library
         public void AddToBank()
         {
             throw new NotImplementedException();
+        }
+
+        private void GetLocusByName()
+        {
+            //var bo = _genes.AsQueryable().Select
         }
     }
 }

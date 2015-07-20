@@ -5,8 +5,9 @@ namespace PopulationGenetics.Library
 {
     public interface ILocus
     {
-        List<IAllele> Alleles { get; }
+        ILocusManager LocusManager { get; }
         string LocusName { get; }
+        void AddAllele(IEnumerable<IAllele> alleles);
         void AddAllele(IAllele allele);
         void AddAllele();
     }
@@ -14,17 +15,28 @@ namespace PopulationGenetics.Library
     public class Locus : ILocus
     {
         private string _locusName;
-        private List<IAllele> _alleles;
-        public List<IAllele> Alleles
+        private ILocusManager _locusManager;
+        public ILocusManager LocusManager { get { return _locusManager; } }
+        public Locus(string name)
         {
-            get { return _alleles; }
+            _locusName = name;
+            _locusManager = new LocusManager();
+        }
+
+        public Locus() : this("Random Gene")
+        {
         }
 
         public string LocusName { get { return _locusName; } }
 
+        public void AddAllele(IEnumerable<IAllele> alleles)
+        {
+            _locusManager.Alleles.AddRange(alleles);
+        }
+
         public void AddAllele(IAllele allele)
         {
-            throw new NotImplementedException();
+            _locusManager.Alleles.Add(allele);
         }
 
         public void AddAllele()
