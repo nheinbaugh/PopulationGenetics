@@ -7,30 +7,26 @@ namespace PopulationGenetics.Library
     public interface IWorld
     {
         IGeneBank RegisteredGenes { get; }
-        List<IPerson> Population { get; set; }
+        List<IPerson> Population { get; }
         int PopulationSize { get; }
         void ProcessTurn();
     }
     public class World : IWorld
     {
-        private List<IPerson> population;
+        private List<IPerson> _population;
         private IGeneBank _registeredGenes;
 
-        public List<IPerson> Population
-        {
-            get { return population; }
-            set { population = value; }
-        }
-
+        public List<IPerson> Population { get { return _population; } }
         public IGeneBank RegisteredGenes { get { return _registeredGenes; } }
-        public int PopulationSize { get { return population.Count; } }
+        public int PopulationSize { get { return _population.Count; } }
 
 
         public World(List<IPerson> pop, IGeneBank genes)
         {
-            population = pop;
+            _population = pop;
             _registeredGenes = genes;
-            //TODO Question: should I pass in the gene bank and add the stuff behind the scenes or should I make it obvious? I can always just rename the method to AddBaseGenes...
+            // TODO Question: should I pass in the gene bank and add the stuff behind the scenes or should I make it obvious? 
+            // I can always just rename the method to AddBaseGenes...
             WorldSeeds.BaseGenes(_registeredGenes);
             SeedWorld(9);
         }
@@ -44,13 +40,16 @@ namespace PopulationGenetics.Library
         {
             for (int i = 0; i < seedSize; i++)
             {
-                population.Add(new Person());
+                _population.Add(new Person());
             }
         }
 
         public void ProcessTurn()
         {
+            foreach (var person in _population)
+            {
 
+            }
         }
     }
 }

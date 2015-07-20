@@ -16,7 +16,10 @@ namespace PopulationGenetics.Library
     {
         private string _locusName;
         private ILocusManager _locusManager;
+
         public ILocusManager LocusManager { get { return _locusManager; } }
+        public string LocusName { get { return _locusName; } }
+
         public Locus(string name)
         {
             _locusName = name;
@@ -27,7 +30,6 @@ namespace PopulationGenetics.Library
         {
         }
 
-        public string LocusName { get { return _locusName; } }
 
         public void AddAllele(IEnumerable<IAllele> alleles)
         {
