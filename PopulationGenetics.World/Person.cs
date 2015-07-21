@@ -30,10 +30,5 @@ namespace PopulationGenetics.Library
             _isFemale = isFemale;
             _age = 0;
         }
-
-        public Person(IPerson mother, IPerson father)
-        {
-
-        }
     } 
 }

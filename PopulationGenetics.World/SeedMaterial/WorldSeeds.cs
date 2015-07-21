@@ -5,7 +5,7 @@ namespace PopulationGenetics.Library.SeedMaterial
 {
     public static class WorldSeeds
     {
-        public static void BaseGenes(IGeneBank geneBank)
+        public static void BaseGenes(ILocusBank geneBank)
         {
             var geneLocations = new List<ILocus>();
             geneLocations.Add(BloodTypeAlleles());

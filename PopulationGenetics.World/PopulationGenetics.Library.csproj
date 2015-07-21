@@ -45,6 +45,7 @@
     <Compile Include="Gene.cs" />
     <Compile Include="Managers\GeneBank.cs" />
     <Compile Include="Person.cs" />
+    <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedMaterial\WorldSeeds.cs" />
     <Compile Include="World.cs" />

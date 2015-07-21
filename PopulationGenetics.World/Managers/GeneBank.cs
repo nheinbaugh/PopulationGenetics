@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PopulationGenetics.Library
 {
-    public interface IGeneBank
+    public interface ILocusBank
     {
         List<ILocus> Genes { get; }
         void AddToBank(ILocus newLocus);
@@ -14,7 +14,7 @@ namespace PopulationGenetics.Library
     /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
     /// Each locus will have all alleles that are registered to it. 
     /// </summary>
-    public class GeneBank : IGeneBank
+    public class LocusBank: ILocusBank
     {
         private List<ILocus> _genes;
 
@@ -23,7 +23,7 @@ namespace PopulationGenetics.Library
             get { return _genes; }
         }
 
-        public GeneBank()
+        public LocusBank()
         {
             _genes = new List<ILocus>();
         }
