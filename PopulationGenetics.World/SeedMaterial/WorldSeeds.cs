@@ -20,9 +20,9 @@ namespace PopulationGenetics.Library.SeedMaterial
         private static Locus BloodTypeAlleles()
         {
             var bloodType = new Locus("Blood Type");
-            var a = new Allele("A", true);
-            var b = new Allele("B", true);
-            var o = new Allele("O", false);
+            var a = new Allele("A", true, .33);
+            var b = new Allele("B", true, .33);
+            var o = new Allele("O", false, .33);
             bloodType.AddAllele(a);
             bloodType.AddAllele(b);
             bloodType.AddAllele(o);
