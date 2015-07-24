@@ -30,5 +30,12 @@ namespace PopulationGenetics.Library
             _isFemale = isFemale;
             _age = 0;
         }
+
+        public Person(List<IGene> genes, bool isFemale)
+        {
+            _age = 0;
+            _isFemale = isFemale;
+            _genes = genes;
+        }
     } 
 }
