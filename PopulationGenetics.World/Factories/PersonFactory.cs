@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace PopulationGenetics.Library.Factories
 {
@@ -34,11 +35,20 @@ namespace PopulationGenetics.Library.Factories
 
             return gene;
         }
+        private double TrulyRandom(int max)
+        {
+            var rng = new RNGCryptoServiceProvider();
+            byte[] buffer = new byte[4];
 
+            rng.GetBytes(buffer);
+            int result = BitConverter.ToInt32(buffer, 0);
+
+            return new Random(result).Next(0, max + 1);
+        }
         private IAllele GenerateAllele(ILocusManager manager)
         {
-            var rand = new Random();
-            var num = rand.Next(1001);
+
+            var num = TrulyRandom(1000);
             double current = 0;
             foreach (var allele in manager.Alleles)
             {

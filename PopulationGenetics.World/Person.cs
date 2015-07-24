@@ -19,23 +19,16 @@ namespace PopulationGenetics.Library
         public bool IsFemale { get { return _isFemale; } }
         public List<IGene> Genes { get { return _genes; } }
 
-        public Person()
-        {
-            _age = 0;
-            //set isfemale randomly
-        }
-
-        public Person(bool isFemale)
-        {
-            _isFemale = isFemale;
-            _age = 0;
-        }
-
         public Person(List<IGene> genes, bool isFemale)
         {
             _age = 0;
             _isFemale = isFemale;
             _genes = genes;
+        }
+
+        public Person()
+        {
+
         }
     } 
 }

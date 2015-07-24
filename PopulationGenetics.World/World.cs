@@ -27,6 +27,7 @@ namespace PopulationGenetics.Library
 
         public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory)
         {
+            if (pop.Count > 0) pop.Clear();
             _population = pop;
             _registeredGenes = genes;
             _personFactory = personFactory;
