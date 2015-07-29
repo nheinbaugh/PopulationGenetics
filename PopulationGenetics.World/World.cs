@@ -2,6 +2,8 @@
 using PopulationGenetics.Library.SeedMaterial;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace PopulationGenetics.Library
 {
 
@@ -11,6 +13,7 @@ namespace PopulationGenetics.Library
         List<IPerson> Population { get; }
         int PopulationSize { get; }
         void ProcessTurn();
+        void CleanWorld(bool leaveGenes);
     }
     public class World : IWorld
     {
@@ -20,6 +23,35 @@ namespace PopulationGenetics.Library
 
         public IPersonFactory PersonFactory { get { return _personFactory; } }
         public List<IPerson> Population { get { return _population; } }
+        public int APop { get {
+                return _population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "A").ToList().Count;
+            }
+        }
+        public int BPop
+        {
+            get
+            {
+                return _population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "B").ToList().Count;
+            }
+        }
+        public int OPop
+        {
+            get
+            {
+                return _population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "O").ToList().Count;
+            }
+        }
+        public int ABPop
+        {
+            get
+            {
+                return _population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count;
+            }
+        }
         public ILocusBank RegisteredGenes { get { return _registeredGenes; } }
         public int PopulationSize { get { return _population.Count; } }
 
@@ -34,7 +66,6 @@ namespace PopulationGenetics.Library
             // TODO Question: should I pass in the gene bank and add the stuff behind the scenes or should I make it obvious? 
             // I can always just rename the method to AddBaseGenes...
             WorldSeeds.BaseGenes(_registeredGenes);
-            SeedWorld(9);
         }
 
         public World(int seedSize)
@@ -56,6 +87,15 @@ namespace PopulationGenetics.Library
             foreach (var person in _population)
             {
 
+            }
+        }
+
+        public void CleanWorld(bool clearGenes)
+        {
+            _population.Clear();
+            if (clearGenes)
+            {
+                _registeredGenes.Genes.Clear();
             }
         }
     }

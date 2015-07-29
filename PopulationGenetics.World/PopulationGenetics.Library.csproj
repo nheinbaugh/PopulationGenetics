@@ -7,8 +7,8 @@
     <ProjectGuid>{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PopulationGenetics.World</RootNamespace>
-    <AssemblyName>PopulationGenetics.World</AssemblyName>
+    <RootNamespace>PopulationGenetics.Library</RootNamespace>
+    <AssemblyName>PopulationGenetics.Library</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

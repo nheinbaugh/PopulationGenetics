@@ -1,11 +1,42 @@
-﻿<Window x:Class="PopulationGenetics.Client.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PopulationGenetics.Client"
+        xmlns:Properties="clr-namespace:PopulationGenetics.Client.Properties" xmlns:Common="clr-namespace:PopulationGenetics.Common;assembly=PopulationGenetics.Common" x:Class="PopulationGenetics.Client.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1">
+                <Label x:Name="label" Content="Population" Grid.Column="0"/>
+                <Label x:Name="labelA" Content="A Population" Grid.Column="0"/>
+                <Label x:Name="labelB" Content="B Population" Grid.Column="0"/>
+                <Label x:Name="labelO" Content="O Population" Grid.Column="0"/>
+                <Label x:Name="labelAB" Content="AB Population" Grid.Column="0"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="1">
+                <TextBox x:Name="popBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.Population.Count, Mode=OneWay}"/>
+                <TextBox x:Name="aPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.APop, Mode=OneWay}"/>
+                <TextBox x:Name="bPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.BPop, Mode=OneWay}"/>
+                <TextBox x:Name="oPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.OPop, Mode=OneWay}"/>
+                <TextBox x:Name="abPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.ABPop, Mode=OneWay}"/>
+            </StackPanel>
+        </Grid>
+        <Label Width="100" Height="25" Margin="208,15.496,209,147" Grid.Row="1">Individual</Label>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Content="Individual" HorizontalAlignment="Center"></Label>
+        </StackPanel>
     </Grid>
 </Window>

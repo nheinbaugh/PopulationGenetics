@@ -23,9 +23,11 @@ namespace PopulationGenetics.Client
     public partial class MainWindow : Window
     {
         private IWorld _world;
+        public IWorld World { get { return _world; } set { _world = value; } }
 
         public MainWindow(IWorld world)
         {
+            
             this._world = world;
             InitializeComponent();
         }

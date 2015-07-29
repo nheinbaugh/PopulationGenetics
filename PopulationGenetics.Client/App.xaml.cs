@@ -16,7 +16,7 @@ namespace PopulationGenetics.Client
     /// </summary>
     public partial class App : Application
     {
-        IKernel container;
+         IKernel container;
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
