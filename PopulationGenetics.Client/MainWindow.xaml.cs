@@ -43,6 +43,7 @@ namespace PopulationGenetics.Client
                     .Where(a => a.Genes[0].Representation == "O").ToList().Count.ToString();
             abPopBox.Text = _world.Population.AsQueryable()
                     .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count.ToString();
+            ageBox.Text = _world.Age.ToString();
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)
@@ -64,7 +65,8 @@ namespace PopulationGenetics.Client
 
         private void processTurn_Click(object sender, RoutedEventArgs e)
         {
-
+            _world.ProcessTurn();
+            PopulateTextBoxes();
         }
     }
 }

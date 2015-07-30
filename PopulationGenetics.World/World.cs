@@ -9,6 +9,7 @@ namespace PopulationGenetics.Library
 
     public interface IWorld
     {
+        int Age { get; }
         ILocusBank RegisteredGenes { get; }
         List<IPerson> Population { get; }
         int PopulationSize { get; }
@@ -25,48 +26,13 @@ namespace PopulationGenetics.Library
         private List<IPerson> _population;
         private ILocusBank _registeredGenes;
         private IPersonFactory _personFactory;
+        private int _age;
 
         public IPersonFactory PersonFactory { get { return _personFactory; } }
         public List<IPerson> Population { get { return _population; } }
-        public int APop { get {
-                return _population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "A").ToList().Count;
-            }
-            set { APop = value; }
-        }
-        public int BPop
-        {
-            get
-            {
-                return _population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "B").ToList().Count;
-            }
-            set { BPop = value; }
-
-        }
-        public int OPop
-        {
-            get
-            {
-                return _population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "O").ToList().Count;
-            }
-            set { OPop = value; }
-
-        }
-        public int ABPop
-        {
-            get
-            {
-                return _population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count;
-            }
-            set { ABPop = value; }
-
-        }
         public ILocusBank RegisteredGenes { get { return _registeredGenes; } }
         public int PopulationSize { get { return _population.Count; } }
-
+        public int Age { get { return _age; } }
 
 
         public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory)
@@ -96,6 +62,7 @@ namespace PopulationGenetics.Library
 
         public void ProcessTurn()
         {
+            _age++;
             foreach (var person in _population)
             {
 
