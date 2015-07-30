@@ -27,9 +27,39 @@ namespace PopulationGenetics.Client
 
         public MainWindow(IWorld world)
         {
-            
             this._world = world;
             InitializeComponent();
+            PopulateTextBoxes();
+        }
+
+        private void PopulateTextBoxes()
+        {
+            popBox.Text = _world.PopulationSize.ToString();
+            aPopBox.Text = _world.Population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "A").ToList().Count.ToString();
+            bPopBox.Text = _world.Population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "B").ToList().Count.ToString();
+            oPopBox.Text = _world.Population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation == "O").ToList().Count.ToString();
+            abPopBox.Text = _world.Population.AsQueryable()
+                    .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count.ToString();
+        }
+
+        private void cleanWorld_Click(object sender, RoutedEventArgs e)
+        {
+            _world.CleanWorld(false);
+            PopulateTextBoxes();
+        }
+
+        private void populateWorld_Click(object sender, RoutedEventArgs e)
+        {
+            if(_world.PopulationSize > 0)
+            {
+                MessageBox.Show("Please clear the world before attempting to repopulate.");
+                return;
+            }
+            _world.SeedWorld(1000);
+            PopulateTextBoxes();
         }
     }
 }
