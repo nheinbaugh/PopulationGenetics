@@ -61,5 +61,10 @@ namespace PopulationGenetics.Client
             _world.SeedWorld(1000);
             PopulateTextBoxes();
         }
+
+        private void processTurn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

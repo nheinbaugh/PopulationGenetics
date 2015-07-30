@@ -10,28 +10,37 @@
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1">
-                <Label x:Name="label" Content="Population" Grid.Column="0"/>
-                <Label x:Name="labelA" Content="A Population" Grid.Column="0"/>
-                <Label x:Name="labelB" Content="B Population" Grid.Column="0"/>
-                <Label x:Name="labelO" Content="O Population" Grid.Column="0"/>
-                <Label x:Name="labelAB" Content="AB Population" Grid.Column="0"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Label x:Name="label" Content="Population" MinWidth="100"/>
+                <TextBox x:Name="popBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""
+                          MinWidth="100"/>
             </StackPanel>
-
-            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="1">
-                <TextBox x:Name="popBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding Path=World.Population.Count, Mode=OneWay}"/>
-                <TextBox x:Name="aPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""/>
-                <TextBox x:Name="bPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""/>
-                <TextBox x:Name="oPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""/>
-                <TextBox x:Name="abPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Label x:Name="labelA" Content="A Population" MinWidth="100"/>
+                <TextBox x:Name="aPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label x:Name="labelB" Content="B Population" MinWidth="100"/>
+                <TextBox x:Name="bPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Label x:Name="labelO" Content="O Population" MinWidth="100"/>
+                <TextBox x:Name="oPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="4">
+                <Label x:Name="labelAB" Content="AB Population" MinWidth="100"/>
+                <TextBox x:Name="abPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="" MinWidth="100"/>
             </StackPanel>
         </Grid>
         <Label Width="100" Height="25" Margin="208,15.496,209,147" Grid.Row="1">Individual</Label>
@@ -39,8 +48,9 @@
             <Label Content="Individual" HorizontalAlignment="Center"></Label>
         </StackPanel>
         <StackPanel Grid.Row="1">
-        <Button x:Name="cleanWorld" Content="Clean World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="cleanWorld_Click"/>
-        <Button x:Name="populateWorld" Content="Populate World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="populateWorld_Click"/>
+            <Button x:Name="processTurn" Content="Process Turn" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="processTurn_Click"/>
+            <Button x:Name="cleanWorld" Content="Clean World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="cleanWorld_Click"/>
+            <Button x:Name="populateWorld" Content="Populate World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="populateWorld_Click"/>
         </StackPanel>
     </Grid>
 </Window>
