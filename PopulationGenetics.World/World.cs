@@ -3,6 +3,7 @@ using PopulationGenetics.Library.SeedMaterial;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 
 namespace PopulationGenetics.Library
 {
@@ -20,6 +21,7 @@ namespace PopulationGenetics.Library
         /// <param name="removeGenes">If true then will remove all loci from the locus bank</param>
         void CleanWorld(bool removeGenes);
         void SeedWorld(int seedSize);
+        StackPanel CreateControls();
     }
     public class World : IWorld
     {
@@ -27,6 +29,7 @@ namespace PopulationGenetics.Library
         private ILocusBank _registeredGenes;
         private IPersonFactory _personFactory;
         private int _age;
+        private IControlManager _controlManager;
 
         public IPersonFactory PersonFactory { get { return _personFactory; } }
         public List<IPerson> Population { get { return _population; } }
@@ -35,14 +38,13 @@ namespace PopulationGenetics.Library
         public int Age { get { return _age; } }
 
 
-        public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory)
+        public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory, IControlManager controlManager)
         {
             if (pop.Count > 0) pop.Clear();
             _population = pop;
             _registeredGenes = genes;
             _personFactory = personFactory;
-            // TODO Question: should I pass in the gene bank and add the stuff behind the scenes or should I make it obvious? 
-            // I can always just rename the method to AddBaseGenes...
+            _controlManager = controlManager;
             WorldSeeds.BaseGenes(_registeredGenes);
             SeedWorld(1000);
         }
@@ -76,6 +78,11 @@ namespace PopulationGenetics.Library
             {
                 _registeredGenes.Genes.Clear();
             }
+        }
+
+        public StackPanel CreateControls()
+        {
+            return _controlManager.CreateDataPair("pop", "Population");
         }
     }
 }

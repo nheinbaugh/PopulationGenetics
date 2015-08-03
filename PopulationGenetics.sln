@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Client", "PopulationGenetics.Client\PopulationGenetics.Client.csproj", "{BA804C81-B87A-4D78-85FF-FAA718D3613C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library", "PopulationGenetics.World\PopulationGenetics.Library.csproj", "{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Common", "PopulationGenetics.Common\PopulationGenetics.Common.csproj", "{2BF28322-72BC-4101-963D-16F5AEB2B707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.WpfBindings", "PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.csproj", "{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Interfaces", "PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj", "{2892F596-4D67-46E1-B973-9C12F680F8AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{2BF28322-72BC-4101-963D-16F5AEB2B707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF28322-72BC-4101-963D-16F5AEB2B707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF28322-72BC-4101-963D-16F5AEB2B707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2892F596-4D67-46E1-B973-9C12F680F8AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2892F596-4D67-46E1-B973-9C12F680F8AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2892F596-4D67-46E1-B973-9C12F680F8AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2892F596-4D67-46E1-B973-9C12F680F8AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

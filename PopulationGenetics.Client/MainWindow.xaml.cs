@@ -29,12 +29,14 @@ namespace PopulationGenetics.Client
         {
             this._world = world;
             InitializeComponent();
+            var bob = world.CreateControls();
+            geneGrid.Children.Add(bob);
             PopulateTextBoxes();
+
         }
 
         private void PopulateTextBoxes()
         {
-            popBox.Text = _world.PopulationSize.ToString();
             aPopBox.Text = _world.Population.AsQueryable()
                     .Where(a => a.Genes[0].Representation == "A").ToList().Count.ToString();
             bPopBox.Text = _world.Population.AsQueryable()
@@ -67,6 +69,7 @@ namespace PopulationGenetics.Client
         {
             _world.ProcessTurn();
             PopulateTextBoxes();
+            geneGrid.RowDefinitions.Add(new RowDefinition());
         }
     }
 }

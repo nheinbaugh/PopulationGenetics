@@ -53,6 +53,12 @@
   <ItemGroup>
     <Compile Include="Allele.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj">
+      <Project>{2892f596-4d67-46e1-b973-9c12f680f8ae}</Project>
+      <Name>PopulationGenetics.Library.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

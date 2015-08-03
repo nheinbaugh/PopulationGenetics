@@ -8,12 +8,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
-    <Grid>
+    <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid x:Name="geneGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -25,11 +25,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Grid.Row="0">
-                <Label x:Name="label" Content="Population" MinWidth="100"/>
-                <TextBox x:Name="popBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""
-                          MinWidth="100"/>
-            </StackPanel>
+     
             <StackPanel Orientation="Horizontal" Grid.Row="1">
                 <Label x:Name="labelA" Content="A Population" MinWidth="100"/>
                 <TextBox x:Name="aPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
