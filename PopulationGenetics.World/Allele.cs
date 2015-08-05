@@ -1,14 +1,8 @@
 ﻿using System;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface IAllele
-    {
-        double DefaultFrequency { get; }
-        string Representation { get; }
-        bool IsDominant { get; }
-    }
-
     public class Allele : IAllele
     {
         private bool _isDominant;

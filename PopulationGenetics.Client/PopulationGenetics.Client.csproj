@@ -107,6 +107,10 @@
       <Project>{2bf28322-72bc-4101-963d-16f5aeb2b707}</Project>
       <Name>PopulationGenetics.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj">
+      <Project>{2892F596-4D67-46E1-B973-9C12F680F8AE}</Project>
+      <Name>PopulationGenetics.Library.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.csproj">
       <Project>{e91c3cc1-0a63-4e6a-a8fd-9faf06ccee4b}</Project>
       <Name>PopulationGenetics.Library</Name>

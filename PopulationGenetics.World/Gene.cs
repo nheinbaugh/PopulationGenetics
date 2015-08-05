@@ -1,13 +1,8 @@
 ﻿using System;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface IGene
-    {
-        int FitnessGain { get; }
-        string Representation { get; }
-    }
-
     public class Gene : IGene
     {
 

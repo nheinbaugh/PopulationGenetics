@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface ILocus
-    {
-        ILocusManager LocusManager { get; }
-        string LocusName { get; }
-        void AddAllele(IEnumerable<IAllele> alleles);
-        void AddAllele(IAllele allele);
-        void AddAllele();
-    }
 
     public class Locus : ILocus
     {

@@ -1,6 +1,9 @@
 ﻿using System.Windows.Controls;
 
-public interface IControlManager
+namespace PopulationGenetics.Library.Interfaces
 {
-    StackPanel CreateDataPair(string controlName, string label);
+    public interface IControlManager
+    {
+        StackPanel CreateDataPair(string controlName, string label, object source);
+    }
 }

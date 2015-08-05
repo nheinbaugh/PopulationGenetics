@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface IPerson
-    {
-        int Age { get; }
-        bool IsFemale { get; }
-        List<IGene> Genes { get; }
-    }
     public class Person : IPerson
     {
         private int _age;

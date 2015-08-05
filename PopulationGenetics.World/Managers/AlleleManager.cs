@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface ILocusManager
-    {
-        List<IAllele> Alleles { get; }
-    } 
+
 
     public class LocusManager : ILocusManager
     {

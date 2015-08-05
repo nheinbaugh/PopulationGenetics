@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library.Factories
 {

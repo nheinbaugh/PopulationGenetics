@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
 {
-    public interface ILocusBank
-    {
-        List<ILocus> Genes { get; }
-        void AddToBank(ILocus newLocus);
-        void AddToBank();
-    }
     /// <summary>
     /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
     /// Each locus will have all alleles that are registered to it. 

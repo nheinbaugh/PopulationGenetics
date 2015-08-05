@@ -41,7 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAllele.cs" />
     <Compile Include="IControlCreator.cs" />
+    <Compile Include="IGene.cs" />
+    <Compile Include="ILocus.cs" />
+    <Compile Include="ILocusBank.cs" />
+    <Compile Include="ILocusManager.cs" />
+    <Compile Include="IPerson.cs" />
+    <Compile Include="IWorld.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
