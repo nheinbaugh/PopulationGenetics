@@ -54,6 +54,7 @@ namespace PopulationGenetics.Library
             {
                 _population.Add(_personFactory.CreateNewPerson());
             }
+            NotifyPropertyChanged("PopulationSize");
         }
 
         public void ProcessTurn()
@@ -63,7 +64,7 @@ namespace PopulationGenetics.Library
             {
 
             }
-            NotifyPropertyChanged("Population");
+            NotifyPropertyChanged("PopulationSize");
         }
 
         public void CleanWorld(bool clearGenes)
@@ -73,11 +74,12 @@ namespace PopulationGenetics.Library
             {
                 _registeredGenes.Genes.Clear();
             }
+            NotifyPropertyChanged("PopulationSize");
         }
 
         public StackPanel CreateControls()
         {
-            return _controlManager.CreateDataPair("pop", "Population", this);
+            return _controlManager.CreateDataPair("pop", "Population", "PopulationSize", this);
         }
     }
 }

@@ -7,7 +7,7 @@ using PopulationGenetics.Library.Interfaces;
 public class WpfControlManager : IControlManager
 {
 
-    public StackPanel CreateDataPair(string controlName, string labelContent, object source)
+    public StackPanel CreateDataPair(string controlName, string labelContent, string bindingPath, object source)
     {
         var bob = new StackPanel();
         bob.Orientation = Orientation.Horizontal;
@@ -19,13 +19,13 @@ public class WpfControlManager : IControlManager
         label.MinWidth = 100;
         var tb = new TextBox();
         var binding = new Binding();
-        binding.Path = new PropertyPath("Population");
-        binding.Mode = BindingMode.TwoWay;
+        binding.Source = source;
+        binding.Path = new PropertyPath(bindingPath);
+        binding.Mode = BindingMode.OneWay;
         tb.SetBinding(TextBox.TextProperty, binding);
 
         tb.Name = controlName + "Value";
         tb.IsReadOnly = true;
-        tb.Text = "7";
         tb.MinWidth = 100;
         bob.Children.Add(label);
         bob.Children.Add(tb);
