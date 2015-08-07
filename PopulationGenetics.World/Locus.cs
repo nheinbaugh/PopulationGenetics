@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PopulationGenetics.Library.Interfaces;
+using PopulationGenetics.Library.Managers;
 
 namespace PopulationGenetics.Library
 {

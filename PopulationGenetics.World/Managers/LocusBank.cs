@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using PopulationGenetics.Library.Interfaces;
 
-namespace PopulationGenetics.Library
+namespace PopulationGenetics.Library.Managers
 {
     /// <summary>
     /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
@@ -11,13 +10,13 @@ namespace PopulationGenetics.Library
     /// </summary>
     public class LocusBank: ILocusBank
     {
-        private List<ILocus> _genes;
+        private List<ILocus> _loci;
 
-        public List<ILocus> Genes => _genes;
+        public List<ILocus> Loci => _loci;
 
         public LocusBank()
         {
-            _genes = new List<ILocus>();
+            _loci = new List<ILocus>();
         }
 
         /// <summary>
@@ -26,7 +25,7 @@ namespace PopulationGenetics.Library
         /// <param name="newLocus">The locus to be added to the pool of known gene positions</param>
         public void AddToBank(ILocus newLocus)
         {
-            _genes.Add(newLocus);
+            _loci.Add(newLocus);
         }
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace PopulationGenetics.Library
 
         private void GetLocusByName()
         {
-            //var bo = _genes.AsQueryable().Select
+            //var bo = _loci.AsQueryable().Select
         }
     }
 }

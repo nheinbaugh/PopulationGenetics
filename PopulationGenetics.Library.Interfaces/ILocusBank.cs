@@ -4,7 +4,7 @@ namespace PopulationGenetics.Library.Interfaces
 {
     public interface ILocusBank
     {
-        List<ILocus> Genes { get; }
+        List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);
         void AddToBank();
     }

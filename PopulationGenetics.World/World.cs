@@ -73,7 +73,7 @@ namespace PopulationGenetics.Library
             _population.Clear();
             if (clearGenes)
             {
-                _registeredGenes.Genes.Clear();
+                _registeredGenes.Loci.Clear();
             }
             NotifyPropertyChanged("PopulationSize");
         }

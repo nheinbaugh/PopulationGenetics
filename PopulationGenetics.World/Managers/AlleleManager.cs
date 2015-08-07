@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using PopulationGenetics.Library.Interfaces;
 
-namespace PopulationGenetics.Library
+namespace PopulationGenetics.Library.Managers
 {
 
 

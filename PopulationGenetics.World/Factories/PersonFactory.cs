@@ -21,7 +21,7 @@ namespace PopulationGenetics.Library.Factories
         public Person CreateNewPerson()
         {
             var genes = new List<IGene>();
-            foreach (var locus in _locusBank.Genes)
+            foreach (var locus in _locusBank.Loci)
             {
                 var gene = GenerateNewGene(locus);
                 genes.Add(gene);
