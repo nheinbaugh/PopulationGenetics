@@ -15,37 +15,9 @@
         </Grid.RowDefinitions>
         <Grid x:Name="geneGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-     
-            <StackPanel Orientation="Horizontal" Grid.Row="1">
-                <Label x:Name="labelA" Content="A Population" MinWidth="100"/>
-                <TextBox x:Name="aPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                <Label x:Name="labelB" Content="B Population" MinWidth="100"/>
-                <TextBox x:Name="bPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
-                <Label x:Name="labelO" Content="O Population" MinWidth="100"/>
-                <TextBox x:Name="oPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text=""  MinWidth="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Row="4">
-                <Label x:Name="labelAB" Content="AB Population" MinWidth="100"/>
-                <TextBox x:Name="abPopBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="" MinWidth="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0, 0, 5, 0">
-                <Label x:Name="ageLabel" Content="Age of World" MinWidth="100"/>
-                <TextBox x:Name="ageBox" Height="23" TextWrapping="Wrap" IsReadOnly="True" Text="" MinWidth="100"/>
-            </StackPanel>
         </Grid>
         <Label Width="100" Height="25" Margin="208,15.496,209,147" Grid.Row="1">Individual</Label>
         <StackPanel Grid.Row="1" Grid.Column="0">

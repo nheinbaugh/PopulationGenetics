@@ -16,6 +16,6 @@ namespace PopulationGenetics.Library.Interfaces
         /// <param name="removeGenes">If true then will remove all loci from the locus bank</param>
         void CleanWorld(bool removeGenes);
         void SeedWorld(int seedSize);
-        StackPanel CreateControls();
+        List<StackPanel> CreateWorldControls(Grid targetGrid);
     }
 }

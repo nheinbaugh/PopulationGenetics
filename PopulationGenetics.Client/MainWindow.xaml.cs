@@ -30,23 +30,23 @@ namespace PopulationGenetics.Client
         {
             this._world = world;
             InitializeComponent();
-            var bob = world.CreateControls();
-            geneGrid.Children.Add(bob);
+            world.CreateWorldControls(geneGrid);
+            
             PopulateTextBoxes();
 
         }
 
         private void PopulateTextBoxes()
         {
-            aPopBox.Text = _world.Population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "A").ToList().Count.ToString();
-            bPopBox.Text = _world.Population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "B").ToList().Count.ToString();
-            oPopBox.Text = _world.Population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation == "O").ToList().Count.ToString();
-            abPopBox.Text = _world.Population.AsQueryable()
-                    .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count.ToString();
-            ageBox.Text = _world.Age.ToString();
+            //aPopBox.Text = _world.Population.AsQueryable()
+            //        .Where(a => a.Genes[0].Representation == "A").ToList().Count.ToString();
+            //bPopBox.Text = _world.Population.AsQueryable()
+            //        .Where(a => a.Genes[0].Representation == "B").ToList().Count.ToString();
+            //oPopBox.Text = _world.Population.AsQueryable()
+            //        .Where(a => a.Genes[0].Representation == "O").ToList().Count.ToString();
+            //abPopBox.Text = _world.Population.AsQueryable()
+            //        .Where(a => a.Genes[0].Representation.Length == 2).ToList().Count.ToString();
+            //ageBox.Text = _world.Age.ToString();
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)

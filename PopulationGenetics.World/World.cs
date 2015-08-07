@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 
@@ -11,11 +12,11 @@ namespace PopulationGenetics.Library
 {
     public class World : IWorld, INotifyPropertyChanged
     {
-        private List<IPerson> _population;
-        private ILocusBank _registeredGenes;
-        private IPersonFactory _personFactory;
+        private readonly List<IPerson> _population;
+        private readonly ILocusBank _registeredGenes;
+        private readonly IPersonFactory _personFactory;
         private int _age;
-        private IControlManager _controlManager;
+        private readonly IControlManager _controlManager;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -65,6 +66,7 @@ namespace PopulationGenetics.Library
 
             }
             NotifyPropertyChanged("PopulationSize");
+            NotifyPropertyChanged("Age");
         }
 
         public void CleanWorld(bool clearGenes)
@@ -77,9 +79,25 @@ namespace PopulationGenetics.Library
             NotifyPropertyChanged("PopulationSize");
         }
 
-        public StackPanel CreateControls()
+        public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
-            return _controlManager.CreateDataPair("pop", "Population", "PopulationSize", this);
+            var spList = new List<StackPanel>();
+            spList.Add(_controlManager.CreateDataPair("pop", "Population", "PopulationSize", this));
+            spList.Add(_controlManager.CreateDataPair("age", "World Age", "Age", this));
+
+            foreach (var sp in spList)
+            {
+                sp.Margin = new Thickness(5, 5, 5, 5);
+
+                sp.HorizontalAlignment = HorizontalAlignment.Right;
+                Grid.SetColumn(sp, 1);
+                var rd = new RowDefinition { Height = GridLength.Auto };
+                targetGrid.RowDefinitions.Add(rd);
+                var rows = targetGrid.RowDefinitions.Count;
+                Grid.SetRow(sp, rows - 1);
+                targetGrid.Children.Add(sp);
+            }
+            return spList;
         }
     }
 }
