@@ -10,9 +10,9 @@ namespace PopulationGenetics.Library
         private bool _isFemale;
         private List<IGene> _genes;
 
-        public int Age { get { return _age; } }
-        public bool IsFemale { get { return _isFemale; } }
-        public List<IGene> Genes { get { return _genes; } }
+        public int Age => _age;
+        public bool IsFemale => _isFemale;
+        public List<IGene> Genes => _genes;
 
         public Person(List<IGene> genes, bool isFemale)
         {

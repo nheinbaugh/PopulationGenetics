@@ -9,9 +9,9 @@ namespace PopulationGenetics.Library
         private string _representation;
         private double _defaultFrequency;
 
-        public bool IsDominant { get { return _isDominant; } }
-        public string Representation { get { return _representation; } }
-        public double DefaultFrequency { get { return _defaultFrequency; } }
+        public bool IsDominant => _isDominant;
+        public string Representation => _representation;
+        public double DefaultFrequency => _defaultFrequency;
 
         public Allele(string representation, bool isDominant, double defaultFreq = 0)
         {

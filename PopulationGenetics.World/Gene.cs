@@ -11,8 +11,8 @@ namespace PopulationGenetics.Library
         private IAllele _secondAllele;
         private string _representation;
 
-        public int FitnessGain { get { return _fitnessGain; } }
-        public string Representation { get { return _representation; } }
+        public int FitnessGain => _fitnessGain;
+        public string Representation => _representation;
 
         public Gene(IAllele firstAllele, IAllele secondAllele)
         {

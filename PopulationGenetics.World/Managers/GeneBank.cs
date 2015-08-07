@@ -13,10 +13,7 @@ namespace PopulationGenetics.Library
     {
         private List<ILocus> _genes;
 
-        public List<ILocus> Genes
-        {
-            get { return _genes; }
-        }
+        public List<ILocus> Genes => _genes;
 
         public LocusBank()
         {

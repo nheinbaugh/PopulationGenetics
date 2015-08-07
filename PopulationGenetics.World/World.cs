@@ -20,11 +20,11 @@ namespace PopulationGenetics.Library
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public IPersonFactory PersonFactory { get { return _personFactory; } }
-        public List<IPerson> Population { get { return _population; } }
-        public ILocusBank RegisteredGenes { get { return _registeredGenes; } }
-        public int PopulationSize { get { return _population.Count; } }
-        public int Age { get { return _age; } }
+        public IPersonFactory PersonFactory => _personFactory;
+        public List<IPerson> Population => _population;
+        public ILocusBank RegisteredGenes => _registeredGenes;
+        public int PopulationSize => _population.Count;
+        public int Age => _age;
 
 
         public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory, IControlManager controlManager)
@@ -45,8 +45,7 @@ namespace PopulationGenetics.Library
 
         protected void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public void SeedWorld(int seedSize)

@@ -10,7 +10,7 @@ namespace PopulationGenetics.Library
     {
         private List<IAllele> _alleles;
 
-        public List<IAllele> Alleles { get { return _alleles; } }
+        public List<IAllele> Alleles => _alleles;
 
         public LocusManager()
         {

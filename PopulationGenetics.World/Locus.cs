@@ -10,8 +10,8 @@ namespace PopulationGenetics.Library
         private string _locusName;
         private ILocusManager _locusManager;
 
-        public ILocusManager LocusManager { get { return _locusManager; } }
-        public string LocusName { get { return _locusName; } }
+        public ILocusManager LocusManager => _locusManager;
+        public string LocusName => _locusName;
 
         public Locus(string name)
         {
