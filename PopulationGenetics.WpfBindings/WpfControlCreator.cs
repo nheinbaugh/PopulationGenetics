@@ -44,7 +44,7 @@ namespace PopulationGenetics.WpfBindings
             };
 
             var tb = stackPanel.Children[1] as TextBox;
-            tb.SetBinding(TextBox.TextProperty, binding);
+            tb?.SetBinding(TextBox.TextProperty, binding);
             
             return stackPanel;
         }
