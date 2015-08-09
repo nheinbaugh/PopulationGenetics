@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
@@ -23,6 +24,13 @@ namespace PopulationGenetics.Library
         public Allele()
         {
 
+        }
+
+        public StackPanel CreateControl(IControlManager controlManager)
+        {
+            var sp = new StackPanel();
+            controlManager.CreateDataPair(_representation, _representation + " Population", "bob", this);
+            return sp;
         }
     }
 }

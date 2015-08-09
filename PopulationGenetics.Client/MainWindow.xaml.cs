@@ -31,7 +31,7 @@ namespace PopulationGenetics.Client
             this._world = world;
             InitializeComponent();
             world.CreateWorldControls(geneGrid);
-            
+            world.RegisteredGenes.CreateGeneControls();
             PopulateTextBoxes();
 
         }

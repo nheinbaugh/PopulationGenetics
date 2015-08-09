@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library.Managers
@@ -39,6 +40,15 @@ namespace PopulationGenetics.Library.Managers
         private void GetLocusByName()
         {
             //var bo = _loci.AsQueryable().Select
+        }
+
+        public void CreateGeneControls()
+        {
+            var total = new List<StackPanel>();
+            foreach (var locus in _loci)
+            {
+                var bob = locus.CreateAlleleControls();
+            }
         }
     }
 }

@@ -7,5 +7,6 @@ namespace PopulationGenetics.Library.Interfaces
         List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);
         void AddToBank();
+        void CreateGeneControls();
     }
 }

@@ -5,13 +5,13 @@ namespace PopulationGenetics.Library.Managers
 {
 
 
-    public class LocusManager : ILocusManager
+    public class AlleleManager : IAlleleManager
     {
         private List<IAllele> _alleles;
 
         public List<IAllele> Alleles => _alleles;
 
-        public LocusManager()
+        public AlleleManager()
         {
             _alleles = new List<IAllele>();
         }

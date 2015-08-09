@@ -32,7 +32,7 @@ namespace PopulationGenetics.Library.Factories
 
         private Gene GenerateNewGene(ILocus locus)
         {
-            var gene = new Gene(GenerateAllele(locus.LocusManager), GenerateAllele(locus.LocusManager));
+            var gene = new Gene(GenerateAllele(locus.AlleleManager), GenerateAllele(locus.AlleleManager));
 
             return gene;
         }
@@ -46,7 +46,7 @@ namespace PopulationGenetics.Library.Factories
 
             return new Random(result).Next(0, max + 1);
         }
-        private IAllele GenerateAllele(ILocusManager manager)
+        private IAllele GenerateAllele(IAlleleManager manager)
         {
 
             var num = TrulyRandom(1000);

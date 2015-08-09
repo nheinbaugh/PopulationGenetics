@@ -49,7 +49,7 @@
     <Compile Include="IGene.cs" />
     <Compile Include="ILocus.cs" />
     <Compile Include="ILocusBank.cs" />
-    <Compile Include="ILocusManager.cs" />
+    <Compile Include="IAlleleManager.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="IWorld.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

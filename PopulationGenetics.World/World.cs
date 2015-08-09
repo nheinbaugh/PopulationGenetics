@@ -83,7 +83,14 @@ namespace PopulationGenetics.Library
             var spList = new List<StackPanel>();
             spList.Add(_controlManager.CreateDataPair("pop", "Population", "PopulationSize", this));
             spList.Add(_controlManager.CreateDataPair("age", "World Age", "Age", this));
-
+            foreach (var locus in _registeredGenes.Loci)
+            {
+                foreach (var allele in locus.AlleleManager.Alleles)
+                {
+                    _controlManager.CreateDataPair(allele.Representation, allele.Representation + " Population", "",
+                        this);
+                }
+            }
             foreach (var sp in spList)
             {
                 sp.Margin = new Thickness(5, 5, 5, 5);

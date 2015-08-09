@@ -2,7 +2,7 @@
 
 namespace PopulationGenetics.Library.Interfaces
 {
-    public interface ILocusManager
+    public interface IAlleleManager
     {
         List<IAllele> Alleles { get; }
     }
