@@ -57,7 +57,7 @@ namespace PopulationGenetics.Client
 
         private void populateWorld_Click(object sender, RoutedEventArgs e)
         {
-            if(_world.PopulationSize > 0)
+            if(_world.Population.Populus.Count> 0)
             {
                 MessageBox.Show("Please clear the world before attempting to repopulate.");
                 return;

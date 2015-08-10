@@ -12,7 +12,7 @@ namespace PopulationGenetics.Library
 {
     public class World : IWorld, INotifyPropertyChanged
     {
-        private readonly List<IPerson> _population;
+        private readonly IPopulation _population;
         private readonly ILocusBank _registeredGenes;
         private readonly IPersonFactory _personFactory;
         private int _age;
@@ -21,15 +21,14 @@ namespace PopulationGenetics.Library
         public event PropertyChangedEventHandler PropertyChanged;
 
         public IPersonFactory PersonFactory => _personFactory;
-        public List<IPerson> Population => _population;
+        public IPopulation Population => _population;
         public ILocusBank RegisteredGenes => _registeredGenes;
-        public int PopulationSize => _population.Count;
         public int Age => _age;
 
 
-        public World(List<IPerson> pop, ILocusBank genes, IPersonFactory personFactory, IControlManager controlManager)
+        public World(IPopulation pop, ILocusBank genes, IPersonFactory personFactory, IControlManager controlManager)
         {
-            if (pop.Count > 0) pop.Clear();
+            if (pop?.Populus?.Count > 0) pop.Populus.Clear();
             _population = pop;
             _registeredGenes = genes;
             _personFactory = personFactory;
@@ -50,45 +49,43 @@ namespace PopulationGenetics.Library
 
         public void SeedWorld(int seedSize)
         {
-            for (int i = 0; i < seedSize; i++)
-            {
-                _population.Add(_personFactory.CreateNewPerson());
-            }
-            NotifyPropertyChanged("PopulationSize");
+            _population.CreatePopulation(seedSize);
         }
 
         public void ProcessTurn()
         {
             _age++;
-            foreach (var person in _population)
+            foreach (var person in _population.Populus)
             {
 
+
             }
-            NotifyPropertyChanged("PopulationSize");
+            _population.DestroyPopulation();
             NotifyPropertyChanged("Age");
         }
 
         public void CleanWorld(bool clearGenes)
         {
-            _population.Clear();
+            _population.DestroyPopulation();
             if (clearGenes)
             {
                 _registeredGenes.Loci.Clear();
             }
-            NotifyPropertyChanged("PopulationSize");
         }
 
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
-            var spList = new List<StackPanel>();
-            spList.Add(_controlManager.CreateDataPair("pop", "Population", "PopulationSize", this));
-            spList.Add(_controlManager.CreateDataPair("age", "World Age", "Age", this));
+            var spList = new List<StackPanel>
+            {
+                _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
+                _controlManager.CreateDataPair("age", "World Age", "Age", this)
+            };
             foreach (var locus in _registeredGenes.Loci)
             {
                 foreach (var allele in locus.AlleleManager.Alleles)
                 {
                     var func = new Func<IAllele, int>(AllelePopulation);
-                    _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Population",
+                    _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Populus",
                         func);
                 }
             }

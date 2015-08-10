@@ -7,8 +7,7 @@ namespace PopulationGenetics.Library.Interfaces
     {
         int Age { get; }
         ILocusBank RegisteredGenes { get; }
-        List<IPerson> Population { get; }
-        int PopulationSize { get; }
+        IPopulation Population { get; }
         void ProcessTurn();
         /// <summary>
         /// Clear the current population from the world. Will reset the age of the world to zero and remove all population.
