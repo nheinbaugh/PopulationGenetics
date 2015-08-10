@@ -87,8 +87,9 @@ namespace PopulationGenetics.Library
             {
                 foreach (var allele in locus.AlleleManager.Alleles)
                 {
-                    _controlManager.CreateDataPair(allele.Representation, allele.Representation + " Population", "",
-                        this);
+                    var func = new Func<IAllele, int>(AllelePopulation);
+                    _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Population",
+                        func);
                 }
             }
             foreach (var sp in spList)
@@ -105,6 +106,15 @@ namespace PopulationGenetics.Library
             }
             return spList;
         }
+
+        private int AllelePopulation(IAllele allele)
+        {
+            var gene = this.RegisteredGenes.Loci.Single(l => l.AlleleManager.Alleles.Contains(allele));
+            // return all people
+            // who whave the allele
+
+            //represented in this gene
+            return 2;
+        }
     }
 }
-

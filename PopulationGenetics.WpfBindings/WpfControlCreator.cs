@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using PopulationGenetics.Library.Interfaces;
@@ -49,9 +50,14 @@ namespace PopulationGenetics.WpfBindings
             return stackPanel;
         }
 
-        public StackPanel CreateDataPairLinq(string controlName, string labelContent)
+        public StackPanel CreateDataPairLinq(string controlName, string labelContent, Func<IAllele, int> bindingSource)
         {
             var stackPanel = CreateDataPairBase(controlName, labelContent);
+            var binding = new Binding();
+            binding.Source = bindingSource;
+            binding.Mode = BindingMode.OneWay;
+            var tb = stackPanel.Children[1] as TextBox;
+            tb?.SetBinding(TextBox.TextProperty, binding);
             return stackPanel;
         }
     }
