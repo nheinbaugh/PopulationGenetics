@@ -60,7 +60,6 @@ namespace PopulationGenetics.Library
 
 
             }
-            _population.DestroyPopulation();
             NotifyPropertyChanged("Age");
         }
 
