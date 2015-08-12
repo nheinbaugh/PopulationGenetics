@@ -32,27 +32,15 @@ namespace PopulationGenetics.Client
             InitializeComponent();
             world.CreateWorldControls(geneGrid);
             world.RegisteredGenes.CreateGeneControls();
-            PopulateTextBoxes();
 
-        }
-
-        private void PopulateTextBoxes()
-        {
-            //aPopBox.Text = _world.Population.AsQueryable()
-            //        .Where(a => a.Loci[0].Representation == "A").ToList().Count.ToString();
-            //bPopBox.Text = _world.Population.AsQueryable()
-            //        .Where(a => a.Loci[0].Representation == "B").ToList().Count.ToString();
-            //oPopBox.Text = _world.Population.AsQueryable()
-            //        .Where(a => a.Loci[0].Representation == "O").ToList().Count.ToString();
-            //abPopBox.Text = _world.Population.AsQueryable()
-            //        .Where(a => a.Loci[0].Representation.Length == 2).ToList().Count.ToString();
-            //ageBox.Text = _world.Age.ToString();
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)
         {
             _world.CleanWorld(false);
-            PopulateTextBoxes();
+            geneGrid.Children.Clear();
+            _world.CreateWorldControls(geneGrid);
+
         }
 
         private void populateWorld_Click(object sender, RoutedEventArgs e)
@@ -63,13 +51,13 @@ namespace PopulationGenetics.Client
                 return;
             }
             _world.SeedWorld(1000);
-            PopulateTextBoxes();
+            _world.CreateWorldControls(geneGrid);
         }
 
         private void processTurn_Click(object sender, RoutedEventArgs e)
         {
             _world.ProcessTurn();
-            PopulateTextBoxes();
+            _world.CreateWorldControls(geneGrid);
         }
     }
 }

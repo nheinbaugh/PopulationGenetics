@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library
@@ -10,14 +12,17 @@ namespace PopulationGenetics.Library
         private IAllele _firstAllele;
         private IAllele _secondAllele;
         private string _representation;
+        private List<IAllele> _alleles;
 
         public int FitnessGain => _fitnessGain;
         public string Representation => _representation;
+        public List<IAllele> Alleles { get { return _alleles; } }
 
         public Gene(IAllele firstAllele, IAllele secondAllele)
         {
             this._firstAllele = firstAllele;
             this._secondAllele = secondAllele;
+            _alleles = new List<IAllele> {_firstAllele, _secondAllele};
             BuildRepresentation();   
         }
 

@@ -63,6 +63,10 @@
       <Project>{2892f596-4d67-46e1-b973-9c12f680f8ae}</Project>
       <Name>PopulationGenetics.Library.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.csproj">
+      <Project>{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}</Project>
+      <Name>PopulationGenetics.WpfBindings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

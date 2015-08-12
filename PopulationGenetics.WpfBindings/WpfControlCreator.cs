@@ -50,12 +50,16 @@ namespace PopulationGenetics.WpfBindings
             return stackPanel;
         }
 
-        public StackPanel CreateDataPairLinq(string controlName, string labelContent, Func<IAllele, int> bindingSource)
+        public StackPanel CreateDataPairLinq(string controlName, string labelContent, Func<IAllele, int> bindingSource, IValueConverter converter, IAllele allele)
         {
             var stackPanel = CreateDataPairBase(controlName, labelContent);
-            var binding = new Binding();
-            binding.Source = bindingSource;
-            binding.Mode = BindingMode.OneWay;
+            var binding = new Binding
+            {
+                Source = bindingSource,
+                Mode = BindingMode.OneWay,
+                Converter = converter,
+                ConverterParameter = allele
+            };
             var tb = stackPanel.Children[1] as TextBox;
             tb?.SetBinding(TextBox.TextProperty, binding);
             return stackPanel;
