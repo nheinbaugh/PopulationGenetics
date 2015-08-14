@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
+using PopulationGenetics.WpfBindings;
 
 namespace PopulationGenetics.Library.Managers
 {
@@ -12,11 +14,13 @@ namespace PopulationGenetics.Library.Managers
     public class LocusBank: ILocusBank
     {
         private List<ILocus> _loci;
+        private readonly IControlManager _controlManager;
 
         public List<ILocus> Loci => _loci;
 
-        public LocusBank()
+        public LocusBank(IControlManager controlManager)
         {
+            _controlManager = controlManager;
             _loci = new List<ILocus>();
         }
 
@@ -42,12 +46,34 @@ namespace PopulationGenetics.Library.Managers
             //var bo = _loci.AsQueryable().Select
         }
 
-        public void CreateGeneControls()
+        public void CreateGeneControls(IWorld world, Func<IAllele, int> allelePopulation, Grid targetGrid)
         {
-            var total = new List<StackPanel>();
+            var spList = new List<StackPanel>();
+            var currentRow = 0;
             foreach (var locus in _loci)
             {
-                var bob = locus.CreateAlleleControls();
+                foreach (var allele in locus.AlleleManager.Alleles)
+                {
+                    var totalRows = targetGrid.RowDefinitions.Count;
+                    var func = new Func<IAllele, int>(allelePopulation);
+                    var sp = _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Populus",
+                         func, new ValueConverter(), allele);
+                    var tb = sp.Children[1] as TextBox;
+                    sp.Margin = new Thickness(5, 5, 5, 5);
+                    sp.HorizontalAlignment = HorizontalAlignment.Right;
+
+                    tb.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                    Grid.SetColumn(sp, 0);
+                    if (currentRow >= totalRows)
+                    {
+                        var rd = new RowDefinition { Height = GridLength.Auto };
+                        targetGrid.RowDefinitions.Add(rd);
+                    }
+                    Grid.SetRow(sp, currentRow);
+                    currentRow++;
+                    spList.Add(sp);
+                    targetGrid.Children.Add(sp);
+                }
             }
         }
     }

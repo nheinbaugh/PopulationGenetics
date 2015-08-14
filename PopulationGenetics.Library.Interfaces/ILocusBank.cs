@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Controls;
 
 namespace PopulationGenetics.Library.Interfaces
 {
@@ -7,6 +9,6 @@ namespace PopulationGenetics.Library.Interfaces
         List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);
         void AddToBank();
-        void CreateGeneControls();
+        void CreateGeneControls(IWorld world, Func<IAllele, int> allelePopulation, Grid geneGrid);
     }
 }

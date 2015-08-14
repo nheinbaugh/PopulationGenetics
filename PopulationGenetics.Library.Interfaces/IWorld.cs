@@ -16,6 +16,5 @@ namespace PopulationGenetics.Library.Interfaces
         void CleanWorld(bool removeGenes);
         void SeedWorld(int seedSize);
         List<StackPanel> CreateWorldControls(Grid targetGrid);
-        void CreateGeneControls(Grid targetGrid);
     }
 }
