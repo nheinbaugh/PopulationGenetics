@@ -6,22 +6,25 @@ namespace PopulationGenetics.WpfBindings
 {
     public class AlleleControl : IAlleleControl
     {
-        private Func<IAllele, int> _query;
+        private Func<object, int> _query;
         private StackPanel _stackPanel;
         private IAllele _allele;
+        private bool _isCoDominant;
 
         public StackPanel StackPanel { get { return _stackPanel; } }
 
-        public AlleleControl(IAllele allele, StackPanel sp, Func<IAllele, int> query)
+        public AlleleControl(IAllele allele, StackPanel sp, Func<object, int> query, bool coDominant = false)
         {
             this._allele = allele;
             this._stackPanel = sp;
             this._query = query;
+            _isCoDominant = coDominant;
         }
 
         public void UpdateControlValue()
         {
-            var val = _query.Invoke(_allele);
+            var val = -1;
+            val = _isCoDominant ? _query.Invoke(_allele.Representation) : _query.Invoke(_allele);
             var tb = _stackPanel.Children[1] as TextBox;
             tb?.SetValue(TextBox.TextProperty, val.ToString());
         } 

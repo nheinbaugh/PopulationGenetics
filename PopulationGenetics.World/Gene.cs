@@ -33,9 +33,14 @@ namespace PopulationGenetics.Library
 
         private void BuildRepresentation()
         {
+            if (_firstAllele.Representation == _secondAllele.Representation)
+            {
+                _representation = _firstAllele.Representation;
+                return;
+            }
             if(_firstAllele.IsDominant && _secondAllele.IsDominant)
             {
-                _representation = _firstAllele.Representation + _secondAllele.Representation;
+                _representation = GeneRepresentationBuilder.CreateName(_firstAllele, _secondAllele);
                 return;
             }
             if (_firstAllele.IsDominant)

@@ -16,6 +16,7 @@ namespace PopulationGenetics.Library.Managers
         private IControlManager _controlManager;
         private IWorld _world;
         private List<IAlleleControl> _controls;
+        private List<IAllele> _dominantAlleles;
 
         public List<IAllele> Alleles { get { return _alleles; } }
         public List<IAlleleControl> Controls { get { return _controls; } }
@@ -26,13 +27,14 @@ namespace PopulationGenetics.Library.Managers
             _controlManager = controlManager;
             _alleles = new List<IAllele>();
             _world = world;
+            _dominantAlleles = new List<IAllele>();
         }
 
         public void CreateAllele(IAllele allele)
         {
             _alleles.Add(allele);
-            var control = CreateAlleleControls(allele);
-            control.UpdateControlValue();
+            CreateAlleleControls(allele);
+            if (allele.IsDominant) _dominantAlleles.Add(allele);
         }
 
         public void CreateMultipleAlleles(IEnumerable<IAllele> alleles)
@@ -42,24 +44,54 @@ namespace PopulationGenetics.Library.Managers
 
 
 
-        private AlleleControl CreateAlleleControls(IAllele allele)
+        private void CreateAlleleControls(IAllele allele)
         {
-            var func = new Func<IAllele, int>(AllelePopulation);
-            var sp = _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Populus",
+            if (allele.IsDominant) CreateCoDominantControls(allele);
+            CreateControl(allele, allele.Representation);
+        }
+
+        private void CreateCoDominantControls(IAllele allele)
+        {
+            foreach (var all in _dominantAlleles)
+            {
+                var rep = GeneRepresentationBuilder.CreateName(all, allele);
+                var func = new Func<object, int>(CoDominantPopulation);
+                var cdAll = new Allele(rep, false);
+                var sp = _controlManager.CreateCoDominantPairLinq(rep, rep + " Population" + " Populus",
+                 func, new ValueConverter());
+                var control = new AlleleControl(cdAll, sp, func, true);
+                control.UpdateControlValue();
+                _controls.Add(control);
+            }
+            
+        }
+
+        private void CreateControl(IAllele allele, string representation)
+        {
+            var func = new Func<object, int>(AllelePopulation);
+            var sp = _controlManager.CreateDataPairLinq(representation, representation + " Population" + " Populus",
                  func, new ValueConverter(), allele);
             sp.Margin = new Thickness(5, 5, 5, 5);
             sp.HorizontalAlignment = HorizontalAlignment.Right;
             var control = new AlleleControl(allele, sp, func);
             _controls.Add(control);
-            return control;
-
         }
 
-        private int AllelePopulation(IAllele allele)
+        private int AllelePopulation(object all)
         {
+            var allele = all as IAllele;
             var ro = from b in _world.Population.Populus
                      from g in b.Genes
                      where g.Representation == allele.Representation
+                     select b;
+            return ro.ToList().Count;
+        }
+
+        private int CoDominantPopulation(object representation)
+        {
+            var ro = from b in _world.Population.Populus
+                     from g in b.Genes
+                     where g.Representation == representation.ToString()
                      select b;
             return ro.ToList().Count;
         }

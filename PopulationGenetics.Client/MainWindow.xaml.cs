@@ -52,6 +52,7 @@ namespace PopulationGenetics.Client
             }
             _world.SeedWorld(1000);
             _world.CreateWorldControls(geneGrid);
+            _world.RegisteredGenes.CreateGeneControls(geneGrid);
         }
 
         private void processTurn_Click(object sender, RoutedEventArgs e)

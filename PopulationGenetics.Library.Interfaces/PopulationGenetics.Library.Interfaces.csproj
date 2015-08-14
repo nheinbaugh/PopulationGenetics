@@ -51,6 +51,7 @@
     <Compile Include="ILocus.cs" />
     <Compile Include="ILocusBank.cs" />
     <Compile Include="IAlleleManager.cs" />
+    <Compile Include="INameCreator.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="IPopulation.cs" />
     <Compile Include="IWorld.cs" />

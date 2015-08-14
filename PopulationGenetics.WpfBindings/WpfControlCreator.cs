@@ -64,5 +64,21 @@ namespace PopulationGenetics.WpfBindings
             tb?.SetBinding(TextBox.TextProperty, binding);
             return stackPanel;
         }
+
+        public StackPanel CreateCoDominantPairLinq(string controlName, string labelContent,
+            Func<string, int> bindingSource, IValueConverter converter)
+        {
+            var stackPanel = CreateDataPairBase(controlName, labelContent);
+            var binding = new Binding
+            {
+                Source = bindingSource,
+                Mode = BindingMode.OneWay,
+                Converter = converter,
+                ConverterParameter = controlName
+            };
+            var tb = stackPanel.Children[1] as TextBox;
+            tb?.SetBinding(TextBox.TextProperty, binding);
+            return stackPanel;
+        }
     }
 }
