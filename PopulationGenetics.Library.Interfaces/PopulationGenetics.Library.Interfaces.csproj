@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAllele.cs" />
+    <Compile Include="IAlleleControl.cs" />
     <Compile Include="IControlCreator.cs" />
     <Compile Include="IGene.cs" />
     <Compile Include="ILocus.cs" />

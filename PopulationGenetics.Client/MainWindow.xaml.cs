@@ -31,7 +31,7 @@ namespace PopulationGenetics.Client
             _world = world;
             InitializeComponent();
             world.CreateWorldControls(geneGrid);
-            world.RegisteredGenes.CreateGeneControls(AllelePopulation, geneGrid);
+            world.RegisteredGenes.CreateGeneControls(geneGrid);
 
         }
 
@@ -58,15 +58,6 @@ namespace PopulationGenetics.Client
         {
             _world.ProcessTurn();
             _world.CreateWorldControls(geneGrid);
-        }
-
-        private int AllelePopulation(IAllele allele)
-        {
-            var ro = from b in _world.Population.Populus
-                     from g in b.Genes
-                     where g.Representation == allele.Representation
-                     select b;
-            return ro.ToList().Count;
         }
     }
 }

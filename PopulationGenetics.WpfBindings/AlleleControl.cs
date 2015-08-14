@@ -4,7 +4,7 @@ using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.WpfBindings
 {
-    public class AlleleControl
+    public class AlleleControl : IAlleleControl
     {
         private Func<IAllele, int> _query;
         private StackPanel _stackPanel;
@@ -23,7 +23,7 @@ namespace PopulationGenetics.WpfBindings
         {
             var val = _query.Invoke(_allele);
             var tb = _stackPanel.Children[1] as TextBox;
-            tb?.SetValue(TextBox.TextProperty, val);
+            tb?.SetValue(TextBox.TextProperty, val.ToString());
         } 
     }
 }

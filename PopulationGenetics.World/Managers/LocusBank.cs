@@ -48,33 +48,29 @@ namespace PopulationGenetics.Library.Managers
             //var bo = _loci.AsQueryable().Select
         }
 
-        public void CreateGeneControls(Func<IAllele, int> allelePopulation, Grid targetGrid)
+        public void CreateGeneControls(Grid targetGrid)
         {
-            var spList = new List<StackPanel>();
             var currentRow = 0;
             foreach (var locus in _loci)
             {
-                foreach (var allele in locus.AlleleManager.Alleles)
+                var controls = locus.AlleleManager.Controls;
+                foreach (var control in controls)
                 {
-                    var totalRows = targetGrid.RowDefinitions.Count;
-                    var func = new Func<IAllele, int>(allelePopulation);
-                    var sp = _controlManager.CreateDataPairLinq(allele.Representation, allele.Representation + " Populus",
-                         func, new ValueConverter(), allele);
-                    var tb = sp.Children[1] as TextBox;
-                    sp.Margin = new Thickness(5, 5, 5, 5);
-                    sp.HorizontalAlignment = HorizontalAlignment.Right;
+                    control.UpdateControlValue();
 
-                    tb.GetBindingExpression(TextBox.TextProperty).UpdateSource();
-                    Grid.SetColumn(sp, 0);
+                    var totalRows = targetGrid.RowDefinitions.Count;
+                    control.StackPanel.Margin = new Thickness(5, 5, 5, 5);
+                    control.StackPanel.HorizontalAlignment = HorizontalAlignment.Right;
+
+                    Grid.SetColumn(control.StackPanel, 0);
                     if (currentRow >= totalRows)
                     {
                         var rd = new RowDefinition { Height = GridLength.Auto };
                         targetGrid.RowDefinitions.Add(rd);
                     }
-                    Grid.SetRow(sp, currentRow);
+                    Grid.SetRow(control.StackPanel, currentRow);
                     currentRow++;
-                    spList.Add(sp);
-                    targetGrid.Children.Add(sp);
+                    targetGrid.Children.Add(control.StackPanel);
                 }
             }
         }
