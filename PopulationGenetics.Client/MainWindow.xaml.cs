@@ -28,10 +28,10 @@ namespace PopulationGenetics.Client
 
         public MainWindow(IWorld world)
         {
-            this._world = world;
+            _world = world;
             InitializeComponent();
             world.CreateWorldControls(geneGrid);
-            world.RegisteredGenes.CreateGeneControls(_world, AllelePopulation, geneGrid);
+            world.RegisteredGenes.CreateGeneControls(AllelePopulation, geneGrid);
 
         }
 

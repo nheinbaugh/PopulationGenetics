@@ -17,10 +17,10 @@ namespace PopulationGenetics.Common
         public override void Load()
         {
             Bind<IControlManager>().To<WpfControlManager>().InSingletonScope();
-            Bind<IPopulation>().To<Population>();
-            Bind<IWorld>().To<World>();
-            Bind<ILocusBank>().To<LocusBank>().InSingletonScope();
+            Bind<IPopulation>().To<Population>().InSingletonScope();
+            Bind<IWorld>().To<World>().InSingletonScope();
             Bind<IPersonFactory>().To<PersonFactory>().InSingletonScope();
+            Bind<ILocusBank>().To<LocusBank>().InSingletonScope();
             Bind<IAlleleManager>().To<AlleleManager>();
             Bind<IPerson>().To<Person>();
             Bind<IAllele>().To<Allele>();

@@ -9,6 +9,6 @@ namespace PopulationGenetics.Library.Interfaces
         List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);
         void AddToBank();
-        void CreateGeneControls(IWorld world, Func<IAllele, int> allelePopulation, Grid geneGrid);
+        void CreateGeneControls(Func<IAllele, int> allelePopulation, Grid geneGrid);
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
+using PopulationGenetics.Library.Managers;
 using PopulationGenetics.WpfBindings;
 
 namespace PopulationGenetics.Library
@@ -27,14 +28,14 @@ namespace PopulationGenetics.Library
         public int Age => _age;
 
 
-        public World(IPopulation pop, ILocusBank genes, IPersonFactory personFactory, IControlManager controlManager)
+        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager)
         {
             if (pop?.Populus?.Count > 0) pop.Populus.Clear();
             _population = pop;
-            _registeredGenes = genes;
-            _personFactory = personFactory;
+            _registeredGenes = new LocusBank(controlManager, this);
+            _personFactory = pf;
             _controlManager = controlManager;
-            WorldSeeds.BaseGenes(_registeredGenes);
+            WorldSeeds.BaseGenes(_registeredGenes, controlManager);
             SeedWorld(1000);
         }
 
@@ -50,7 +51,7 @@ namespace PopulationGenetics.Library
 
         public void SeedWorld(int seedSize)
         {
-            _population.CreatePopulation(seedSize);
+            _population.CreatePopulation(seedSize, _registeredGenes);
         }
 
         public void ProcessTurn()

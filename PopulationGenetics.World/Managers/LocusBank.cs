@@ -15,11 +15,13 @@ namespace PopulationGenetics.Library.Managers
     {
         private List<ILocus> _loci;
         private readonly IControlManager _controlManager;
+        private IWorld _world;
 
         public List<ILocus> Loci => _loci;
 
-        public LocusBank(IControlManager controlManager)
+        public LocusBank(IControlManager controlManager, IWorld world)
         {
+            _world = world;
             _controlManager = controlManager;
             _loci = new List<ILocus>();
         }
@@ -46,7 +48,7 @@ namespace PopulationGenetics.Library.Managers
             //var bo = _loci.AsQueryable().Select
         }
 
-        public void CreateGeneControls(IWorld world, Func<IAllele, int> allelePopulation, Grid targetGrid)
+        public void CreateGeneControls(Func<IAllele, int> allelePopulation, Grid targetGrid)
         {
             var spList = new List<StackPanel>();
             var currentRow = 0;

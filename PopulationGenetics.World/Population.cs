@@ -25,11 +25,11 @@ namespace PopulationGenetics.Library
             _personFactory = pf;
         }
 
-        public void CreatePopulation(int numberToCreate)
+        public void CreatePopulation(int numberToCreate, ILocusBank loci)
         {
             for (int i = 0; i < numberToCreate; i++)
             {
-                _populus.Add(_personFactory.CreateNewPerson());
+                _populus.Add(_personFactory.CreateNewPerson(loci));
             }
             NotifyPropertyChanged("PopulationSize");
         }

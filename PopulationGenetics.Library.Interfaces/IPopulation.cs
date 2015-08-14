@@ -6,7 +6,7 @@ namespace PopulationGenetics.Library.Interfaces
     {
         List<IPerson> Populus { get; }
         int PopulationSize { get; }
-        void CreatePopulation(int numberToCreate);
+        void CreatePopulation(int numberToCreate, ILocusBank loci);
         void DestroyPopulation();
     }
 }

@@ -15,25 +15,20 @@ namespace PopulationGenetics.Library
         public IAlleleManager AlleleManager => _alleleManager;
         public string LocusName => _locusName;
 
-        public Locus(string name)
+        public Locus(string name, IAlleleManager alleleManager)
         {
             _locusName = name;
-            _alleleManager = new AlleleManager();
+            _alleleManager = alleleManager;
         }
-
-        public Locus() : this("Random Gene")
-        {
-        }
-
 
         public void AddAllele(IEnumerable<IAllele> alleles)
         {
-            _alleleManager.Alleles.AddRange(alleles);
+            _alleleManager.CreateMultipleAlleles(alleles);
         }
 
         public void AddAllele(IAllele allele)
         {
-            _alleleManager.Alleles.Add(allele);
+            _alleleManager.CreateAllele(allele);
         }
 
         public void AddAllele()

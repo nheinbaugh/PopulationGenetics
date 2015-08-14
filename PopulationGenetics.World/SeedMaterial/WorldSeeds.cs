@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using PopulationGenetics.Library.Interfaces;
+using PopulationGenetics.Library.Managers;
 
 namespace PopulationGenetics.Library.SeedMaterial
 {
     public static class WorldSeeds
     {
-        public static void BaseGenes(ILocusBank geneBank)
+        public static void BaseGenes(ILocusBank geneBank, IControlManager cm)
         {
             var geneLocations = new List<ILocus>();
-            geneLocations.Add(BloodTypeAlleles());
+            geneLocations.Add(BloodTypeAlleles(cm));
             
             // TODO generate the genes!
             foreach (var gene in geneLocations)
@@ -18,9 +19,10 @@ namespace PopulationGenetics.Library.SeedMaterial
             }
         }
 
-        private static Locus BloodTypeAlleles()
+        private static Locus BloodTypeAlleles(IControlManager cm)
         {
-            var bloodType = new Locus("Blood Type");
+            var alleleMgr = new AlleleManager(cm);
+            var bloodType = new Locus("Blood Type", alleleMgr);
             var a = new Allele("A", true, .33);
             var b = new Allele("B", true, .33);
             var o = new Allele("O", false, .33);

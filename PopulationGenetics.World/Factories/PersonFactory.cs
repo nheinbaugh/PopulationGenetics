@@ -7,21 +7,18 @@ namespace PopulationGenetics.Library.Factories
 {
     public interface IPersonFactory
     {
-        Person CreateNewPerson();
+        Person CreateNewPerson(ILocusBank locusBank);
     }
     public class PersonFactory : IPersonFactory
     {
-        private ILocusBank _locusBank;
-
-        public PersonFactory(ILocusBank locusBank)
+        public PersonFactory()
         {
-            _locusBank = locusBank;
         }
 
-        public Person CreateNewPerson()
+        public Person CreateNewPerson(ILocusBank locusBank)
         {
             var genes = new List<IGene>();
-            foreach (var locus in _locusBank.Loci)
+            foreach (var locus in locusBank.Loci)
             {
                 var gene = GenerateNewGene(locus);
                 genes.Add(gene);
