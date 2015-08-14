@@ -13,8 +13,20 @@ namespace PopulationGenetics.Library.Managers
     {
         private List<IAllele> _alleles;
         private IControlManager _controlManager;
+        private IWorld _world;
+        private List<AlleleControl> _controls;
 
         public List<IAllele> Alleles { get { return _alleles; } }
+        public List<AlleleControl> Controls { get { return _controls; } }
+
+        public AlleleManager(IControlManager controlManager, IWorld world)
+        {
+            _controls = new List<AlleleControl>();
+            _controlManager = controlManager;
+            _alleles = new List<IAllele>();
+            _world = world;
+        }
+
         public void CreateAllele(IAllele allele)
         {
             _alleles.Add(allele);
@@ -25,13 +37,9 @@ namespace PopulationGenetics.Library.Managers
             _alleles.AddRange(alleles);
         }
 
-        public AlleleManager(IControlManager controlManager)
-        {
-            _controlManager = controlManager;
-            _alleles = new List<IAllele>();
-        }
+  
 
-        private void CreateAlleleControls(IWorld world, Func<IAllele, int> allelePopulation)
+        private void CreateAlleleControls(Func<IAllele, int> allelePopulation)
         {
             foreach (var allele in _alleles)
             {
@@ -40,6 +48,8 @@ namespace PopulationGenetics.Library.Managers
                      func, new ValueConverter(), allele);
                 sp.Margin = new Thickness(5, 5, 5, 5);
                 sp.HorizontalAlignment = HorizontalAlignment.Right;
+                var control = new AlleleControl(allele, sp, func);
+                _controls.Add(control);
             }
         }
     }

@@ -7,10 +7,10 @@ namespace PopulationGenetics.Library.SeedMaterial
 {
     public static class WorldSeeds
     {
-        public static void BaseGenes(ILocusBank geneBank, IControlManager cm)
+        public static void BaseGenes(ILocusBank geneBank, IControlManager cm, IWorld world)
         {
             var geneLocations = new List<ILocus>();
-            geneLocations.Add(BloodTypeAlleles(cm));
+            geneLocations.Add(BloodTypeAlleles(cm, world));
             
             // TODO generate the genes!
             foreach (var gene in geneLocations)
@@ -19,9 +19,9 @@ namespace PopulationGenetics.Library.SeedMaterial
             }
         }
 
-        private static Locus BloodTypeAlleles(IControlManager cm)
+        private static Locus BloodTypeAlleles(IControlManager cm, IWorld world)
         {
-            var alleleMgr = new AlleleManager(cm);
+            var alleleMgr = new AlleleManager(cm, world);
             var bloodType = new Locus("Blood Type", alleleMgr);
             var a = new Allele("A", true, .33);
             var b = new Allele("B", true, .33);

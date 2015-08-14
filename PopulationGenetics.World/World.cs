@@ -35,7 +35,7 @@ namespace PopulationGenetics.Library
             _registeredGenes = new LocusBank(controlManager, this);
             _personFactory = pf;
             _controlManager = controlManager;
-            WorldSeeds.BaseGenes(_registeredGenes, controlManager);
+            WorldSeeds.BaseGenes(_registeredGenes, controlManager, this);
             SeedWorld(1000);
         }
 
