@@ -11,12 +11,18 @@ namespace PopulationGenetics.Library
         private bool _isFemale;
         private List<IGene> _genes;
 
+        public int PersonId { get; }
         public int Age => _age;
         public bool IsFemale => _isFemale;
         public List<IGene> Genes => _genes;
-
-        public Person(List<IGene> genes, bool isFemale)
+        public void AgePerson()
         {
+            _age++;
+        }
+
+        public Person(List<IGene> genes, int id, bool isFemale)
+        {
+            PersonId = id;
             _age = 0;
             _isFemale = isFemale;
             _genes = genes;

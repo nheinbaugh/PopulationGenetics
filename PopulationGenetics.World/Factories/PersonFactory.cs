@@ -11,8 +11,10 @@ namespace PopulationGenetics.Library.Factories
     }
     public class PersonFactory : IPersonFactory
     {
+        private int counter;
         public PersonFactory()
         {
+            counter = 0;
         }
 
         public Person CreateNewPerson(ILocusBank locusBank)
@@ -24,7 +26,7 @@ namespace PopulationGenetics.Library.Factories
                 genes.Add(gene);
             }
 
-            var person = new Person(genes, CreateMaleOrFemale());
+            var person = new Person(genes, ++counter, CreateMaleOrFemale());
             return person;
         }
 

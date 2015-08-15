@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
@@ -57,12 +58,32 @@ namespace PopulationGenetics.Library
         public void ProcessTurn()
         {
             _age++;
-            foreach (var person in _population.Populus)
+            var culledPopulation = new List<IPerson>();
+            for (int i = 0; i < _population.Populus.Count; i++)
             {
-
-
+                var person = _population.Populus[i];
+                person.AgePerson();
+                bool survives = CheckSurvival(person.Age);
+                if (!survives) culledPopulation.Add(person);
             }
+            _population.Populus.RemoveAll(x => !culledPopulation.Exists(y => y.PersonId == x.PersonId));
             NotifyPropertyChanged("Age");
+            foreach (var locus in _registeredGenes.Loci)
+            {
+                locus.AlleleManager.UpdateControls();
+            }
+        }
+
+        private bool CheckSurvival(int age)
+        {
+            var rng = new RNGCryptoServiceProvider();
+            byte[] buffer = new byte[4];
+
+            rng.GetBytes(buffer);
+            int result = BitConverter.ToInt32(buffer, 0);
+
+            var res = new Random(result).Next(0, 1001);
+            return res > 500;
         }
 
         public void CleanWorld(bool clearGenes)

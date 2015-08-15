@@ -42,6 +42,13 @@ namespace PopulationGenetics.Library.Managers
             _alleles.AddRange(alleles);
         }
 
+        public void UpdateControls()
+        {
+            foreach (var control in _controls)
+            {
+                control.UpdateControlValue();
+            }
+        }
 
 
         private void CreateAlleleControls(IAllele allele)
