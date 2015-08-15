@@ -23,7 +23,8 @@ namespace PopulationGenetics.Library.Factories
                 var gene = GenerateNewGene(locus);
                 genes.Add(gene);
             }
-            var person = new Person(genes, true);
+
+            var person = new Person(genes, CreateMaleOrFemale());
             return person;
         }
 
@@ -42,6 +43,11 @@ namespace PopulationGenetics.Library.Factories
             int result = BitConverter.ToInt32(buffer, 0);
 
             return new Random(result).Next(0, max + 1);
+        }
+
+        private bool CreateMaleOrFemale()
+        {
+            return (TrulyRandom(1000) > 500);
         }
         private IAllele GenerateAllele(IAlleleManager manager)
         {
