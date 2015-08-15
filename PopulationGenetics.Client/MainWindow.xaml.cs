@@ -40,6 +40,8 @@ namespace PopulationGenetics.Client
             _world.CleanWorld(false);
             geneGrid.Children.Clear();
             _world.CreateWorldControls(geneGrid);
+            populateWorld.IsEnabled = true;
+            cleanWorld.IsEnabled = false;
 
         }
 
@@ -53,6 +55,8 @@ namespace PopulationGenetics.Client
             _world.SeedWorld(10000);
             _world.CreateWorldControls(geneGrid);
             _world.RegisteredGenes.CreateGeneControls(geneGrid);
+            populateWorld.IsEnabled = false;
+            cleanWorld.IsEnabled = true;
         }
 
         private void processTurn_Click(object sender, RoutedEventArgs e)
