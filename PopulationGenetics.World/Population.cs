@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using PopulationGenetics.Library.Factories;
 using PopulationGenetics.Library.Interfaces;
 
@@ -13,6 +14,8 @@ namespace PopulationGenetics.Library
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int PopulationSize => _populus.Count;
+        public int Males => _populus.AsQueryable().Where(p => p.IsFemale == false).ToList().Count;
+        public int Females => _populus.AsQueryable().Where(p => p.IsFemale).ToList().Count;
 
         public List<IPerson> Populus
         {
@@ -32,6 +35,8 @@ namespace PopulationGenetics.Library
                 _populus.Add(_personFactory.CreateNewPerson(loci));
             }
             NotifyPropertyChanged("PopulationSize");
+            NotifyPropertyChanged("Males");
+            NotifyPropertyChanged("Females");
         }
 
         public void DestroyPopulation()

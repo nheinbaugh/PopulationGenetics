@@ -6,6 +6,8 @@ namespace PopulationGenetics.Library.Interfaces
     {
         List<IPerson> Populus { get; }
         int PopulationSize { get; }
+        int Males { get; }
+        int Females { get; }
         void CreatePopulation(int numberToCreate, ILocusBank loci);
         void DestroyPopulation();
     }

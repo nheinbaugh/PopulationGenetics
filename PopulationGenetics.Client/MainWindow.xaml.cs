@@ -50,7 +50,7 @@ namespace PopulationGenetics.Client
                 MessageBox.Show("Please clear the world before attempting to repopulate.");
                 return;
             }
-            _world.SeedWorld(1000);
+            _world.SeedWorld(10000);
             _world.CreateWorldControls(geneGrid);
             _world.RegisteredGenes.CreateGeneControls(geneGrid);
         }
