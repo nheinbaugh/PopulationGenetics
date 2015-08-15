@@ -46,7 +46,8 @@ namespace PopulationGenetics.WpfBindings
 
             var tb = stackPanel.Children[1] as TextBox;
             tb?.SetBinding(TextBox.TextProperty, binding);
-            
+            stackPanel.Margin = new Thickness(5, 5, 5, 5);
+            stackPanel.HorizontalAlignment = HorizontalAlignment.Right;
             return stackPanel;
         }
 

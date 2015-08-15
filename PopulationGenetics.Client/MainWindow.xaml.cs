@@ -41,6 +41,7 @@ namespace PopulationGenetics.Client
             geneGrid.Children.Clear();
             _world.CreateWorldControls(geneGrid);
             populateWorld.IsEnabled = true;
+            processTurn.IsEnabled = false;
             cleanWorld.IsEnabled = false;
 
         }

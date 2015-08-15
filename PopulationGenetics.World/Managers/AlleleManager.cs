@@ -71,8 +71,7 @@ namespace PopulationGenetics.Library.Managers
             var func = new Func<object, int>(AllelePopulation);
             var sp = _controlManager.CreateDataPairLinq(representation, representation + " Population" + " Populus",
                  func, new ValueConverter(), allele);
-            sp.Margin = new Thickness(5, 5, 5, 5);
-            sp.HorizontalAlignment = HorizontalAlignment.Right;
+
             var control = new AlleleControl(allele, sp, func);
             _controls.Add(control);
         }
