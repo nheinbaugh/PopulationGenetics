@@ -91,9 +91,8 @@ namespace PopulationGenetics.Library.Managers
                     .Where(t => t.g.Representation == allele.Representation)
                     .Select(t => t.b);
             var persons = ro as IList<IPerson> ?? ro.ToList();
-            //var bob = persons.ToList();
             
-            return persons.ToList().Count;
+            return persons.Count;
         }
 
         private int CoDominantPopulation(object representation)
