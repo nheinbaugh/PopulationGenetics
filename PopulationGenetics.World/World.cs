@@ -66,8 +66,9 @@ namespace PopulationGenetics.Library
                 person.AgePerson();
                 bool survives = CheckSurvival(person.Age);
                 if (!survives) culledPopulation.Add(person);
-                IPerson partner = ProcreateCheck(person, 800);
-                children.Add(_personFactory.CreateChild(person, partner));
+                IPerson partner = ProcreateCheck(person, 100);
+                if(partner != null)
+                    children.Add(_personFactory.CreateChild(person, partner));
             }
             _population.Populus.RemoveAll(x => !culledPopulation.Exists(y => y.PersonId == x.PersonId));
             _population.Populus.AddRange(children);

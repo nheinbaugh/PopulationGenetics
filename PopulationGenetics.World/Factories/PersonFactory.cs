@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using PopulationGenetics.Library.Interfaces;
 
@@ -31,12 +32,27 @@ namespace PopulationGenetics.Library.Factories
 
         public IPerson CreateChild(IPerson person, IPerson partner)
         {
+            var genes = new List<IGene>();
             foreach (var gene in person.Genes)
             {
-
+                var alleles = new List<IAllele>();
+                alleles.Add(SelectAllele(gene));
+                var partnerGene = partner.Genes.AsQueryable().FirstOrDefault(g => g.LocusId == gene.LocusId);
+                if (partnerGene != null)
+                {
+                    alleles.Add(SelectAllele(partnerGene));
+                }
+                genes.Add(new Gene(alleles[0], alleles[1], gene.LocusId));
             }
-            var child = new Person();
+            var child = new Person(genes, TrulyRandomGenerator.BooleanGenerator(1000, 500));
             return child;
+        }
+
+        private IAllele SelectAllele(IGene gene)
+        {
+            if (TrulyRandomGenerator.BooleanGenerator(1000, 500))
+                return gene.Alleles[0];
+            return gene.Alleles[1];
         }
 
         private Gene GenerateNewGene(ILocus locus)
