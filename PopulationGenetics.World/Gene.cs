@@ -13,22 +13,20 @@ namespace PopulationGenetics.Library
         private IAllele _secondAllele;
         private string _representation;
         private List<IAllele> _alleles;
+        private Guid _locusId;
 
         public int FitnessGain => _fitnessGain;
         public string Representation => _representation;
         public List<IAllele> Alleles { get { return _alleles; } }
+        public Guid LocusId => _locusId;
 
-        public Gene(IAllele firstAllele, IAllele secondAllele)
+        public Gene(IAllele firstAllele, IAllele secondAllele, Guid locusId)
         {
+            _locusId = locusId;
             this._firstAllele = firstAllele;
             this._secondAllele = secondAllele;
             _alleles = new List<IAllele> {_firstAllele, _secondAllele};
             BuildRepresentation();   
-        }
-
-        public Gene(IAllele parentAllele)
-        {
-
         }
 
         private void BuildRepresentation()

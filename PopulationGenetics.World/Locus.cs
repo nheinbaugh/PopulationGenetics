@@ -11,12 +11,15 @@ namespace PopulationGenetics.Library
     {
         private string _locusName;
         private IAlleleManager _alleleManager;
+        private Guid _locusId;
 
         public IAlleleManager AlleleManager => _alleleManager;
         public string LocusName => _locusName;
+        public Guid LocusId => _locusId;
 
         public Locus(string name, IAlleleManager alleleManager)
         {
+            _locusId = Guid.NewGuid();
             _locusName = name;
             _alleleManager = alleleManager;
         }

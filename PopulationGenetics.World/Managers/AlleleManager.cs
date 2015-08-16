@@ -86,11 +86,14 @@ namespace PopulationGenetics.Library.Managers
         private int AllelePopulation(object all)
         {
             var allele = all as IAllele;
-            var ro = from b in _world.Population.Populus
-                     from g in b.Genes
-                     where g.Representation == allele.Representation
-                     select b;
-            return ro.ToList().Count;
+            var ro =
+                _world.Population.Populus.SelectMany(b => b.Genes, (b, g) => new {b, g})
+                    .Where(t => t.g.Representation == allele.Representation)
+                    .Select(t => t.b);
+            var persons = ro as IList<IPerson> ?? ro.ToList();
+            //var bob = persons.ToList();
+            
+            return persons.ToList().Count;
         }
 
         private int CoDominantPopulation(object representation)

@@ -10,8 +10,9 @@ namespace PopulationGenetics.Library
         private int _age;
         private bool _isFemale;
         private List<IGene> _genes;
+        private Guid _personId;
 
-        public Guid PersonId { get; }
+        public Guid PersonId => _personId;
         public int Age => _age;
         public bool IsFemale => _isFemale;
         public List<IGene> Genes => _genes;
@@ -22,7 +23,7 @@ namespace PopulationGenetics.Library
 
         public Person(List<IGene> genes, bool isFemale)
         {
-            PersonId = Guid.NewGuid();
+            _personId = Guid.NewGuid();
             _age = 0;
             _isFemale = isFemale;
             _genes = genes;
@@ -30,7 +31,8 @@ namespace PopulationGenetics.Library
 
         public Person()
         {
-
+            _personId = Guid.NewGuid();
+            _genes = new List<IGene>();
         }
 
     } 

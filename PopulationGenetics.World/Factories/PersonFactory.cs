@@ -8,6 +8,7 @@ namespace PopulationGenetics.Library.Factories
     public interface IPersonFactory
     {
         Person CreateNewPerson(ILocusBank locusBank);
+        IPerson CreateChild(IPerson person, IPerson partner);
     }
     public class PersonFactory : IPersonFactory
     {
@@ -28,9 +29,19 @@ namespace PopulationGenetics.Library.Factories
             return person;
         }
 
+        public IPerson CreateChild(IPerson person, IPerson partner)
+        {
+            foreach (var gene in person.Genes)
+            {
+                
+            }
+            var child = new Person();
+            return child;
+        }
+
         private Gene GenerateNewGene(ILocus locus)
         {
-            var gene = new Gene(GenerateAllele(locus.AlleleManager), GenerateAllele(locus.AlleleManager));
+            var gene = new Gene(GenerateAllele(locus.AlleleManager), GenerateAllele(locus.AlleleManager), locus.LocusId);
 
             return gene;
         }

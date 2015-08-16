@@ -59,14 +59,18 @@ namespace PopulationGenetics.Library
         {
             _age++;
             var culledPopulation = new List<IPerson>();
+            var children = new List<IPerson>();
             for (int i = 0; i < _population.Populus.Count; i++)
             {
                 var person = _population.Populus[i];
                 person.AgePerson();
                 bool survives = CheckSurvival(person.Age);
                 if (!survives) culledPopulation.Add(person);
+                IPerson partner = ProcreateCheck(person, 800);
+                children.Add(_personFactory.CreateChild(person, partner));
             }
             _population.Populus.RemoveAll(x => !culledPopulation.Exists(y => y.PersonId == x.PersonId));
+            _population.Populus.AddRange(children);
             NotifyPropertyChanged("Age");
             foreach (var locus in _registeredGenes.Loci)
             {
@@ -74,7 +78,24 @@ namespace PopulationGenetics.Library
             }
         }
 
-        private bool CheckSurvival(int age)
+        private IPerson ProcreateCheck(IPerson initializer, int procreateChance)
+        {
+            var rand = new Random();
+            if (RandomGenerator(procreateChance))
+            {
+                var seed = 0;
+                if (initializer.IsFemale)
+                {
+                    seed = rand.Next(_population.Males);
+                    return _population.Populus.Where(a => !a.IsFemale).ToList()[seed];
+                }
+                seed = rand.Next(_population.Females);
+                return _population.Populus.Where(a => a.IsFemale).ToList()[seed];
+            }
+            return null;
+        }
+
+        private bool RandomGenerator(int min)
         {
             var rng = new RNGCryptoServiceProvider();
             byte[] buffer = new byte[4];
@@ -83,7 +104,12 @@ namespace PopulationGenetics.Library
             int result = BitConverter.ToInt32(buffer, 0);
 
             var res = new Random(result).Next(0, 1001);
-            return res > 500;
+            return res > min;
+        }
+
+        private bool CheckSurvival(int age)
+        {
+            return RandomGenerator(500);
         }
 
         public void CleanWorld(bool clearGenes)
