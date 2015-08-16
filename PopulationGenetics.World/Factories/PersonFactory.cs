@@ -33,7 +33,7 @@ namespace PopulationGenetics.Library.Factories
         {
             foreach (var gene in person.Genes)
             {
-                
+
             }
             var child = new Person();
             return child;
@@ -45,25 +45,16 @@ namespace PopulationGenetics.Library.Factories
 
             return gene;
         }
-        private double TrulyRandom(int max)
-        {
-            var rng = new RNGCryptoServiceProvider();
-            byte[] buffer = new byte[4];
 
-            rng.GetBytes(buffer);
-            int result = BitConverter.ToInt32(buffer, 0);
-
-            return new Random(result).Next(0, max + 1);
-        }
 
         private bool CreateMaleOrFemale()
         {
-            return (TrulyRandom(1000) > 500);
+            return (TrulyRandomGenerator.BooleanGenerator(1000, 500));
         }
         private IAllele GenerateAllele(IAlleleManager manager)
         {
 
-            var num = TrulyRandom(1000);
+            var num = TrulyRandomGenerator.DoubleGenerator(1000);
             double current = 0;
             foreach (var allele in manager.Alleles)
             {

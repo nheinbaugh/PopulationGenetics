@@ -54,6 +54,7 @@
     <Compile Include="Population.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedMaterial\WorldSeeds.cs" />
+    <Compile Include="TrulyRandomGenerator.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>
