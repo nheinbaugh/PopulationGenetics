@@ -1,10 +1,12 @@
 ﻿using PopulationGenetics.Library.Factories;
 using PopulationGenetics.Library.SeedMaterial;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
@@ -38,6 +40,7 @@ namespace PopulationGenetics.Library
             _controlManager = controlManager;
             WorldSeeds.BaseGenes(_registeredGenes, controlManager, this);
             SeedWorld(1000);
+            _population.UpdatePopulus();
         }
 
         public World(int seedSize)
@@ -58,20 +61,24 @@ namespace PopulationGenetics.Library
         public void ProcessTurn()
         {
             _age++;
-            var culledPopulation = new List<IPerson>();
-            var children = new List<IPerson>();
-            for (int i = 0; i < _population.Populus.Count; i++)
+            var culledPopulation = new ConcurrentBag<IPerson>();
+            var children = new ConcurrentBag<IPerson>();
+            Parallel.For(0, _population.PopulationSize, i =>
             {
                 var person = _population.Populus[i];
                 person.AgePerson();
-                bool survives = CheckSurvival(person.Age);
+                var survives = CheckSurvival(person.Age);
                 if (!survives) culledPopulation.Add(person);
-                IPerson partner = ProcreateCheck(person, 100);
-                if(partner != null)
-                    children.Add(_personFactory.CreateChild(person, partner));
+                var partner = ProcreateCheck(person, 100);
+                if (partner != null)
+                    children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
+            });
+            foreach (var bob in culledPopulation)
+            {
+                _population.Populus.Remove(bob);
             }
-            _population.Populus.RemoveAll(x => !culledPopulation.Exists(y => y.PersonId == x.PersonId));
             _population.Populus.AddRange(children);
+            _population.UpdatePopulus();
             NotifyPropertyChanged("Age");
             foreach (var locus in _registeredGenes.Loci)
             {

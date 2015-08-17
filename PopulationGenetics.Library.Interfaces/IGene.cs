@@ -8,6 +8,6 @@ namespace PopulationGenetics.Library.Interfaces
         Guid LocusId { get; }
         int FitnessGain { get; }
         string Representation { get; }
-        List<IAllele> Alleles { get; }
+        List<Guid> Alleles { get; }
     }
 }

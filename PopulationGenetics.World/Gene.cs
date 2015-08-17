@@ -9,44 +9,44 @@ namespace PopulationGenetics.Library
     {
 
         private int _fitnessGain;
-        private IAllele _firstAllele;
-        private IAllele _secondAllele;
+        private Guid _firstAlleleId;
+        private Guid _secondAlleleId;
         private string _representation;
-        private List<IAllele> _alleles;
+        private List<Guid> _alleles;
         private Guid _locusId;
 
         public int FitnessGain => _fitnessGain;
         public string Representation => _representation;
-        public List<IAllele> Alleles { get { return _alleles; } }
+        public List<Guid> Alleles { get { return _alleles; } }
         public Guid LocusId => _locusId;
 
         public Gene(IAllele firstAllele, IAllele secondAllele, Guid locusId)
         {
             _locusId = locusId;
-            this._firstAllele = firstAllele;
-            this._secondAllele = secondAllele;
-            _alleles = new List<IAllele> {_firstAllele, _secondAllele};
-            BuildRepresentation();   
+            this._firstAlleleId = firstAllele.Id;
+            this._secondAlleleId = secondAllele.Id;
+            _alleles = new List<Guid> {firstAllele.Id, secondAllele.Id};
+            BuildRepresentation(firstAllele, secondAllele);   
         }
 
-        private void BuildRepresentation()
+        private void BuildRepresentation(IAllele firstAllele, IAllele secondAllele)
         {
-            if (_firstAllele.Representation == _secondAllele.Representation)
+            if (firstAllele.Representation == secondAllele.Representation)
             {
-                _representation = _firstAllele.Representation;
+                _representation = firstAllele.Representation;
                 return;
             }
-            if(_firstAllele.IsDominant && _secondAllele.IsDominant)
+            if(firstAllele.IsDominant && secondAllele.IsDominant)
             {
-                _representation = GeneRepresentationBuilder.CreateName(_firstAllele, _secondAllele);
+                _representation = GeneRepresentationBuilder.CreateName(firstAllele, secondAllele);
                 return;
             }
-            if (_firstAllele.IsDominant)
+            if (firstAllele.IsDominant)
             {
-                _representation = _firstAllele.Representation;
+                _representation = firstAllele.Representation;
                 return;
             }
-            _representation = _secondAllele.Representation;
+            _representation = secondAllele.Representation;
         }
     }
 }

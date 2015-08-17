@@ -56,6 +56,7 @@ namespace PopulationGenetics.Client
             _world.SeedWorld(10000);
             _world.CreateWorldControls(geneGrid);
             _world.RegisteredGenes.CreateGeneControls(geneGrid);
+            processTurn.IsEnabled = true;
             populateWorld.IsEnabled = false;
             cleanWorld.IsEnabled = true;
         }

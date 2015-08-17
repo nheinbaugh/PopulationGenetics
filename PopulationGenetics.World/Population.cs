@@ -12,10 +12,12 @@ namespace PopulationGenetics.Library
         private readonly List<IPerson> _populus;
         private readonly IPersonFactory _personFactory;
         public event PropertyChangedEventHandler PropertyChanged;
+        private int _males;
+        private int _females;
 
         public int PopulationSize => _populus.Count;
-        public int Males => _populus.AsQueryable().Where(p => p.IsFemale == false).ToList().Count;
-        public int Females => _populus.AsQueryable().Where(p => p.IsFemale).ToList().Count;
+        public int Males => _males;
+        public int Females => _females;
 
         public List<IPerson> Populus
         {
@@ -37,6 +39,12 @@ namespace PopulationGenetics.Library
             NotifyPropertyChanged("PopulationSize");
             NotifyPropertyChanged("Males");
             NotifyPropertyChanged("Females");
+        }
+
+        public void UpdatePopulus()
+        {
+           _males=  _populus.AsQueryable().Where(p => p.IsFemale == false).ToList().Count;
+           _females=  _populus.AsQueryable().Where(p => p.IsFemale == true).ToList().Count;
         }
 
         public void DestroyPopulation()

@@ -10,5 +10,6 @@ namespace PopulationGenetics.Library.Interfaces
         void AddToBank(ILocus newLocus);
         void AddToBank();
         void CreateGeneControls(Grid geneGrid);
+        IAllele GetAlleleById(Guid alleleId);
     }
 }

@@ -10,5 +10,6 @@ namespace PopulationGenetics.Library.Interfaces
         int Females { get; }
         void CreatePopulation(int numberToCreate, ILocusBank loci);
         void DestroyPopulation();
+        void UpdatePopulus();
     }
 }

@@ -9,7 +9,7 @@ namespace PopulationGenetics.Library.Factories
     public interface IPersonFactory
     {
         Person CreateNewPerson(ILocusBank locusBank);
-        IPerson CreateChild(IPerson person, IPerson partner);
+        IPerson CreateChild(IPerson person, IPerson partner, ILocusBank locusBank);
     }
     public class PersonFactory : IPersonFactory
     {
@@ -30,25 +30,26 @@ namespace PopulationGenetics.Library.Factories
             return person;
         }
 
-        public IPerson CreateChild(IPerson person, IPerson partner)
+        public IPerson CreateChild(IPerson person, IPerson partner, ILocusBank locusbank)
         {
             var genes = new List<IGene>();
             foreach (var gene in person.Genes)
             {
                 var alleles = new List<IAllele>();
-                alleles.Add(SelectAllele(gene));
-                var partnerGene = partner.Genes.AsQueryable().FirstOrDefault(g => g.LocusId == gene.LocusId);
-                if (partnerGene != null)
-                {
-                    alleles.Add(SelectAllele(partnerGene));
-                }
+                alleles.Add(locusbank.GetAlleleById(SelectAllele(gene)));
+                var partnerGene = from g in partner.Genes
+                    where g.LocusId == gene.LocusId
+                    select g;
+                var bob = partnerGene.ToList();
+                    alleles.Add(locusbank.GetAlleleById(SelectAllele(bob[0])));
+
                 genes.Add(new Gene(alleles[0], alleles[1], gene.LocusId));
             }
             var child = new Person(genes, TrulyRandomGenerator.BooleanGenerator(1000, 500));
             return child;
         }
 
-        private IAllele SelectAllele(IGene gene)
+        private Guid SelectAllele(IGene gene)
         {
             if (TrulyRandomGenerator.BooleanGenerator(1000, 500))
                 return gene.Alleles[0];

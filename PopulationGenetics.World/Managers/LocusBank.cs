@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
@@ -16,6 +17,7 @@ namespace PopulationGenetics.Library.Managers
         private List<ILocus> _loci;
         private readonly IControlManager _controlManager;
         private IWorld _world;
+        private Dictionary<Guid, IAllele> _alleleMap;
 
         public List<ILocus> Loci => _loci;
 
@@ -24,6 +26,7 @@ namespace PopulationGenetics.Library.Managers
             _world = world;
             _controlManager = controlManager;
             _loci = new List<ILocus>();
+            _alleleMap = new Dictionary<Guid, IAllele>();
         }
 
         /// <summary>
@@ -33,6 +36,10 @@ namespace PopulationGenetics.Library.Managers
         public void AddToBank(ILocus newLocus)
         {
             _loci.Add(newLocus);
+            foreach (var allele in newLocus.AlleleManager.Alleles)
+            {
+                _alleleMap.Add(allele.Id, allele);
+            }
         }
 
         /// <summary>
@@ -46,6 +53,13 @@ namespace PopulationGenetics.Library.Managers
         private void GetLocusByName()
         {
             //var bo = _loci.AsQueryable().Select
+        }
+
+        public IAllele GetAlleleById(Guid alleleId)
+        {
+            IAllele bob;
+            _alleleMap.TryGetValue(alleleId, out bob);
+            return bob;
         }
 
         public void CreateGeneControls(Grid targetGrid)
