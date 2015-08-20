@@ -28,12 +28,5 @@ namespace PopulationGenetics.Library
         {
 
         }
-
-        public StackPanel CreateControl(IControlManager controlManager)
-        {
-            var sp = new StackPanel();
-            controlManager.CreateDataPair(_representation, _representation + " Population", "bob", this);
-            return sp;
-        }
     }
 }

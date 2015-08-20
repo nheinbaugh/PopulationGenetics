@@ -142,11 +142,13 @@ namespace PopulationGenetics.Library
 
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
-            var spList = new List<StackPanel>();
-            spList.Add(_controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this));
-            spList.Add(_controlManager.CreateDataPair("male", "Males", "Population.Males", this));
-            spList.Add(_controlManager.CreateDataPair("female", "Females", "Population.Females", this));
-            spList.Add(_controlManager.CreateDataPair("age", "World Age", "Age", this));
+            var spList = new List<StackPanel>
+            {
+                _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
+                _controlManager.CreateDataPair("male", "Males", "Population.Males", this),
+                _controlManager.CreateDataPair("female", "Females", "Population.Females", this),
+                _controlManager.CreateDataPair("age", "World Age", "Age", this)
+            };
             for (int i = 0; i < spList.Count; i++)
             {
                 var current = spList[i];

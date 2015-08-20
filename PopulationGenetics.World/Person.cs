@@ -16,10 +16,6 @@ namespace PopulationGenetics.Library
         public int Age => _age;
         public bool IsFemale => _isFemale;
         public List<IGene> Genes => _genes;
-        public void AgePerson()
-        {
-            _age++;
-        }
 
         public Person(List<IGene> genes, bool isFemale)
         {
@@ -35,5 +31,12 @@ namespace PopulationGenetics.Library
             _genes = new List<IGene>();
         }
 
+        /// <summary>
+        /// Increase the age of the current person
+        /// </summary>
+        public void AgePerson()
+        {
+            _age++;
+        }
     } 
 }
