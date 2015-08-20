@@ -29,6 +29,11 @@ namespace PopulationGenetics.Library
             BuildRepresentation(firstAllele, secondAllele);   
         }
 
+        /// <summary>
+        /// Build the representation of a gene for easy identification
+        /// </summary>
+        /// <param name="firstAllele"></param>
+        /// <param name="secondAllele"></param>
         private void BuildRepresentation(IAllele firstAllele, IAllele secondAllele)
         {
             if (firstAllele.Representation == secondAllele.Representation)
@@ -38,7 +43,7 @@ namespace PopulationGenetics.Library
             }
             if(firstAllele.IsDominant && secondAllele.IsDominant)
             {
-                _representation = GeneRepresentationBuilder.CreateName(firstAllele, secondAllele);
+                _representation = GeneRepresentationBuilder.CreateName(firstAllele.Representation, secondAllele.Representation);
                 return;
             }
             if (firstAllele.IsDominant)

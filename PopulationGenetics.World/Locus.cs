@@ -38,15 +38,5 @@ namespace PopulationGenetics.Library
         {
             throw new NotImplementedException();
         }
-
-        public List<StackPanel> CreateAlleleControls()
-        {
-            var spList = new List<StackPanel>();
-            foreach (var allele in _alleleManager.Alleles)
-            {
-                                                                                
-            }
-            return spList;
-        }
     }
 }

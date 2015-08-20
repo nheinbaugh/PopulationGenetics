@@ -61,7 +61,7 @@ namespace PopulationGenetics.Library.Managers
         {
             foreach (var all in _dominantAlleles)
             {
-                var rep = GeneRepresentationBuilder.CreateName(all, allele);
+                var rep = GeneRepresentationBuilder.CreateName(all.Representation, allele.Representation);
                 var func = new Func<object, int>(CoDominantPopulation);
                 var cdAll = new Allele(rep, false);
                 var sp = _controlManager.CreateCoDominantPairLinq(rep, rep + " Population" + " Populus",

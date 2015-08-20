@@ -12,7 +12,6 @@ namespace PopulationGenetics.Library.Interfaces
         void AddAllele(IEnumerable<IAllele> alleles);
         void AddAllele(IAllele allele);
         void AddAllele();
-        List<StackPanel> CreateAlleleControls();
     }
 }
 
