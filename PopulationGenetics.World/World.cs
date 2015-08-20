@@ -46,16 +46,16 @@ namespace PopulationGenetics.Library
             _population.UpdatePopulus();
         }
 
+
         public World(int seedSize)
         {
             SeedWorld(seedSize);
         }
 
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        /// <summary>
+        /// Seed a world with a populatin
+        /// </summary>
+        /// <param name="seedSize">Number of individuals to create for the new world</param>
         public void SeedWorld(int seedSize)
         {
             _population.CreatePopulation(seedSize, _registeredGenes);
@@ -89,6 +89,12 @@ namespace PopulationGenetics.Library
             }
         }
 
+        /// <summary>
+        /// Check if the selected person object will create an offspring
+        /// </summary>
+        /// <param name="initializer">The person being checked</param>
+        /// <param name="procreateChance">The odds that a person will procreate (based on age?)</param>
+        /// <returns></returns>
         private IPerson ProcreateCheck(IPerson initializer, int procreateChance)
         {
             var rand = new Random();
@@ -109,13 +115,21 @@ namespace PopulationGenetics.Library
         }
 
 
-
+        /// <summary>
+        /// Check if a person object is going to survive the current generation
+        /// </summary>
+        /// <param name="age">Age from the person object</param>
+        /// <returns></returns>
         private bool CheckSurvival(int age)
         {
             var survivalRate = _mortalityCurve.GetMortalityByAge(age);
             return TrulyRandomGenerator.BooleanGenerator(1000, survivalRate);
         }
 
+        /// <summary>
+        /// Clear the entire population and possibly clear the registered genes
+        /// </summary>
+        /// <param name="clearGenes">Whether to clear the gene bank or leave it populated with existing loci</param>
         public void CleanWorld(bool clearGenes)
         {
             _population.DestroyPopulation();
@@ -143,6 +157,11 @@ namespace PopulationGenetics.Library
 
             targetGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});
             return spList;
+        }
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
