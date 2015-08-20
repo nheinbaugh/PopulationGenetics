@@ -22,6 +22,7 @@ namespace PopulationGenetics.Library
         private readonly IPersonFactory _personFactory;
         private int _age;
         private readonly IControlManager _controlManager;
+        private IMortalityCurve _mortalityCurve;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -29,14 +30,16 @@ namespace PopulationGenetics.Library
         public IPopulation Population => _population;
         public ILocusBank RegisteredGenes => _registeredGenes;
         public int Age => _age;
+        public IMortalityCurve MortalityCurve => _mortalityCurve;
 
 
-        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager)
+        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager, IMortalityCurve mortalityCurve)
         {
             if (pop?.Populus?.Count > 0) pop.Populus.Clear();
             _population = pop;
             _registeredGenes = new LocusBank(controlManager, this);
             _personFactory = pf;
+            _mortalityCurve = mortalityCurve;
             _controlManager = controlManager;
             WorldSeeds.BaseGenes(_registeredGenes, controlManager, this);
             SeedWorld(1000);
@@ -109,7 +112,8 @@ namespace PopulationGenetics.Library
 
         private bool CheckSurvival(int age)
         {
-            return TrulyRandomGenerator.BooleanGenerator(1000, 500);
+            var survivalRate = _mortalityCurve.GetMortalityByAge(age);
+            return TrulyRandomGenerator.BooleanGenerator(1000, survivalRate);
         }
 
         public void CleanWorld(bool clearGenes)

@@ -9,6 +9,7 @@ namespace PopulationGenetics.Library.SeedMaterial
     {
         public static void BaseGenes(ILocusBank geneBank, IControlManager cm, IWorld world)
         {
+            CreateMortalityCurve(world);
             var geneLocations = new List<ILocus>();
             geneLocations.Add(BloodTypeAlleles(cm, world));
             
@@ -30,6 +31,25 @@ namespace PopulationGenetics.Library.SeedMaterial
             bloodType.AddAllele(b);
             bloodType.AddAllele(o);
             return bloodType;
+        }
+
+        private static void CreateMortalityCurve(IWorld world)
+        {
+            var curve = new List<int>
+            {
+                700,
+                300,
+                300,
+                200,
+                300,
+                400,
+                500,
+                700,
+                800,
+                900,
+                1000
+            };
+            world.MortalityCurve.SetMortalityCurve(curve);
         }
     }
 }

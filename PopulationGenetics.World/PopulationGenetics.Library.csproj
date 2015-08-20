@@ -49,6 +49,7 @@
     <Compile Include="Managers\AlleleManager.cs" />
     <Compile Include="Gene.cs" />
     <Compile Include="Managers\LocusBank.cs" />
+    <Compile Include="MortalityCurve.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
     <Compile Include="Population.cs" />

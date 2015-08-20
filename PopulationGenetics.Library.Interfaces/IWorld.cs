@@ -6,6 +6,7 @@ namespace PopulationGenetics.Library.Interfaces
     public interface IWorld
     {
         int Age { get; }
+        IMortalityCurve MortalityCurve { get; }
         ILocusBank RegisteredGenes { get; }
         IPopulation Population { get; }
         void ProcessTurn();

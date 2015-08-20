@@ -19,6 +19,7 @@ namespace PopulationGenetics.Common
             Bind<IControlManager>().To<WpfControlManager>().InSingletonScope();
             Bind<IPopulation>().To<Population>().InSingletonScope();
             Bind<IWorld>().To<World>().InSingletonScope();
+            Bind<IMortalityCurve>().To<MortalityCurve>().InSingletonScope();
             Bind<IPersonFactory>().To<PersonFactory>().InSingletonScope();
             Bind<ILocusBank>().To<LocusBank>().InSingletonScope();
             Bind<IAlleleManager>().To<AlleleManager>();
