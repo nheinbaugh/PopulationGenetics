@@ -11,5 +11,6 @@ namespace PopulationGenetics.Library.Interfaces
         bool IsFemale { get; }
         List<IGene> Genes { get; }
         void AgePerson();
+        bool EligibleForBreeding { get; }
     }
 }

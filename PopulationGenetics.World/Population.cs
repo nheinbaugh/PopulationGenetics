@@ -41,10 +41,18 @@ namespace PopulationGenetics.Library
             NotifyPropertyChanged("Females");
         }
 
+        /// <summary>
+        /// Update the properties which contain counts of how many males and females are in the Population. This is calculated once per turn.
+        /// </summary>
         public void UpdatePopulus()
         {
-           _males=  _populus.AsQueryable().Where(p => p.IsFemale == false).ToList().Count;
-           _females=  _populus.AsQueryable().Where(p => p.IsFemale == true).ToList().Count;
+           _males=  _populus.AsQueryable().Where(p => p.IsFemale == false && p.EligibleForBreeding).ToList().Count;
+           _females=  _populus.AsQueryable().Where(p => p.IsFemale && p.EligibleForBreeding).ToList().Count;
+            //var bob = new Dictionary<int, int>();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    bob.Add(i, _populus.Where(a => a.Age == i).ToList().Count);
+            //}
         }
 
         public void DestroyPopulation()

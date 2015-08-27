@@ -11,11 +11,13 @@ namespace PopulationGenetics.Library
         private bool _isFemale;
         private List<IGene> _genes;
         private Guid _personId;
+        private bool _eligibleForBreeding;
 
         public Guid PersonId => _personId;
         public int Age => _age;
         public bool IsFemale => _isFemale;
         public List<IGene> Genes => _genes;
+        public bool EligibleForBreeding { get { return _eligibleForBreeding; } }
 
         public Person(List<IGene> genes, bool isFemale)
         {
@@ -36,7 +38,21 @@ namespace PopulationGenetics.Library
         /// </summary>
         public void AgePerson()
         {
+            _eligibleForBreeding = CheckIfBreedingEligible();
             _age++;
+        }
+
+        private bool CheckIfBreedingEligible()
+        {
+            if (_isFemale)
+            {
+                if (_age >= 1 && _age < 6) return true;
+            }
+            else
+            {
+                if (_age >= 1) return true;
+            }
+            return false;
         }
     } 
 }

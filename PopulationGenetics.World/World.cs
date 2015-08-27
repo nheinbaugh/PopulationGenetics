@@ -76,9 +76,9 @@ namespace PopulationGenetics.Library
                 if (partner != null)
                     children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
             });
-            foreach (var bob in culledPopulation)
+            foreach (var culled in culledPopulation)
             {
-                _population.Populus.Remove(bob);
+                _population.Populus.Remove(culled);
             }
             _population.Populus.AddRange(children);
             _population.UpdatePopulus();
@@ -105,11 +105,13 @@ namespace PopulationGenetics.Library
                 {
                     if (_population.Males == 0) return null;
                     seed = rand.Next(_population.Males);
-                    return _population.Populus.Where(a => !a.IsFemale).ToList()[seed];
+                    var rob = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
+                    return rob[seed];
                 }
                 if (_population.Females == 0) return null;
                 seed = rand.Next(_population.Females);
-                return  _population.Populus.Where(a => a.IsFemale).ToList()[seed];
+                var bob = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
+                return bob[seed];
             }
             return null;
         }
@@ -145,8 +147,8 @@ namespace PopulationGenetics.Library
             var spList = new List<StackPanel>
             {
                 _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
-                _controlManager.CreateDataPair("male", "Males", "Population.Males", this),
-                _controlManager.CreateDataPair("female", "Females", "Population.Females", this),
+                _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", this),
+                _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", this),
                 _controlManager.CreateDataPair("age", "World Age", "Age", this)
             };
             for (int i = 0; i < spList.Count; i++)
