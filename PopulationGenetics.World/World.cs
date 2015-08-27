@@ -74,7 +74,10 @@ namespace PopulationGenetics.Library
                 if (!survives) culledPopulation.Add(person);
                 var partner = ProcreateCheck(person, 100);
                 if (partner != null)
+                {
                     children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
+                    if (person.IsFemale) person.HaveBaby();
+                }
             });
             foreach (var culled in culledPopulation)
             {
@@ -101,17 +104,17 @@ namespace PopulationGenetics.Library
             if (TrulyRandomGenerator.BooleanGenerator(1000, procreateChance))
             {
                 var seed = 0;
-                if (initializer.IsFemale)
+                if (initializer.IsFemale && !initializer.IsPregnant)
                 {
                     if (_population.Males == 0) return null;
-                    seed = rand.Next(_population.Males);
                     var rob = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
+                    seed = rand.Next(rob.Count);
                     return rob[seed];
                 }
                 if (_population.Females == 0) return null;
-                seed = rand.Next(_population.Females);
                 var bob = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
-                return bob[seed];
+                seed = rand.Next(bob.Count);
+                return bob[seed].IsPregnant ? null : bob[seed];
             }
             return null;
         }

@@ -9,8 +9,10 @@ namespace PopulationGenetics.Library.Interfaces
         Guid PersonId { get; }
         int Age { get; }
         bool IsFemale { get; }
+        bool IsPregnant { get; }
         List<IGene> Genes { get; }
         void AgePerson();
         bool EligibleForBreeding { get; }
+        void HaveBaby();
     }
 }
