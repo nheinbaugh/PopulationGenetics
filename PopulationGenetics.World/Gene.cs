@@ -20,6 +20,11 @@ namespace PopulationGenetics.Library
         public List<Guid> Alleles { get { return _alleles; } }
         public Guid LocusId => _locusId;
 
+        public Gene()
+        {
+            
+        }
+
         public Gene(IAllele firstAllele, IAllele secondAllele, Guid locusId)
         {
             _locusId = locusId;

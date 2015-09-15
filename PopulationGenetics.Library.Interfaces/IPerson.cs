@@ -13,6 +13,6 @@ namespace PopulationGenetics.Library.Interfaces
         List<IGene> Genes { get; }
         void AgePerson();
         bool EligibleForBreeding { get; }
-        void HaveBaby();
+        void GetPregnant();
     }
 }

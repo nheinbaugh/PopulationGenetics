@@ -72,11 +72,14 @@ namespace PopulationGenetics.Library
                 person.AgePerson();
                 var survives = CheckSurvival(person.Age);
                 if (!survives) culledPopulation.Add(person);
-                var partner = ProcreateCheck(person, 100);
-                if (partner != null)
+                if (person.EligibleForBreeding)
                 {
-                    children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
-                    if (person.IsFemale) person.HaveBaby();
+                    var partner = ProcreateCheck(person, 100);
+                    if (partner != null)
+                    {
+                        children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
+                        if (person.IsFemale) person.GetPregnant();
+                    }
                 }
             });
             foreach (var culled in culledPopulation)
@@ -126,7 +129,7 @@ namespace PopulationGenetics.Library
         /// <param name="age">Age from the person object</param>
         /// <returns></returns>
         private bool CheckSurvival(int age)
-        {
+        { 
             var survivalRate = _mortalityCurve.GetMortalityByAge(age);
             return TrulyRandomGenerator.BooleanGenerator(1000, survivalRate);
         }
