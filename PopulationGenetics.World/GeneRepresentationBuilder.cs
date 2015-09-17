@@ -13,9 +13,11 @@ namespace PopulationGenetics.Library
         /// <returns></returns>
         public static string CreateName(string first, string second)
         {
+            first = first.ToUpper();
+            second = second.ToUpper();
             var rep = string.Empty;
             var val = String.CompareOrdinal(first, second);
-            if (val == -1)
+            if (val <= -1)
                 rep = first + second;
             else rep = second + first;
             return rep;

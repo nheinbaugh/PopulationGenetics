@@ -39,7 +39,7 @@ namespace PopulationGenetics.Library
         /// </summary>
         /// <param name="firstAllele"></param>
         /// <param name="secondAllele"></param>
-        private void BuildRepresentation(IAllele firstAllele, IAllele secondAllele)
+        public void BuildRepresentation(IAllele firstAllele, IAllele secondAllele)
         {
             if (firstAllele.Representation == secondAllele.Representation)
             {
@@ -56,7 +56,13 @@ namespace PopulationGenetics.Library
                 _representation = firstAllele.Representation;
                 return;
             }
-            _representation = secondAllele.Representation;
+            if (secondAllele.IsDominant)
+            {
+                _representation = secondAllele.Representation;
+                return;
+            }
+            _representation = GeneRepresentationBuilder.CreateName(firstAllele.Representation,
+                secondAllele.Representation);
         }
     }
 }
