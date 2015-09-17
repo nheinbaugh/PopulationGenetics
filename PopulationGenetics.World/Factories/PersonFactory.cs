@@ -13,8 +13,11 @@ namespace PopulationGenetics.Library.Factories
     }
     public class PersonFactory : IPersonFactory
     {
-        public PersonFactory()
+        private IRandomGenerator _random;
+
+        public PersonFactory(IRandomGenerator random)
         {
+            _random = random;
         }
 
         public Person CreateNewPerson(ILocusBank locusBank)
@@ -45,13 +48,13 @@ namespace PopulationGenetics.Library.Factories
 
                 genes.Add(new Gene(alleles[0], alleles[1], gene.LocusId));
             }
-            var child = new Person(genes, TrulyRandomGenerator.BooleanGenerator(1000, 500));
+            var child = new Person(genes, _random.BooleanGenerator(1000, 500));
             return child;
         }
 
         private Guid SelectAllele(IGene gene)
         {
-            if (TrulyRandomGenerator.BooleanGenerator(1000, 500))
+            if (_random.BooleanGenerator(1000, 500))
                 return gene.Alleles[0];
             return gene.Alleles[1];
         }
@@ -66,12 +69,12 @@ namespace PopulationGenetics.Library.Factories
 
         private bool CreateMaleOrFemale()
         {
-            return (TrulyRandomGenerator.BooleanGenerator(1000, 500));
+            return (_random.BooleanGenerator(1000, 500));
         }
         private IAllele GenerateAllele(IAlleleManager manager)
         {
 
-            var num = TrulyRandomGenerator.DoubleGenerator(1000);
+            var num = _random.DoubleGenerator(1000);
             double current = 0;
             foreach (var allele in manager.Alleles)
             {

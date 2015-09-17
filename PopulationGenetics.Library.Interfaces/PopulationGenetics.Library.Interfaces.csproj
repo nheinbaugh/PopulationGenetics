@@ -55,6 +55,7 @@
     <Compile Include="INameCreator.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="IPopulation.cs" />
+    <Compile Include="IRandomGenerator.cs" />
     <Compile Include="IWorld.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

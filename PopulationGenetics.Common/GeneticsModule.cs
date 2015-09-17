@@ -16,6 +16,7 @@ namespace PopulationGenetics.Common
     {
         public override void Load()
         {
+            Bind<IRandomGenerator>().To<TrulyRandomGenerator>().InSingletonScope();
             Bind<IControlManager>().To<WpfControlManager>().InSingletonScope();
             Bind<IPopulation>().To<Population>().InSingletonScope();
             Bind<IWorld>().To<World>().InSingletonScope();

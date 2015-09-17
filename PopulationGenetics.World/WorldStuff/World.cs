@@ -23,6 +23,7 @@ namespace PopulationGenetics.Library
         private int _age;
         private readonly IControlManager _controlManager;
         private IMortalityCurve _mortalityCurve;
+        private IRandomGenerator _random;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -33,9 +34,10 @@ namespace PopulationGenetics.Library
         public IMortalityCurve MortalityCurve => _mortalityCurve;
 
 
-        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager, IMortalityCurve mortalityCurve)
+        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager, IMortalityCurve mortalityCurve, IRandomGenerator random)
         {
             if (pop?.Populus?.Count > 0) pop.Populus.Clear();
+            _random = random;
             _population = pop;
             _registeredGenes = new LocusBank(controlManager, this);
             _personFactory = pf;
@@ -43,7 +45,7 @@ namespace PopulationGenetics.Library
             _controlManager = controlManager;
             WorldSeeds.BaseGenes(_registeredGenes, controlManager, this);
             SeedWorld(1000);
-            _population.UpdatePopulus();
+            _population?.UpdatePopulus();
         }
 
 
@@ -104,7 +106,7 @@ namespace PopulationGenetics.Library
         private IPerson ProcreateCheck(IPerson initializer, int procreateChance)
         {
             var rand = new Random();
-            if (TrulyRandomGenerator.BooleanGenerator(1000, procreateChance))
+            if (_random.BooleanGenerator(1000, procreateChance))
             {
                 var seed = 0;
                 if (initializer.IsFemale && !initializer.IsPregnant)
@@ -131,7 +133,7 @@ namespace PopulationGenetics.Library
         private bool CheckSurvival(int age)
         { 
             var survivalRate = _mortalityCurve.GetMortalityByAge(age);
-            return TrulyRandomGenerator.BooleanGenerator(1000, survivalRate);
+            return _random.BooleanGenerator(1000, survivalRate);
         }
 
         /// <summary>
