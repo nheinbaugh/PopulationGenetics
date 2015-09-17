@@ -45,21 +45,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneRepresentationBuilder.cs" />
-    <Compile Include="Locus.cs" />
+    <Compile Include="GeneStuff\Locus.cs" />
     <Compile Include="Managers\AlleleManager.cs" />
-    <Compile Include="Gene.cs" />
+    <Compile Include="GeneStuff\Gene.cs" />
     <Compile Include="Managers\LocusBank.cs" />
-    <Compile Include="MortalityCurve.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="WorldStuff\MortalityCurve.cs" />
+    <Compile Include="PeopleStuff\Person.cs" />
     <Compile Include="Factories\PersonFactory.cs" />
-    <Compile Include="Population.cs" />
+    <Compile Include="PeopleStuff\Population.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeedMaterial\WorldSeeds.cs" />
     <Compile Include="TrulyRandomGenerator.cs" />
-    <Compile Include="World.cs" />
+    <Compile Include="WorldStuff\World.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Allele.cs" />
+    <Compile Include="GeneStuff\Allele.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj">
