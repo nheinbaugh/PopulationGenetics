@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneTests.cs" />
+    <Compile Include="Mocks\Falsy.cs" />
+    <Compile Include="Mocks\Truthy.cs" />
     <Compile Include="PersonFactoryTests.cs" />
     <Compile Include="PersonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

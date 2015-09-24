@@ -30,6 +30,11 @@ namespace PopulationGenetics.Library.Managers
             _dominantAlleles = new List<IAllele>();
         }
 
+        public AlleleManager(List<IAllele> alleles)
+        {
+            _alleles = alleles;
+        }
+
         public void CreateAllele(IAllele allele)
         {
             _alleles.Add(allele);

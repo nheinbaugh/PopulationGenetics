@@ -52,28 +52,15 @@ namespace PopulationGenetics.Library.Factories
             return child;
         }
 
-        private Guid SelectAllele(IGene gene)
+        public Guid SelectAllele(IGene gene)
         {
+            // no room for mutation at this time :)
             if (_random.BooleanGenerator(1000, 500))
                 return gene.Alleles[0];
             return gene.Alleles[1];
         }
-
-        private Gene GenerateNewGene(ILocus locus)
+        public IAllele RetrieveAllele(IAlleleManager manager)
         {
-            var gene = new Gene(GenerateAllele(locus.AlleleManager), GenerateAllele(locus.AlleleManager), locus.LocusId);
-
-            return gene;
-        }
-
-
-        private bool CreateMaleOrFemale()
-        {
-            return (_random.BooleanGenerator(1000, 500));
-        }
-        private IAllele GenerateAllele(IAlleleManager manager)
-        {
-
             var num = _random.DoubleGenerator(1000);
             double current = 0;
             foreach (var allele in manager.Alleles)
@@ -85,5 +72,17 @@ namespace PopulationGenetics.Library.Factories
             }
             return manager.Alleles[0];
         }
+
+        private Gene GenerateNewGene(ILocus locus)
+        {
+            return new Gene(RetrieveAllele(locus.AlleleManager), RetrieveAllele(locus.AlleleManager), locus.LocusId);
+        }
+
+
+        private bool CreateMaleOrFemale()
+        {
+            return (_random.BooleanGenerator(1000, 500));
+        }
+       
     }
 }

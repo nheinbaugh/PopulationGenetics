@@ -24,9 +24,12 @@ namespace PopulationGenetics.Library
             _id = Guid.NewGuid();
         }
 
-        public Allele()
+        public Allele() : this("test", true)
         {
+        }
 
+        public Allele(double defaultFreq) : this("test", true, defaultFreq)
+        {
         }
     }
 }
