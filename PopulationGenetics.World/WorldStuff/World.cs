@@ -71,69 +71,31 @@ namespace PopulationGenetics.Library
             Parallel.For(0, _population.PopulationSize, i =>
             {
                 var person = _population.Populus[i];
-                person.AgePerson();
-                var survives = CheckSurvival(person.Age);
+                var survives = person.AgePerson(_mortalityCurve);
                 if (!survives) culledPopulation.Add(person);
-                if (person.EligibleForBreeding)
-                {
-                    var partner = ProcreateCheck(person, 100);
-                    if (partner != null)
-                    {
-                        children.Add(_personFactory.CreateChild(person, partner, _registeredGenes));
-                        if (person.IsFemale) person.GetPregnant();
-                    }
-                }
             });
             foreach (var culled in culledPopulation)
             {
                 _population.Populus.Remove(culled);
             }
+            var maleList = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
+            var femaleList = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
+            Parallel.For(0, _population.PopulationSize, i =>
+            {
+                var person = _population.Populus[i];
+                var child = person.IsFemale ? _personFactory.MakeBaby(person, maleList, _registeredGenes) : 
+                    _personFactory.MakeBaby(person, femaleList, _registeredGenes);
+                if (child != null) children.Add(child);
+            });
+
             _population.Populus.AddRange(children);
             _population.UpdatePopulus();
             NotifyPropertyChanged("Age");
             foreach (var locus in _registeredGenes.Loci)
             {
-                locus.AlleleManager.UpdateControls();
+                if(locus.isVisibleLocus)
+                    locus.AlleleManager.UpdateControls();
             }
-        }
-
-        /// <summary>
-        /// Check if the selected person object will create an offspring
-        /// </summary>
-        /// <param name="initializer">The person being checked</param>
-        /// <param name="procreateChance">The odds that a person will procreate (based on age?)</param>
-        /// <returns></returns>
-        private IPerson ProcreateCheck(IPerson initializer, int procreateChance)
-        {
-            var rand = new Random();
-            if (_random.BooleanGenerator(1000, procreateChance))
-            {
-                var seed = 0;
-                if (initializer.IsFemale && !initializer.IsPregnant)
-                {
-                    if (_population.Males == 0) return null;
-                    var rob = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
-                    seed = rand.Next(rob.Count);
-                    return rob[seed];
-                }
-                if (_population.Females == 0) return null;
-                var bob = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
-                seed = rand.Next(bob.Count);
-                return bob[seed].IsPregnant ? null : bob[seed];
-            }
-            return null;
-        }
-
-
-        /// <summary>
-        /// Check if a person object is going to survive the current generation
-        /// </summary>
-        /// <param name="age">Age from the person object</param>
-        /// <returns></returns>
-        private bool CheckSurvival(int age)
-        { 
-            var survivalRate = _mortalityCurve.GetMortalityByAge(age);
-            return _random.BooleanGenerator(1000, survivalRate);
         }
 
         /// <summary>
@@ -152,8 +114,10 @@ namespace PopulationGenetics.Library
 
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
+            var rowCount = targetGrid.RowDefinitions.Count;
             var spList = new List<StackPanel>
             {
+                _controlManager.CreateLocusSelector(_registeredGenes, this),
                 _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
                 _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", this),
                 _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", this),
@@ -162,6 +126,10 @@ namespace PopulationGenetics.Library
             for (int i = 0; i < spList.Count; i++)
             {
                 var current = spList[i];
+                if (i >= rowCount)
+                {
+                    targetGrid.RowDefinitions.Add(new RowDefinition());
+                }
                 Grid.SetColumn(current, 1);
                 Grid.SetRow(current, i);
                 targetGrid.Children.Add(current);

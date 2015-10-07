@@ -11,7 +11,7 @@ namespace PopulationGenetics.Library.Interfaces
         bool IsFemale { get; }
         bool IsPregnant { get; }
         List<IGene> Genes { get; }
-        void AgePerson();
+        bool AgePerson(IMortalityCurve curve);
         bool EligibleForBreeding { get; }
         void GetPregnant();
     }

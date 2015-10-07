@@ -88,6 +88,11 @@ namespace PopulationGenetics.Library.Managers
             _controls.Add(control);
         }
 
+        /// <summary>
+        /// Default query to determine the number of the population with a given allele representation
+        /// </summary>
+        /// <param name="all">Must be an IAllele</param>
+        /// <returns></returns>
         private int AllelePopulation(object all)
         {
             var allele = all as IAllele;
@@ -100,6 +105,11 @@ namespace PopulationGenetics.Library.Managers
             return persons.Count;
         }
 
+        /// <summary>
+        /// Default query to determine the number of the population with a given CoDominant gene representation
+        /// </summary>
+        /// <param name="representation"></param>
+        /// <returns></returns>
         private int CoDominantPopulation(object representation)
         {
             var ro = from b in _world.Population.Populus

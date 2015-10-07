@@ -11,13 +11,13 @@ namespace PopulationGenetics.WpfBindings
         private IAllele _allele;
         private bool _isCoDominant;
 
-        public StackPanel StackPanel { get { return _stackPanel; } }
+        public StackPanel StackPanel => _stackPanel;
 
         public AlleleControl(IAllele allele, StackPanel sp, Func<object, int> query, bool coDominant = false)
         {
-            this._allele = allele;
-            this._stackPanel = sp;
-            this._query = query;
+            _allele = allele;
+            _stackPanel = sp;
+            _query = query;
             _isCoDominant = coDominant;
         }
 

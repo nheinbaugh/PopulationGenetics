@@ -16,8 +16,8 @@ namespace PopulationGenetics.Library.Managers
     {
         private List<ILocus> _loci;
         private readonly IControlManager _controlManager;
-        private IWorld _world;
         private Dictionary<Guid, IAllele> _alleleMap;
+        private IWorld _world;
 
         public List<ILocus> Loci => _loci;
 
@@ -68,6 +68,7 @@ namespace PopulationGenetics.Library.Managers
             foreach (var locus in _loci)
             {
                 var controls = locus.AlleleManager.Controls;
+                if (!locus.isVisibleLocus) continue;
                 foreach (var control in controls)
                 {
                     control.UpdateControlValue();

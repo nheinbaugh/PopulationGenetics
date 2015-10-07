@@ -15,6 +15,7 @@ namespace PopulationGenetics.Library
 
         public IAlleleManager AlleleManager => _alleleManager;
         public string LocusName => _locusName;
+        public bool isVisibleLocus { get; set; }
         public Guid LocusId => _locusId;
 
         public Locus(string name, IAlleleManager alleleManager)
@@ -22,6 +23,7 @@ namespace PopulationGenetics.Library
             _locusId = Guid.NewGuid();
             _locusName = name;
             _alleleManager = alleleManager;
+            isVisibleLocus = false;
         }
 
         public void AddAllele(IEnumerable<IAllele> alleles)
@@ -37,6 +39,11 @@ namespace PopulationGenetics.Library
         public void AddAllele()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return _locusName;
         }
     }
 }

@@ -12,12 +12,27 @@ namespace PopulationGenetics.Library.SeedMaterial
             CreateMortalityCurve(world);
             var geneLocations = new List<ILocus>();
             geneLocations.Add(BloodTypeAlleles(cm, world));
-            
+            geneLocations.Add(SecondAllele(cm, world));
             // TODO generate the genes!
             foreach (var gene in geneLocations)
             {
                 geneBank.AddToBank(gene);
             }
+        }
+
+        private static Locus SecondAllele(IControlManager cm, IWorld world)
+        {
+            var mgr = new AlleleManager(cm, world);
+            var locus = new Locus("Eye Color", mgr);
+            var h = new Allele("H", false, .4);
+            var bl = new Allele("B", true, .25);
+            var blue = new Allele("L", true, .25);
+            var red = new Allele("R", false, .1);
+            locus.AddAllele(h);
+            locus.AddAllele(bl);
+            locus.AddAllele(blue);
+            locus.AddAllele(red);
+            return locus;
         }
 
         private static Locus BloodTypeAlleles(IControlManager cm, IWorld world)

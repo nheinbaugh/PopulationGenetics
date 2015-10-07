@@ -71,10 +71,11 @@ namespace PopulationGenetics.Library.Tests
         [TestCase(1, false)]
         public void PeopleShouldNotBeBreedingEligibleBelow2(int toAge, bool isFemale)
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), isFemale);
             for (int i = 0; i < toAge; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             Assert.AreEqual(false, person.EligibleForBreeding);
         }
@@ -91,10 +92,11 @@ namespace PopulationGenetics.Library.Tests
         [TestCase(6, false)]
         public void PeopleAboveAge2ShouldBeEligibleToBreed(int toAge, bool isFemale)
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), isFemale);
             for (int i = 0; i < toAge; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             Assert.AreEqual(true, person.EligibleForBreeding);
         }
@@ -105,10 +107,11 @@ namespace PopulationGenetics.Library.Tests
         [TestCase(235)]
         public void FemalesAboveAge_6_ShouldNotBeBreedingEligible(int toAge)
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), true);
             for (int i = 0; i < toAge; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             Assert.AreEqual(false, person.EligibleForBreeding);
         }
@@ -116,10 +119,11 @@ namespace PopulationGenetics.Library.Tests
         [Test]
         public void IfPregnant_ShouldNotBeBreedingEligible()
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), true);
             for (int i = 0; i < 5; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             person.GetPregnant();
             Assert.AreEqual(false, person.EligibleForBreeding);
@@ -128,10 +132,11 @@ namespace PopulationGenetics.Library.Tests
         [Test]
         public void PersonToggledAsPregnant_ShouldNotBeBreedingEligible()
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), true);
             for (int i = 0; i < 3; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             person.GetPregnant();
             Assert.AreEqual(false, person.EligibleForBreeding);
@@ -140,30 +145,33 @@ namespace PopulationGenetics.Library.Tests
         [Test]
         public void IfPersonIsPregnant_ShouldNotBeEligibleToBreed()
         {
+            var curve = new MortalityCurve();
+
             var person = new Person(new List<IGene>(), true);
             for (int i = 0; i < 3; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             person.GetPregnant();
             // make the person actually preggers
-            person.AgePerson();
+            person.AgePerson(curve);
             Assert.AreEqual(false, person.EligibleForBreeding);
         }
 
         [Test]
         public void IfPersonHadBabyLastTurn_ShouldNotBeEligibleToBreed()
         {
+            var curve = new MortalityCurve();
             var person = new Person(new List<IGene>(), true);
             for (int i = 0; i < 3; i++)
             {
-                person.AgePerson();
+                person.AgePerson(curve);
             }
             person.GetPregnant();
             // make the person actually preggers
-            person.AgePerson();
+            person.AgePerson(curve);
             // this is the turn post preggers
-            person.AgePerson();
+            person.AgePerson(curve);
             Assert.AreEqual(false, person.EligibleForBreeding);
         }
 

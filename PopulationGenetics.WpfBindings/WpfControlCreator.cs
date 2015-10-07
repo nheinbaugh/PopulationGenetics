@@ -8,6 +8,36 @@ namespace PopulationGenetics.WpfBindings
 {
     public class WpfControlManager : IControlManager
     {
+        public StackPanel CreateLocusSelector(ILocusBank registeredGenes, IWorld world)
+        {
+            var sp = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                Name = "locusSelector",
+                Height = 23
+            };
+            var label = new Label
+            {
+                Name = "selectorLabel",
+                Content = "Active Locus (for View)"
+            };
+            var cb = new ComboBox
+            {
+                Name = "selectorBox",
+                ItemsSource = registeredGenes.Loci
+            };
+            cb.SelectionChanged += GeneViewItemUpdate;
+            sp.Children.Add(label);
+            sp.Children.Add(cb);
+            return sp;
+        }
+
+        private void GeneViewItemUpdate(object sender, SelectionChangedEventArgs e)
+        {
+            var bob = sender as ComboBox;
+            var item = (ILocus)bob.SelectedItem;
+            item.isVisibleLocus = true;
+        }
 
         private StackPanel CreateDataPairBase(string controlName, string labelContent)
         {

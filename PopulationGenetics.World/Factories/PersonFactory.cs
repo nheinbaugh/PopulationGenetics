@@ -10,6 +10,7 @@ namespace PopulationGenetics.Library.Factories
     {
         Person CreateNewPerson(ILocusBank locusBank);
         IPerson CreateChild(IPerson person, IPerson partner, ILocusBank locusBank);
+        IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, ILocusBank locusBank);
     }
     public class PersonFactory : IPersonFactory
     {
@@ -29,7 +30,7 @@ namespace PopulationGenetics.Library.Factories
                 genes.Add(gene);
             }
 
-            var person = new Person(genes, CreateMaleOrFemale());
+            var person = new Person(_random, genes, CreateMaleOrFemale());
             return person;
         }
 
@@ -48,7 +49,7 @@ namespace PopulationGenetics.Library.Factories
 
                 genes.Add(new Gene(alleles[0], alleles[1], gene.LocusId));
             }
-            var child = new Person(genes, _random.BooleanGenerator(1000, 500));
+            var child = new Person(_random, genes, _random.BooleanGenerator(1000, 500));
             return child;
         }
 
@@ -83,6 +84,37 @@ namespace PopulationGenetics.Library.Factories
         {
             return (_random.BooleanGenerator(1000, 500));
         }
-       
+
+        public IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, ILocusBank _registeredGenes)
+        {
+            var partner = FindPartner(initializer, genderList);
+            if (partner != null)
+            {
+                var baby = CreateChild(initializer, partner, _registeredGenes);
+                if (initializer.IsFemale) initializer.GetPregnant();
+                return baby;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Check if the selected person object will create an offspring
+        /// </summary>
+        /// <param name="initializer">The person being checked</param>
+        /// <param name="procreateChance">The odds that a person will procreate (based on age?)</param>
+        /// <returns></returns>
+        private IPerson FindPartner(IPerson initializer, List<IPerson> genderList)
+        {
+            var rand = new Random();
+            if (_random.BooleanGenerator(1000, 100))
+            {
+                int seed;
+                if (genderList.Count == 0) return null;
+                seed = rand.Next(genderList.Count);
+                var partner = genderList[seed];
+                return partner.IsPregnant ? null : partner;
+            }
+            return null;
+        }
     }
 }

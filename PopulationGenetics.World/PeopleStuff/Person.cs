@@ -14,6 +14,7 @@ namespace PopulationGenetics.Library
         private bool _eligibleForBreeding;
         private bool _pregnant;
         private bool _hadBaby;
+        private IRandomGenerator _random;
 
         public Guid PersonId => _personId;
         public int Age => _age;
@@ -21,13 +22,16 @@ namespace PopulationGenetics.Library
         public List<IGene> Genes => _genes;
         public bool EligibleForBreeding => _eligibleForBreeding;
         public bool IsPregnant => _pregnant;
+        public IRandomGenerator Random => _random;
 
-        public void GetPregnant()
+        public Person(IRandomGenerator random, List<IGene> genes, bool isFemale)
         {
-            _pregnant = true;
-            _eligibleForBreeding = false;
+            _random = random;
+            _personId = Guid.NewGuid();
+            _age = 0;
+            _isFemale = isFemale;
+            _genes = genes;
         }
-
         public Person(List<IGene> genes, bool isFemale)
         {
             _personId = Guid.NewGuid();
@@ -36,16 +40,29 @@ namespace PopulationGenetics.Library
             _genes = genes;
         }
 
+        public Person(IRandomGenerator random)
+        {
+            _random = random;
+            _personId = Guid.NewGuid();
+            _genes = new List<IGene>();
+        }
+
         public Person()
         {
             _personId = Guid.NewGuid();
             _genes = new List<IGene>();
         }
 
+        public void GetPregnant()
+        {
+            _pregnant = true;
+            _eligibleForBreeding = false;
+        }
+
         /// <summary>
         /// Increase the age of the current person
         /// </summary>
-        public void AgePerson()
+        public bool AgePerson(IMortalityCurve curve)
         {
             
             _eligibleForBreeding = CheckIfBreedingEligible();
@@ -59,7 +76,7 @@ namespace PopulationGenetics.Library
                 _hadBaby = true;
                 _pregnant = false;
             }
-
+            return CheckSurvival(curve);
         }
 
         public bool CheckIfBreedingEligible()
@@ -77,6 +94,17 @@ namespace PopulationGenetics.Library
                 if (_age >= 1) return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Check if a person object is going to survive the current generation
+        /// </summary>
+        /// <param name="curve">The mortality curve used for that world</param>
+        /// <returns></returns>
+        public bool CheckSurvival(IMortalityCurve curve)
+        {
+            var survivalRate = curve.GetMortalityByAge(_age);
+            return _random.BooleanGenerator(1000, survivalRate);
         }
     } 
 }
