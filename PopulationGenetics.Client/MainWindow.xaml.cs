@@ -64,7 +64,7 @@ namespace PopulationGenetics.Client
         private void processTurn_Click(object sender, RoutedEventArgs e)
         {
             _world.ProcessTurn();
-            _world.CreateWorldControls(geneGrid);
+            //_world.CreateWorldControls(geneGrid);
         }
     }
 }

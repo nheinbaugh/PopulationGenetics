@@ -24,6 +24,7 @@ namespace PopulationGenetics.Library
         private readonly IControlManager _controlManager;
         private IMortalityCurve _mortalityCurve;
         private IRandomGenerator _random;
+        private List<TextBox> fieldsToUpdate = new List<TextBox>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -65,32 +66,16 @@ namespace PopulationGenetics.Library
 
         public void ProcessTurn()
         {
-            _age++;
-            var culledPopulation = new ConcurrentBag<IPerson>();
-            var children = new ConcurrentBag<IPerson>();
-            Parallel.For(0, _population.PopulationSize, i =>
+            for (int i = 0; i < fieldsToUpdate.Count; i++)
             {
-                var person = _population.Populus[i];
-                var survives = person.AgePerson(_mortalityCurve);
-                if (!survives) culledPopulation.Add(person);
-            });
-            foreach (var culled in culledPopulation)
-            {
-                _population.Populus.Remove(culled);
+                var sender = fieldsToUpdate[i];
+                sender.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
             }
-            var maleList = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
-            var femaleList = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
-            Parallel.For(0, _population.PopulationSize, i =>
-            {
-                var person = _population.Populus[i];
-                var child = person.IsFemale ? _personFactory.MakeBaby(person, maleList, _registeredGenes) : 
-                    _personFactory.MakeBaby(person, femaleList, _registeredGenes);
-                if (child != null) children.Add(child);
-            });
-
-            _population.Populus.AddRange(children);
-            _population.UpdatePopulus();
+            _age++;
+            CullPopulation();
+            ProcessBreeding();
             NotifyPropertyChanged("Age");
+            NotifyPropertyChanged("Population.PoulationSize");
             foreach (var locus in _registeredGenes.Loci)
             {
                 if(locus.isVisibleLocus)
@@ -98,6 +83,40 @@ namespace PopulationGenetics.Library
             }
         }
 
+        /// <summary>
+        /// Kill members of the population due to age
+        /// </summary>
+        private void CullPopulation()
+        {
+            var culledPopulation = new ConcurrentBag<IPerson>();
+            Parallel.ForEach(_population.Populus, p =>
+            {
+                var survives = p.AgePerson(_mortalityCurve);
+                if (!survives) culledPopulation.Add(p);
+            });
+            foreach (var culled in culledPopulation)
+            {
+
+                _population.Populus.Remove(culled);
+            }
+        }
+
+        /// <summary>
+        /// Run through the process of finding mates for the population and potentially creating offspring
+        /// </summary>
+        private void ProcessBreeding()
+        {
+            var children = new ConcurrentBag<IPerson>();
+            var maleList = _population.Populus.Where(a => !a.IsFemale && a.EligibleForBreeding).ToList();
+            var femaleList = _population.Populus.Where(a => a.IsFemale && a.EligibleForBreeding).ToList();
+            Parallel.ForEach(_population.Populus, p =>
+            {
+                var child = p.IsFemale ? _personFactory.MakeBaby(p, maleList, _registeredGenes) :
+                    _personFactory.MakeBaby(p, femaleList, _registeredGenes);
+                if (child != null) children.Add(child);
+            });
+            _population.AddGeneration(children);
+        }
         /// <summary>
         /// Clear the entire population and possibly clear the registered genes
         /// </summary>
@@ -133,6 +152,8 @@ namespace PopulationGenetics.Library
                 Grid.SetColumn(current, 1);
                 Grid.SetRow(current, i);
                 targetGrid.Children.Add(current);
+                var bob= current.Children[1] as TextBox;
+                if (bob != null) fieldsToUpdate.Add(bob);
             }
 
             targetGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});

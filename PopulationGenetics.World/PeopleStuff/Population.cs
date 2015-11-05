@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace PopulationGenetics.Library
 {
     public class Population : IPopulation, INotifyPropertyChanged
     {
-        private readonly List<IPerson> _populus;
+        private readonly HashSet<IPerson> _populus;
         private readonly IPersonFactory _personFactory;
         public event PropertyChangedEventHandler PropertyChanged;
         private int _males;
@@ -19,14 +20,14 @@ namespace PopulationGenetics.Library
         public int Males => _males;
         public int Females => _females;
 
-        public List<IPerson> Populus
+        public HashSet<IPerson> Populus
         {
             get { return _populus; }
         }
 
         public Population(IPersonFactory pf)
         {
-            _populus = new List<IPerson>();
+            _populus = new HashSet<IPerson>();
             _personFactory = pf;
         }
 
@@ -48,11 +49,6 @@ namespace PopulationGenetics.Library
         {
            _males=  _populus.AsQueryable().Where(p => p.IsFemale == false && p.EligibleForBreeding).ToList().Count;
            _females=  _populus.AsQueryable().Where(p => p.IsFemale && p.EligibleForBreeding).ToList().Count;
-            //var bob = new Dictionary<int, int>();
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    bob.Add(i, _populus.Where(a => a.Age == i).ToList().Count);
-            //}
         }
 
         public void DestroyPopulation()
@@ -66,5 +62,11 @@ namespace PopulationGenetics.Library
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public void AddGeneration(ConcurrentBag<IPerson> children)
+        {
+            _populus.UnionWith(children);
+           // _populus.AddRange(children);
+            UpdatePopulus();
+        }
     }
 }

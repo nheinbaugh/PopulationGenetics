@@ -71,7 +71,8 @@ namespace PopulationGenetics.WpfBindings
             {
                 Source = source,
                 Path = new PropertyPath(bindingPath),
-                Mode = BindingMode.OneWay
+                Mode = BindingMode.OneWay,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             };
 
             var tb = stackPanel.Children[1] as TextBox;

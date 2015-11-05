@@ -24,6 +24,7 @@ namespace PopulationGenetics.Library.SeedMaterial
         {
             var mgr = new AlleleManager(cm, world);
             var locus = new Locus("Eye Color", mgr);
+            locus.isVisibleLocus = true;
             var h = new Allele("H", false, .4);
             var bl = new Allele("B", true, .25);
             var blue = new Allele("L", true, .25);

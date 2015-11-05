@@ -7,7 +7,14 @@ namespace PopulationGenetics.Library
 
     public class TrulyRandomGenerator : IRandomGenerator
     {
-        private double Generator(int max)
+        Random rando;
+
+        public TrulyRandomGenerator()
+        {
+            CreateRandom();
+        }
+
+        private void CreateRandom()
         {
             var rng = new RNGCryptoServiceProvider();
             byte[] buffer = new byte[4];
@@ -15,7 +22,17 @@ namespace PopulationGenetics.Library
             rng.GetBytes(buffer);
             int result = BitConverter.ToInt32(buffer, 0);
 
-            return new Random(result).Next(0, max + 1);
+            rando = new Random(result);
+        }
+        private double Generator(int max)
+        {
+            var res = rando.Next(max);
+            if(res == 0)
+            {
+                CreateRandom();
+                return Generator(max);
+            }
+            return res;
         }
 
         public double DoubleGenerator(int max)
