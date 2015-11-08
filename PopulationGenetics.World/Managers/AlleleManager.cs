@@ -55,6 +55,11 @@ namespace PopulationGenetics.Library.Managers
             }
         }
 
+        public void GetAlleleControlByName()
+        {
+
+        }
+
 
         private void CreateAlleleControls(IAllele allele)
         {

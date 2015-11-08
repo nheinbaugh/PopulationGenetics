@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace PopulationGenetics.Library.Interfaces
 {
-    public interface ILocusBank
+    public interface IGeneBank
     {
         List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);

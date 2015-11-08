@@ -12,7 +12,7 @@ namespace PopulationGenetics.Library.Managers
     /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
     /// Each locus will have all alleles that are registered to it. 
     /// </summary>
-    public class LocusBank: ILocusBank
+    public class GeneBank: IGeneBank
     {
         private List<ILocus> _loci;
         private readonly IControlManager _controlManager;
@@ -21,7 +21,7 @@ namespace PopulationGenetics.Library.Managers
 
         public List<ILocus> Loci => _loci;
 
-        public LocusBank(IControlManager controlManager, IWorld world)
+        public GeneBank(IControlManager controlManager, IWorld world)
         {
             _world = world;
             _controlManager = controlManager;
@@ -64,7 +64,7 @@ namespace PopulationGenetics.Library.Managers
 
         public void CreateGeneControls(Grid targetGrid)
         {
-            var currentRow = 0;
+            var currentRow = 1;
             foreach (var locus in _loci)
             {
                 var controls = locus.AlleleManager.Controls;

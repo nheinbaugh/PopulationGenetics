@@ -31,7 +31,7 @@ namespace PopulationGenetics.Library
             _personFactory = pf;
         }
 
-        public void CreatePopulation(int numberToCreate, ILocusBank loci)
+        public void CreatePopulation(int numberToCreate, IGeneBank loci)
         {
             for (int i = 0; i < numberToCreate; i++)
             {

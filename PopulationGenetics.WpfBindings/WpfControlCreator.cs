@@ -8,14 +8,16 @@ namespace PopulationGenetics.WpfBindings
 {
     public class WpfControlManager : IControlManager
     {
-        public StackPanel CreateLocusSelector(ILocusBank registeredGenes, IWorld world)
+        public StackPanel CreateLocusSelector(IGeneBank registeredGenes, SelectionChangedEventHandler updateEvent, IWorld world)
         {
             var sp = new StackPanel
             {
                 Orientation = Orientation.Horizontal,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                VerticalAlignment = VerticalAlignment.Center,
                 Name = "locusSelector",
-                Height = 23
             };
+            sp.Margin = new Thickness(0, 5, 5, 0);
             var label = new Label
             {
                 Name = "selectorLabel",
@@ -24,9 +26,12 @@ namespace PopulationGenetics.WpfBindings
             var cb = new ComboBox
             {
                 Name = "selectorBox",
-                ItemsSource = registeredGenes.Loci
+                ItemsSource = registeredGenes.Loci,
+                MaxHeight = 23,
+                Margin = new Thickness(0, 0, 0, 5)
             };
             cb.SelectionChanged += GeneViewItemUpdate;
+            cb.SelectionChanged += updateEvent;
             sp.Children.Add(label);
             sp.Children.Add(cb);
             return sp;
@@ -34,9 +39,13 @@ namespace PopulationGenetics.WpfBindings
 
         private void GeneViewItemUpdate(object sender, SelectionChangedEventArgs e)
         {
-            var bob = sender as ComboBox;
-            var item = (ILocus)bob.SelectedItem;
-            item.isVisibleLocus = true;
+            var comboBox = sender as ComboBox;
+            foreach (ILocus item in comboBox.Items)
+            {
+                if (item != comboBox.SelectedItem) item.isVisibleLocus = false;
+            }
+            var locus = (ILocus)comboBox.SelectedItem;
+            locus.isVisibleLocus = true;
         }
 
         private StackPanel CreateDataPairBase(string controlName, string labelContent)
@@ -77,7 +86,7 @@ namespace PopulationGenetics.WpfBindings
 
             var tb = stackPanel.Children[1] as TextBox;
             tb?.SetBinding(TextBox.TextProperty, binding);
-            stackPanel.Margin = new Thickness(5, 5, 5, 5);
+            stackPanel.Margin = new Thickness(0, 5, 5, 0);
             stackPanel.HorizontalAlignment = HorizontalAlignment.Right;
             return stackPanel;
         }

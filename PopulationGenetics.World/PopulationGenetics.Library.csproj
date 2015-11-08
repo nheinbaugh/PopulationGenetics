@@ -48,7 +48,7 @@
     <Compile Include="GeneStuff\Locus.cs" />
     <Compile Include="Managers\AlleleManager.cs" />
     <Compile Include="GeneStuff\Gene.cs" />
-    <Compile Include="Managers\LocusBank.cs" />
+    <Compile Include="Managers\GeneBank.cs" />
     <Compile Include="WorldStuff\MortalityCurve.cs" />
     <Compile Include="PeopleStuff\Person.cs" />
     <Compile Include="Factories\PersonFactory.cs" />

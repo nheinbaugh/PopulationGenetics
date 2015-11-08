@@ -18,7 +18,7 @@ namespace PopulationGenetics.Library
     public class World : IWorld, INotifyPropertyChanged
     {
         private readonly IPopulation _population;
-        private readonly ILocusBank _registeredGenes;
+        private readonly IGeneBank _registeredGenes;
         private readonly IPersonFactory _personFactory;
         private int _age;
         private readonly IControlManager _controlManager;
@@ -30,7 +30,7 @@ namespace PopulationGenetics.Library
 
         public IPersonFactory PersonFactory => _personFactory;
         public IPopulation Population => _population;
-        public ILocusBank RegisteredGenes => _registeredGenes;
+        public IGeneBank RegisteredGenes => _registeredGenes;
         public int Age => _age;
         public IMortalityCurve MortalityCurve => _mortalityCurve;
 
@@ -40,7 +40,7 @@ namespace PopulationGenetics.Library
             if (pop?.Populus?.Count > 0) pop.Populus.Clear();
             _random = random;
             _population = pop;
-            _registeredGenes = new LocusBank(controlManager, this);
+            _registeredGenes = new GeneBank(controlManager, this);
             _personFactory = pf;
             _mortalityCurve = mortalityCurve;
             _controlManager = controlManager;
@@ -75,7 +75,6 @@ namespace PopulationGenetics.Library
             CullPopulation();
             ProcessBreeding();
             NotifyPropertyChanged("Age");
-            NotifyPropertyChanged("Population.PoulationSize");
             foreach (var locus in _registeredGenes.Loci)
             {
                 if(locus.isVisibleLocus)
@@ -134,9 +133,12 @@ namespace PopulationGenetics.Library
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
             var rowCount = targetGrid.RowDefinitions.Count;
+            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, Click, this);
+            ((ComboBox)lSelector.Children[1]).SelectedIndex = 0;
+            var parentSp = new StackPanel() { Orientation = Orientation.Vertical };
             var spList = new List<StackPanel>
             {
-                _controlManager.CreateLocusSelector(_registeredGenes, this),
+                lSelector,
                 _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
                 _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", this),
                 _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", this),
@@ -158,6 +160,13 @@ namespace PopulationGenetics.Library
 
             targetGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});
             return spList;
+        }
+
+        private void Click(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            var locus = (ILocus)comboBox.SelectedItem;
+
         }
 
         protected void NotifyPropertyChanged(string propertyName)

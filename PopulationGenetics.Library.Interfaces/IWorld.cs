@@ -7,7 +7,7 @@ namespace PopulationGenetics.Library.Interfaces
     {
         int Age { get; }
         IMortalityCurve MortalityCurve { get; }
-        ILocusBank RegisteredGenes { get; }
+        IGeneBank RegisteredGenes { get; }
         IPopulation Population { get; }
         void ProcessTurn();
         /// <summary>

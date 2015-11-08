@@ -9,7 +9,7 @@ namespace PopulationGenetics.Library.Interfaces
         int PopulationSize { get; }
         int Males { get; }
         int Females { get; }
-        void CreatePopulation(int numberToCreate, ILocusBank loci);
+        void CreatePopulation(int numberToCreate, IGeneBank loci);
         void DestroyPopulation();
         void UpdatePopulus();
         void AddGeneration(ConcurrentBag<IPerson> children);

@@ -8,9 +8,9 @@ namespace PopulationGenetics.Library.Factories
 {
     public interface IPersonFactory
     {
-        Person CreateNewPerson(ILocusBank locusBank);
-        IPerson CreateChild(IPerson person, IPerson partner, ILocusBank locusBank);
-        IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, ILocusBank locusBank);
+        Person CreateNewPerson(IGeneBank locusBank);
+        IPerson CreateChild(IPerson person, IPerson partner, IGeneBank locusBank);
+        IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, IGeneBank locusBank);
     }
     public class PersonFactory : IPersonFactory
     {
@@ -21,7 +21,7 @@ namespace PopulationGenetics.Library.Factories
             _random = random;
         }
 
-        public Person CreateNewPerson(ILocusBank locusBank)
+        public Person CreateNewPerson(IGeneBank locusBank)
         {
             var genes = new List<IGene>();
             foreach (var locus in locusBank.Loci)
@@ -34,7 +34,7 @@ namespace PopulationGenetics.Library.Factories
             return person;
         }
 
-        public IPerson CreateChild(IPerson person, IPerson partner, ILocusBank locusbank)
+        public IPerson CreateChild(IPerson person, IPerson partner, IGeneBank locusbank)
         {
             var genes = new List<IGene>();
             foreach (var gene in person.Genes)
@@ -85,7 +85,7 @@ namespace PopulationGenetics.Library.Factories
             return (_random.BooleanGenerator(1000, 500));
         }
 
-        public IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, ILocusBank _registeredGenes)
+        public IPerson MakeBaby(IPerson initializer, List<IPerson> genderList, IGeneBank _registeredGenes)
         {
             var partner = FindPartner(initializer, genderList);
             if (partner != null)

@@ -7,7 +7,7 @@ namespace PopulationGenetics.Library.SeedMaterial
 {
     public static class WorldSeeds
     {
-        public static void BaseGenes(ILocusBank geneBank, IControlManager cm, IWorld world)
+        public static void BaseGenes(IGeneBank geneBank, IControlManager cm, IWorld world)
         {
             CreateMortalityCurve(world);
             var geneLocations = new List<ILocus>();
