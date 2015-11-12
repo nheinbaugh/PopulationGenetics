@@ -12,6 +12,6 @@ namespace PopulationGenetics.Library.Interfaces
         StackPanel CreateCoDominantPairLinq(string controlName, string labelContent,
             Func<string, int> bindingSource, IValueConverter converter);
 
-        StackPanel CreateLocusSelector(IGeneBank registeredGenes, SelectionChangedEventHandler updateEvent, IWorld world);
+        StackPanel CreateLocusSelector(IGeneBank registeredGenes, IWorld world);
     }
 }

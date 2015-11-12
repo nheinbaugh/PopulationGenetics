@@ -16,6 +16,9 @@ namespace PopulationGenetics.Common
     {
         public override void Load()
         {
+            Bind<IMainWindow>().To<IMainWindow>();
+            Bind<ILocusComboBox>().To<LocusComboBox>();
+            Bind<IAlleleSelectionChangedEventArgs>().To<AlleleSelectionChangedEventArgs>();
             Bind<IRandomGenerator>().To<TrulyRandomGenerator>().InSingletonScope();
             Bind<IControlManager>().To<WpfControlManager>().InSingletonScope();
             Bind<IPopulation>().To<Population>().InSingletonScope();

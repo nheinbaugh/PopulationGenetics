@@ -62,31 +62,39 @@ namespace PopulationGenetics.Library.Managers
             return bob;
         }
 
-        public void CreateGeneControls(Grid targetGrid)
+        public void UpdateVisibleControls(Grid targetGrid)
         {
             var currentRow = 1;
             foreach (var locus in _loci)
             {
                 var controls = locus.AlleleManager.Controls;
-                if (!locus.isVisibleLocus) continue;
-                foreach (var control in controls)
+                if (!locus.isVisibleLocus)
                 {
-                    control.UpdateControlValue();
-
-                    var totalRows = targetGrid.RowDefinitions.Count;
-                    control.StackPanel.Margin = new Thickness(5, 5, 5, 5);
-                    control.StackPanel.HorizontalAlignment = HorizontalAlignment.Right;
-
-                    Grid.SetColumn(control.StackPanel, 0);
-                    if (currentRow >= totalRows)
+                    foreach (var control in controls)
                     {
-                        var rd = new RowDefinition { Height = GridLength.Auto };
-                        targetGrid.RowDefinitions.Add(rd);
+                        control.StackPanel.Visibility = Visibility.Collapsed;
+                        targetGrid.Children.Add(control.StackPanel);
+
                     }
-                    Grid.SetRow(control.StackPanel, currentRow);
-                    currentRow++;
-                    targetGrid.Children.Add(control.StackPanel);
                 }
+                else
+                {
+                    foreach (var control in controls)
+                    {
+                        control.UpdateControlValue();
+                        control.StackPanel.Visibility = Visibility.Visible;
+                        var totalRows = targetGrid.RowDefinitions.Count;
+                        if (currentRow >= totalRows)
+                        {
+                            var rd = new RowDefinition { Height = GridLength.Auto };
+                            targetGrid.RowDefinitions.Add(rd);
+                        }
+                        Grid.SetRow(control.StackPanel, currentRow);
+                        currentRow++;
+                        targetGrid.Children.Add(control.StackPanel);
+                    }
+                }
+
             }
         }
     }

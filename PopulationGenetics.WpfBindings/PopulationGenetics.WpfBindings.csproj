@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlleleControl.cs" />
+    <Compile Include="AlleleSelectionChangedEventHandler.cs" />
+    <Compile Include="LocusComboBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverter.cs" />
     <Compile Include="WpfControlCreator.cs" />

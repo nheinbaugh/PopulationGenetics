@@ -9,7 +9,7 @@ namespace PopulationGenetics.Library.Interfaces
         List<ILocus> Loci { get; }
         void AddToBank(ILocus newLocus);
         void AddToBank();
-        void CreateGeneControls(Grid geneGrid);
+        void UpdateVisibleControls(Grid geneGrid);
         IAllele GetAlleleById(Guid alleleId);
     }
 }

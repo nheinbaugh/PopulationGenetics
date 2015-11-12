@@ -21,7 +21,7 @@ namespace PopulationGenetics.Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainWindow
     {
         private IWorld _world;
         public IWorld World { get { return _world; } set { _world = value; } }
@@ -31,7 +31,7 @@ namespace PopulationGenetics.Client
             _world = world;
             InitializeComponent();
             world.CreateWorldControls(geneGrid);
-            world.RegisteredGenes.CreateGeneControls(geneGrid);
+            world.GeneBank.UpdateVisibleControls(geneGrid);
 
         }
 
@@ -55,7 +55,7 @@ namespace PopulationGenetics.Client
             }
             _world.SeedWorld(10000);
             _world.CreateWorldControls(geneGrid);
-            _world.RegisteredGenes.CreateGeneControls(geneGrid);
+            _world.GeneBank.UpdateVisibleControls(geneGrid);
             processTurn.IsEnabled = true;
             populateWorld.IsEnabled = false;
             cleanWorld.IsEnabled = true;

@@ -38,8 +38,6 @@ namespace PopulationGenetics.Library
                 _populus.Add(_personFactory.CreateNewPerson(loci));
             }
             NotifyPropertyChanged("PopulationSize");
-            NotifyPropertyChanged("Males");
-            NotifyPropertyChanged("Females");
         }
 
         /// <summary>
@@ -65,7 +63,6 @@ namespace PopulationGenetics.Library
         public void AddGeneration(ConcurrentBag<IPerson> children)
         {
             _populus.UnionWith(children);
-           // _populus.AddRange(children);
             UpdatePopulus();
         }
     }

@@ -30,7 +30,7 @@ namespace PopulationGenetics.Library
 
         public IPersonFactory PersonFactory => _personFactory;
         public IPopulation Population => _population;
-        public IGeneBank RegisteredGenes => _registeredGenes;
+        public IGeneBank GeneBank => _registeredGenes;
         public int Age => _age;
         public IMortalityCurve MortalityCurve => _mortalityCurve;
 
@@ -133,7 +133,8 @@ namespace PopulationGenetics.Library
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
             var rowCount = targetGrid.RowDefinitions.Count;
-            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, Click, this);
+            var args = new AlleleSelectionChangedEventArgs(targetGrid);
+            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, this);
             ((ComboBox)lSelector.Children[1]).SelectedIndex = 0;
             var parentSp = new StackPanel() { Orientation = Orientation.Vertical };
             var spList = new List<StackPanel>
@@ -160,13 +161,6 @@ namespace PopulationGenetics.Library
 
             targetGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});
             return spList;
-        }
-
-        private void Click(object sender, SelectionChangedEventArgs e)
-        {
-            var comboBox = sender as ComboBox;
-            var locus = (ILocus)comboBox.SelectedItem;
-
         }
 
         protected void NotifyPropertyChanged(string propertyName)

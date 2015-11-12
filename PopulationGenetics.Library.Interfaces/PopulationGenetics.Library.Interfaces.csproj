@@ -46,11 +46,14 @@
   <ItemGroup>
     <Compile Include="IAllele.cs" />
     <Compile Include="IAlleleControl.cs" />
+    <Compile Include="IAlleleSelectionChangedEventArgs.cs" />
     <Compile Include="IControlCreator.cs" />
     <Compile Include="IGene.cs" />
     <Compile Include="ILocus.cs" />
-    <Compile Include="ILocusBank.cs" />
+    <Compile Include="IGeneBank.cs" />
     <Compile Include="IAlleleManager.cs" />
+    <Compile Include="ILocusComboBox.cs" />
+    <Compile Include="IMainWindow.cs" />
     <Compile Include="IMortalityCurve.cs" />
     <Compile Include="INameCreator.cs" />
     <Compile Include="IPerson.cs" />
