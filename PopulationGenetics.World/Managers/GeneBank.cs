@@ -62,6 +62,7 @@ namespace PopulationGenetics.Library.Managers
             return bob;
         }
 
+        //TODO Refactor?
         public void UpdateVisibleControls(Grid targetGrid)
         {
             var currentRow = 1;

@@ -27,8 +27,8 @@ namespace PopulationGenetics.Library.SeedMaterial
             locus.isVisibleLocus = true;
             var h = new Allele("H", false, .4);
             var bl = new Allele("B", true, .25);
-            var blue = new Allele("L", true, .25);
-            var red = new Allele("R", false, .1);
+            var blue = new Allele("L", true, .15);
+            var red = new Allele("R", false, .2);
             locus.AddAllele(h);
             locus.AddAllele(bl);
             locus.AddAllele(blue);

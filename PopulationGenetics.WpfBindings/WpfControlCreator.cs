@@ -22,7 +22,8 @@ namespace PopulationGenetics.WpfBindings
             var label = new Label
             {
                 Name = "selectorLabel",
-                Content = "Active Locus (for View)"
+                Content = "Active Locus (for View)",
+                HorizontalAlignment = HorizontalAlignment.Left
             };
             var cb = new LocusComboBox
             {
@@ -40,9 +41,9 @@ namespace PopulationGenetics.WpfBindings
         {
             var stackPanel = new StackPanel
             {
+                HorizontalAlignment = HorizontalAlignment.Right,
                 Orientation = Orientation.Horizontal,
                 Name = controlName + "Box",
-                Height = 23
             };
             var label = new Label
             {
@@ -56,6 +57,8 @@ namespace PopulationGenetics.WpfBindings
                 IsReadOnly = true,
                 MinWidth = 100
             };
+            stackPanel.Margin = new Thickness(0, 5, 5, 0);
+
             stackPanel.Children.Add(label);
             stackPanel.Children.Add(tb);
             return stackPanel;
@@ -74,7 +77,6 @@ namespace PopulationGenetics.WpfBindings
 
             var tb = stackPanel.Children[1] as TextBox;
             tb?.SetBinding(TextBox.TextProperty, binding);
-            stackPanel.Margin = new Thickness(0, 5, 5, 0);
             stackPanel.HorizontalAlignment = HorizontalAlignment.Right;
             return stackPanel;
         }

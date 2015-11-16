@@ -101,13 +101,9 @@ namespace PopulationGenetics.Library.Managers
         private int AllelePopulation(object all)
         {
             var allele = all as IAllele;
-            var ro =
-                _world.Population.Populus.SelectMany(b => b.Genes, (b, g) => new {b, g})
-                    .Where(t => t.g.Representation == allele.Representation)
-                    .Select(t => t.b);
-            var persons = ro as IList<IPerson> ?? ro.ToList();
-            
-            return persons.Count;
+               return _world.Population.Populus.SelectMany(b => b.Genes, (b, g) => new { b, g })
+                    .Where(t => (t.g.Representation == allele.Representation) && (t.g.FirstAlleleId == allele.Id || t.g.SecondAlleleId == allele.Id))
+                    .Select(t => t.b).ToList().Count;
         }
 
         /// <summary>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PopulationGenetics.Client"
         xmlns:Properties="clr-namespace:PopulationGenetics.Client.Properties" xmlns:Common="clr-namespace:PopulationGenetics.Common;assembly=PopulationGenetics.Common" x:Class="PopulationGenetics.Client.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="600" Width="555"
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
@@ -14,12 +14,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid x:Name="geneGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
-        <Label Width="100" Height="25" Margin="208,15.496,209,147" Grid.Row="1">Individual</Label>
         <StackPanel Grid.Row="1" Grid.Column="0">
             <Label Content="Individual" HorizontalAlignment="Center"></Label>
         </StackPanel>
