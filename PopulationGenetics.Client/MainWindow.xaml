@@ -10,10 +10,14 @@
     DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid x:Name="mainGrid">
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="geneGrid">
+        <Grid x:Name="toolbarGrid" Grid.Row="0">
+            
+        </Grid>
+        <Grid x:Name="geneGrid" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -30,13 +34,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         </Grid>
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="Individual" HorizontalAlignment="Center"></Label>
-        </StackPanel>
-        <StackPanel Grid.Row="1">
-            <Button x:Name="processTurn" Content="Process Turn" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="processTurn_Click"/>
-            <Button x:Name="cleanWorld" Content="Clean World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="cleanWorld_Click"/>
-            <Button x:Name="populateWorld" Content="Populate World" Width="100" Height="25" Grid.Row="1" HorizontalAlignment="Right" Margin="10" Click="populateWorld_Click" IsEnabled="False"/>
+        <StackPanel Grid.Row="2">
         </StackPanel>
     </Grid>
 </Window>

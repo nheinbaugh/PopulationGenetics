@@ -24,15 +24,35 @@ namespace PopulationGenetics.Client
     public partial class MainWindow : Window, IMainWindow
     {
         private IWorld _world;
-        public IWorld World { get { return _world; } set { _world = value; } }
+        public IWorld World => _world;
 
         public MainWindow(IWorld world)
         {
             _world = world;
             InitializeComponent();
+            CreateToolbar();
             world.CreateWorldControls(geneGrid);
             world.GeneBank.UpdateVisibleControls(geneGrid);
 
+        }
+
+        private void CreateToolbar()
+        {
+            
+            var tbt = new ToolBarTray();
+            var tb = new ToolBar();
+            tbt.ToolBars.Add(tb);
+            tbt.Height = 30;
+            var processTurn = new Button();
+            processTurn.Content = "Process Turn";
+            processTurn.Click += processTurn_Click;
+            var cleanWorld = new Button();
+            cleanWorld.Content = "Reset World";
+            cleanWorld.Click += cleanWorld_Click;
+
+            tb.Items.Add(processTurn);
+            tb.Items.Add(cleanWorld);
+            toolbarGrid.Children.Add(tbt);
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)
@@ -40,25 +60,9 @@ namespace PopulationGenetics.Client
             _world.CleanWorld(false);
             geneGrid.Children.Clear();
             _world.CreateWorldControls(geneGrid);
-            populateWorld.IsEnabled = true;
-            processTurn.IsEnabled = false;
-            cleanWorld.IsEnabled = false;
-
-        }
-
-        private void populateWorld_Click(object sender, RoutedEventArgs e)
-        {
-            if(_world.Population.Populus.Count> 0)
-            {
-                MessageBox.Show("Please clear the world before attempting to repopulate.");
-                return;
-            }
             _world.SeedWorld(10000);
             _world.CreateWorldControls(geneGrid);
             _world.GeneBank.UpdateVisibleControls(geneGrid);
-            processTurn.IsEnabled = true;
-            populateWorld.IsEnabled = false;
-            cleanWorld.IsEnabled = true;
         }
 
         private void processTurn_Click(object sender, RoutedEventArgs e)
