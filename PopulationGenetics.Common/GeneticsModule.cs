@@ -1,11 +1,6 @@
 ﻿using Ninject.Modules;
 using PopulationGenetics.Library;
 using PopulationGenetics.Library.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PopulationGenetics.Library.Interfaces;
 using PopulationGenetics.Library.Managers;
 using PopulationGenetics.WpfBindings;

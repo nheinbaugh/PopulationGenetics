@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Documents;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library

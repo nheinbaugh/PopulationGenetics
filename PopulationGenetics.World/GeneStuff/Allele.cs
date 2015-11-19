@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library

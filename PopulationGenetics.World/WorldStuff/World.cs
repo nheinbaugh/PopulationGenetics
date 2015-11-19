@@ -1,17 +1,14 @@
 ﻿using PopulationGenetics.Library.Factories;
 using PopulationGenetics.Library.SeedMaterial;
-using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 using PopulationGenetics.Library.Managers;
-using PopulationGenetics.WpfBindings;
 
 namespace PopulationGenetics.Library
 {

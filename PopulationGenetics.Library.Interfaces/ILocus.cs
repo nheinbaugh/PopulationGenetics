@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace PopulationGenetics.Library.Interfaces
 {
