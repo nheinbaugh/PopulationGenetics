@@ -6,7 +6,7 @@ public class LocusComboBox : ComboBox, ILocusComboBox
 {
     public LocusComboBox()
     {
-
+        SelectedIndex = 0;
     }
     protected override void OnSelectionChanged(SelectionChangedEventArgs e)
     {

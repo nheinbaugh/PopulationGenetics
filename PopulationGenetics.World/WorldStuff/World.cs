@@ -130,17 +130,14 @@ namespace PopulationGenetics.Library
         public List<StackPanel> CreateWorldControls(Grid targetGrid)
         {
             var rowCount = targetGrid.RowDefinitions.Count;
-            var args = new AlleleSelectionChangedEventArgs(targetGrid);
-            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, this);
-            ((ComboBox)lSelector.Children[1]).SelectedIndex = 0;
-            var parentSp = new StackPanel() { Orientation = Orientation.Vertical };
+            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, targetGrid, this);
             var spList = new List<StackPanel>
             {
                 lSelector,
-                _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", this),
-                _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", this),
-                _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", this),
-                _controlManager.CreateDataPair("age", "World Age", "Age", this)
+                _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", targetGrid, this),
+                _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", targetGrid, this),
+                _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", targetGrid, this),
+                _controlManager.CreateDataPair("age", "World Age", "Age", targetGrid, this)
             };
             for (int i = 0; i < spList.Count; i++)
             {
@@ -151,12 +148,9 @@ namespace PopulationGenetics.Library
                 }
                 Grid.SetColumn(current, 1);
                 Grid.SetRow(current, i);
-                targetGrid.Children.Add(current);
-                var bob= current.Children[1] as TextBox;
-                if (bob != null) fieldsToUpdate.Add(bob);
+                var currentTextBox= current.Children[1] as TextBox;
+                if (currentTextBox != null) fieldsToUpdate.Add(currentTextBox);
             }
-
-            targetGrid.ColumnDefinitions.Add(new ColumnDefinition {Width = GridLength.Auto});
             return spList;
         }
 

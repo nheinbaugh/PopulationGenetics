@@ -9,7 +9,7 @@ namespace PopulationGenetics.WpfBindings
     public class WpfControlManager : IControlManager
     {
 
-        public StackPanel CreateLocusSelector(IGeneBank registeredGenes, IWorld world)
+        public StackPanel CreateLocusSelector(IGeneBank registeredGenes, Grid parent, IWorld world)
         {
             var sp = new StackPanel
             {
@@ -34,6 +34,7 @@ namespace PopulationGenetics.WpfBindings
             };
             sp.Children.Add(label);
             sp.Children.Add(cb);
+            parent.Children.Add(sp);
             return sp;
         }
 
@@ -63,8 +64,8 @@ namespace PopulationGenetics.WpfBindings
             stackPanel.Children.Add(tb);
             return stackPanel;
         }
-
-        public StackPanel CreateDataPair(string controlName, string labelContent, string bindingPath, object source)
+        
+        public StackPanel CreateDataPair(string controlName, string labelContent, string bindingPath, Grid parent, object source)
         {
             var stackPanel = CreateDataPairBase(controlName, labelContent);
             var binding = new Binding
@@ -78,6 +79,7 @@ namespace PopulationGenetics.WpfBindings
             var tb = stackPanel.Children[1] as TextBox;
             tb?.SetBinding(TextBox.TextProperty, binding);
             stackPanel.HorizontalAlignment = HorizontalAlignment.Right;
+            parent.Children.Add(stackPanel);
             return stackPanel;
         }
 
