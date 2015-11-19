@@ -16,14 +16,13 @@ namespace PopulationGenetics.Library
 
         public int FitnessGain => _fitnessGain;
         public string Representation => _representation;
-        public List<Guid> Alleles { get { return _alleles; } }
-        public Guid FirstAlleleId  { get { return _firstAlleleId; } }
-        public Guid SecondAlleleId  { get { return _secondAlleleId; } }
+        public List<Guid> Alleles => _alleles;
+        public Guid FirstAlleleId => _firstAlleleId;
+        public Guid SecondAlleleId => _secondAlleleId;
         public Guid LocusId => _locusId;
 
         public Gene()
         {
-            
         }
 
         public Gene(IAllele firstAllele, IAllele secondAllele, Guid locusId)

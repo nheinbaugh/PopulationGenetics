@@ -16,8 +16,8 @@ namespace PopulationGenetics.Library.Managers
         private List<IAlleleControl> _controls;
         private List<IAllele> _dominantAlleles;
 
-        public List<IAllele> Alleles { get { return _alleles; } }
-        public List<IAlleleControl> Controls { get { return _controls; } }
+        public List<IAllele> Alleles => _alleles;
+        public List<IAlleleControl> Controls => _controls;
 
         public AlleleManager(IControlManager controlManager, IWorld world)
         {
