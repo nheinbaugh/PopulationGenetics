@@ -55,45 +55,54 @@ namespace PopulationGenetics.Library.Managers
 
         public IAllele GetAlleleById(Guid alleleId)
         {
-            IAllele bob;
-            _alleleMap.TryGetValue(alleleId, out bob);
-            return bob;
+            IAllele allele;
+            _alleleMap.TryGetValue(alleleId, out allele);
+            return allele;
         }
 
-        //TODO Refactor?
+        // Could this be async?
         public void UpdateVisibleControls(Grid targetGrid)
         {
-            var currentRow = 1;
             foreach (var locus in _loci)
             {
                 var controls = locus.AlleleManager.Controls;
                 if (!locus.isVisibleLocus)
                 {
-                    foreach (var control in controls)
-                    {
-                        control.StackPanel.Visibility = Visibility.Collapsed;
-                        targetGrid.Children.Add(control.StackPanel);
-
-                    }
+                    HideControls(targetGrid, controls);
                 }
                 else
                 {
-                    foreach (var control in controls)
-                    {
-                        control.UpdateControlValue();
-                        control.StackPanel.Visibility = Visibility.Visible;
-                        var totalRows = targetGrid.RowDefinitions.Count;
-                        if (currentRow >= totalRows)
-                        {
-                            var rd = new RowDefinition { Height = GridLength.Auto };
-                            targetGrid.RowDefinitions.Add(rd);
-                        }
-                        Grid.SetRow(control.StackPanel, currentRow);
-                        currentRow++;
-                        targetGrid.Children.Add(control.StackPanel);
-                    }
+                    ShowControls(targetGrid, controls);
                 }
 
+            }
+        }
+
+        private static void ShowControls(Grid targetGrid, List<IAlleleControl> controls)
+        {
+            foreach (var control in controls)
+            {
+                var currentRow = 1;
+                control.UpdateControlValue();
+                control.StackPanel.Visibility = Visibility.Visible;
+                var totalRows = targetGrid.RowDefinitions.Count;
+                if (currentRow >= totalRows)
+                {
+                    var rd = new RowDefinition { Height = GridLength.Auto };
+                    targetGrid.RowDefinitions.Add(rd);
+                }
+                Grid.SetRow(control.StackPanel, currentRow);
+                currentRow++;
+                targetGrid.Children.Add(control.StackPanel);
+            }
+        }
+
+        private static void HideControls(Grid targetGrid, List<IAlleleControl> controls)
+        {
+            foreach (var control in controls)
+            {
+                control.StackPanel.Visibility = Visibility.Collapsed;
+                targetGrid.Children.Add(control.StackPanel);
             }
         }
     }

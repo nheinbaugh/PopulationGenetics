@@ -42,7 +42,11 @@ namespace PopulationGenetics.Library.Managers
 
         public void CreateMultipleAlleles(IEnumerable<IAllele> alleles)
         {
-            _alleles.AddRange(alleles);
+            //TODO: We should only do the dominant allele check after all of the alleles are added.... I think
+            foreach (var allele in alleles)
+            {
+                CreateAllele(allele);
+            }
         }
 
         public void UpdateControls()
@@ -51,11 +55,6 @@ namespace PopulationGenetics.Library.Managers
             {
                 control.UpdateControlValue();
             }
-        }
-
-        public void GetAlleleControlByName()
-        {
-
         }
 
 
