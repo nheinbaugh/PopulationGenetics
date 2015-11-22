@@ -65,10 +65,11 @@ namespace PopulationGenetics.Library.Factories
             double current = 0;
             foreach (var allele in manager.Alleles)
             {
-                var max = (allele.DefaultFrequency * 1000) + current;
+                var allFreq = allele.DefaultFrequency * 1000;
+                var max = allFreq + current;
                 if (num <= max)
                     return allele;
-                current += max;
+                current += allFreq;
             }
             return manager.Alleles[0];
         }

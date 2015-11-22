@@ -80,9 +80,9 @@ namespace PopulationGenetics.Library.Managers
 
         private static void ShowControls(Grid targetGrid, List<IAlleleControl> controls)
         {
+            var currentRow = 1;
             foreach (var control in controls)
             {
-                var currentRow = 1;
                 control.UpdateControlValue();
                 control.StackPanel.Visibility = Visibility.Visible;
                 var totalRows = targetGrid.RowDefinitions.Count;

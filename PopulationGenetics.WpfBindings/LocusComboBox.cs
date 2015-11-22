@@ -10,7 +10,7 @@ public class LocusComboBox : ComboBox, ILocusComboBox
     }
     protected override void OnSelectionChanged(SelectionChangedEventArgs e)
     {
-        var tbb = this.FindName("geneGrid");
+        var tbb = FindName("geneGrid");
         UpdateVisibleLocus();
         if (tbb != null)
         {
@@ -31,9 +31,7 @@ public class LocusComboBox : ComboBox, ILocusComboBox
 
     private void UpdateVisibleControls(Grid targetGrid)
     {
-        var bob = FindName("MainWindow");
         var window = Application.Current.MainWindow as IMainWindow;
-        var currentRow = 1;
         foreach (var locus in window.World.GeneBank.Loci)
         {
             var controls = locus.AlleleManager.Controls;
@@ -46,13 +44,12 @@ public class LocusComboBox : ComboBox, ILocusComboBox
             }
             else
             {
+                var currentRow = 1;
                 foreach (var control in controls)
                 {
                     control.UpdateControlValue();
 
                     var totalRows = targetGrid.RowDefinitions.Count;
-                    control.StackPanel.HorizontalAlignment = HorizontalAlignment.Right;
-
                     Grid.SetColumn(control.StackPanel, 0);
                     if (currentRow >= totalRows)
                     {
@@ -62,7 +59,6 @@ public class LocusComboBox : ComboBox, ILocusComboBox
                     Grid.SetRow(control.StackPanel, currentRow);
                     currentRow++;
                     control.StackPanel.Visibility = Visibility.Visible;
-                    //targetGrid.Children.Add(control.StackPanel);
                 }
             }
         }
