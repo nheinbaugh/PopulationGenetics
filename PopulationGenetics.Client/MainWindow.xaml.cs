@@ -25,28 +25,8 @@ namespace PopulationGenetics.Client
 
         private void CreateRibbon()
         {
-            var ribbon = new Ribbon();
-            ribbon.MinHeight = 100;
-            var backstage = new Backstage();
-            ribbon.ToolBarItems.Add(backstage);
-           //mainGrid.Children.Add(ribbon);
-
-
-            //var group = new RibbonGroupBox();
-            //group.Header = "This is a group box";
-
-            //var processTurn = new Fluent.Button();
-            //processTurn.Content = "Process Turn";
-            //processTurn.Click += processTurn_Click;
-            //var cleanWorld = new Fluent.Button();
-            //cleanWorld.Content = "Reset World";
-            //cleanWorld.Click += cleanWorld_Click;
-            //group.Items.Add(processTurn);
-            //group.Items.Add(cleanWorld);
-            //mainTab.Groups.Add(group);
-
-
-
+            processTurn.Click += processTurn_Click;
+            resetWorld.Click += cleanWorld_Click;
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)
