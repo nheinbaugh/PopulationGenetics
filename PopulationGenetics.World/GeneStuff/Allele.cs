@@ -17,6 +17,7 @@ namespace PopulationGenetics.Library
 
         public Allele(string representation, bool isDominant, double defaultFreq = 0)
         {
+
             _defaultFrequency = defaultFreq;
             _representation = representation;
             _isDominant = isDominant;
