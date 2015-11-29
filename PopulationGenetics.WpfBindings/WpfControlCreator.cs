@@ -16,7 +16,7 @@ namespace PopulationGenetics.WpfBindings
                 Orientation = Orientation.Horizontal,
                 HorizontalAlignment = HorizontalAlignment.Right,
                 VerticalAlignment = VerticalAlignment.Center,
-                Name = "locusSelector",
+                Name = "locusSelector"
             };
             sp.Margin = new Thickness(0, 5, 5, 0);
             var label = new Label
@@ -45,6 +45,8 @@ namespace PopulationGenetics.WpfBindings
                 HorizontalAlignment = HorizontalAlignment.Right,
                 Orientation = Orientation.Horizontal,
                 Name = controlName + "Box",
+                MinHeight = 26,
+                MaxHeight = 26
             };
             var label = new Label
             {

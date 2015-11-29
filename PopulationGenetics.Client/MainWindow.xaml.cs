@@ -1,13 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
+using Fluent;
 
 namespace PopulationGenetics.Client
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IMainWindow
+    public partial class MainWindow : RibbonWindow, IMainWindow
     {
         private IWorld _world;
         public IWorld World => _world;
@@ -16,29 +17,16 @@ namespace PopulationGenetics.Client
         {
             _world = world;
             InitializeComponent();
-            CreateToolbar();
+            CreateRibbon();
             world.CreateWorldControls(geneGrid);
             world.GeneBank.UpdateVisibleControls(geneGrid);
 
         }
 
-        private void CreateToolbar()
+        private void CreateRibbon()
         {
-            
-            var tbt = new ToolBarTray();
-            var tb = new ToolBar();
-            tbt.ToolBars.Add(tb);
-            tbt.Height = 30;
-            var processTurn = new Button();
-            processTurn.Content = "Process Turn";
             processTurn.Click += processTurn_Click;
-            var cleanWorld = new Button();
-            cleanWorld.Content = "Reset World";
-            cleanWorld.Click += cleanWorld_Click;
-
-            tb.Items.Add(processTurn);
-            tb.Items.Add(cleanWorld);
-            toolbarGrid.Children.Add(tbt);
+            resetWorld.Click += cleanWorld_Click;
         }
 
         private void cleanWorld_Click(object sender, RoutedEventArgs e)
