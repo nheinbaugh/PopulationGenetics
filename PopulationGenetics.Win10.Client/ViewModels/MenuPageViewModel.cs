@@ -15,11 +15,11 @@ namespace PopulationGenetics.Win10.Client.ViewModels
 
         public void StartSim_Click()
         {
-            NavigationService.Navigate(typeof(Views.DetailPage), "We Came from the start sim button");
+            NavigationService.Navigate(typeof(Views.MainPage), "We Came from the start sim button");
         }
         public void EditGenes_Click()
         {
-            NavigationService.Navigate(typeof(Views.DetailPage), "We Came from the edit genes button");
+            NavigationService.Navigate(typeof(Views.EditGenesPage));
         }
     }
 }

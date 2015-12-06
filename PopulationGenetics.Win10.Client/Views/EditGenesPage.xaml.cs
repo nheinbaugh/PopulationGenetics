@@ -4,13 +4,14 @@ using Windows.UI.Xaml.Controls;
 
 namespace PopulationGenetics.Win10.Client.Views
 {
-    public sealed partial class MenuPage : Page
+    public sealed partial class EditGenesPage : Page
     {
-        public MenuPageViewModel ViewModel => DataContext as MenuPageViewModel;
-        public MenuPage()
+        public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
+        public EditGenesPage()
         {
             InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Disabled;
         }
+
     }
 }
