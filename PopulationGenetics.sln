@@ -26,6 +26,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows10Client", "Windows1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Win10.Client", "PopulationGenetics.Win10.Client\PopulationGenetics.Win10.Client.csproj", "{7F892A65-A623-48AE-8F1B-DB9748C48A85}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F458A76B-5571-4D59-BF47-81A63511FAC4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.WebApi", "PopulationGenetics.WebApi\PopulationGenetics.WebApi.xproj", "{A5D8D2C2-D6F4-4987-BCFF-72061619A208}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +158,22 @@ Global
 		{7F892A65-A623-48AE-8F1B-DB9748C48A85}.Release|x86.ActiveCfg = Release|x86
 		{7F892A65-A623-48AE-8F1B-DB9748C48A85}.Release|x86.Build.0 = Release|x86
 		{7F892A65-A623-48AE-8F1B-DB9748C48A85}.Release|x86.Deploy.0 = Release|x86
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|x64.Build.0 = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Debug|x86.Build.0 = Debug|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|ARM.Build.0 = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x64.Build.0 = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,5 +181,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A6E18976-5E28-494E-82A1-BEF348BAC3F3} = {A726ECE0-7316-4368-A9E2-587CE7AC23F2}
 		{7F892A65-A623-48AE-8F1B-DB9748C48A85} = {054F1A3D-1C14-4A50-9C64-4FCFF06DFD19}
+		{A5D8D2C2-D6F4-4987-BCFF-72061619A208} = {F458A76B-5571-4D59-BF47-81A63511FAC4}
 	EndGlobalSection
 EndGlobal

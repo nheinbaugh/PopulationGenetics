@@ -46,6 +46,14 @@ namespace PopulationGenetics.Library
             _population?.UpdatePopulus();
         }
 
+        public World(IPopulation pop, IPersonFactory pf, IRandomGenerator random)
+        {
+            _population = pop;
+            _personFactory = pf;
+            _random = random;
+            SeedWorld(1001);
+        }
+
 
         public World(int seedSize)
         {
@@ -53,7 +61,7 @@ namespace PopulationGenetics.Library
         }
 
         /// <summary>
-        /// Seed a world with a populatin
+        /// Seed a world with a population
         /// </summary>
         /// <param name="seedSize">Number of individuals to create for the new world</param>
         public void SeedWorld(int seedSize)
