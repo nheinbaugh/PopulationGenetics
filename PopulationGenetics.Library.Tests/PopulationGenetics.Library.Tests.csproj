@@ -55,13 +55,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj">
+    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.Legacy.csproj">
       <Project>{2892F596-4D67-46E1-B973-9C12F680F8AE}</Project>
-      <Name>PopulationGenetics.Library.Interfaces</Name>
+      <Name>PopulationGenetics.Library.Interfaces.Legacy</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.csproj">
+    <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.Legacy.csproj">
       <Project>{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}</Project>
-      <Name>PopulationGenetics.Library</Name>
+      <Name>PopulationGenetics.Library.Legacy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

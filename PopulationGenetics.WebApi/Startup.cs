@@ -7,6 +7,10 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PopulationGenetics.Library.Interfaces;
+using PopulationGenetics.Library;
+using PopulationGenetics.Library.Factories;
+using PopulationGenetics.Library.Managers;
 
 namespace PopulationGenetics.WebApi
 {
@@ -35,6 +39,16 @@ namespace PopulationGenetics.WebApi
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddSingleton<IWorld, World>();
+            services.AddTransient<IPopulation, Population>();
+            services.AddTransient<IMortalityCurve, MortalityCurve>();
+            services.AddTransient<IPersonFactory, PersonFactory>();
+            services.AddTransient<IGeneBank, GeneBank>();
+            services.AddTransient<IAlleleManager, AlleleManager>();
+            services.AddTransient<IRandomGenerator, TrulyRandomGenerator>();
+            services.AddTransient<IAllele, Allele>();
+            services.AddTransient<IGene, Gene>();
+            services.AddTransient<IPerson, Person>();
 
             services.AddMvc();
         }

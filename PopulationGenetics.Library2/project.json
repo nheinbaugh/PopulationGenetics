@@ -1,0 +1,43 @@
+﻿{
+  "authors": [ "nickh" ],
+  "dependencies": {
+    "PopulationGenetics.Library.Interfaces.New": "1.0.0-*",
+    "System.Collections.Concurrent": "4.0.10-beta-22416",
+    "System.Threading.Tasks.Parallel": "4.0.1-beta-23516",
+    "Microsoft.CSharp": "4.0.1-beta-23516",
+    "System.Collections": "4.0.11-beta-23516",
+    "System.Linq": "4.0.1-beta-23516",
+    "System.Runtime": "4.0.21-beta-23516",
+    "System.Threading": "4.0.11-beta-23516",
+    "System.Linq.Queryable": "4.0.0"
+  },
+  "description": "PopulationGenetics.Library2 Class Library",
+  "frameworks": {
+    "dnxcore5": {
+      "dependencies": {
+        "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
+        "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225",
+        "System.Security.Cryptography.RandomNumberGenerator": "4.0.0-beta-23225"
+      }
+    },
+    "net451": {
+      "dependencies": {
+      },
+      "frameworkAssemblies": {
+        "PresentationCore": "4.0.0.0",
+        "PresentationFramework": "4.0.0.0",
+        "WindowsBase": "4.0.0.0"
+      }
+    },
+    "dotnet5.4": {
+      "dependencies": {
+        "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
+        "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+      }
+    }
+  },
+  "licenseUrl": "",
+  "projectUrl": "",
+  "tags": [ "" ],
+  "version": "1.0.0-*"
+}

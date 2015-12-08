@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using PopulationGenetics.Library.Interfaces;
-using PopulationGenetics.WpfBindings;
 
 namespace PopulationGenetics.Library.Managers
 {
@@ -11,7 +10,6 @@ namespace PopulationGenetics.Library.Managers
     public class AlleleManager : IAlleleManager
     {
         private List<IAllele> _alleles;
-        private IControlManager _controlManager;
         private IWorld _world;
         private List<IAlleleControl> _controls;
         private List<IAllele> _dominantAlleles;
@@ -26,14 +24,6 @@ namespace PopulationGenetics.Library.Managers
             _world = world;
             _dominantAlleles = new List<IAllele>();
         }
-        public AlleleManager(IControlManager controlManager, IWorld world)
-        {
-            _controls = new List<IAlleleControl>();
-            _controlManager = controlManager;
-            _alleles = new List<IAllele>();
-            _world = world;
-            _dominantAlleles = new List<IAllele>();
-        }
 
         public AlleleManager(List<IAllele> alleles)
         {
@@ -43,7 +33,6 @@ namespace PopulationGenetics.Library.Managers
         public void CreateAllele(IAllele allele)
         {
             _alleles.Add(allele);
-            //CreateAlleleControls(allele);
             if (allele.IsDominant) _dominantAlleles.Add(allele);
         }
 
@@ -67,35 +56,35 @@ namespace PopulationGenetics.Library.Managers
 
         private void CreateAlleleControls(IAllele allele)
         {
-            if (allele.IsDominant) CreateCoDominantControls(allele);
+            //if (allele.IsDominant) CreateCoDominantControls(allele);
             //CreateControl(allele, allele.Representation);
         }
 
-        private void CreateCoDominantControls(IAllele allele)
-        {
-            foreach (var all in _dominantAlleles)
-            {
-                var rep = GeneRepresentationBuilder.CreateName(all.Representation, allele.Representation);
-                var func = new Func<object, int>(CoDominantPopulation);
-                var cdAll = new Allele(rep, false);
-                var sp = _controlManager.CreateCoDominantPairLinq(rep, rep + " Population" + " Populus",
-                 func, new ValueConverter());
-                var control = new AlleleControl(cdAll, sp, func, true);
-                control.UpdateControlValue();
-                _controls.Add(control);
-            }
+        //private void CreateCoDominantControls(IAllele allele)
+        //{
+        //    foreach (var all in _dominantAlleles)
+        //    {
+        //        var rep = GeneRepresentationBuilder.CreateName(all.Representation, allele.Representation);
+        //        var func = new Func<object, int>(CoDominantPopulation);
+        //        var cdAll = new Allele(rep, false);
+        //        var sp = _controlManager.CreateCoDominantPairLinq(rep, rep + " Population" + " Populus",
+        //         func, new ValueConverter());
+        //        var control = new AlleleControl(cdAll, sp, func, true);
+        //        control.UpdateControlValue();
+        //        _controls.Add(control);
+        //    }
             
-        }
+        //}
 
-        private void CreateControl(IAllele allele, string representation)
-        {
-            var func = new Func<object, int>(AllelePopulation);
-            var sp = _controlManager.CreateDataPairLinq(representation, representation + " Population" + " Populus",
-                 func, new ValueConverter(), allele);
+        //private void CreateControl(IAllele allele, string representation)
+        //{
+        //    var func = new Func<object, int>(AllelePopulation);
+        //    var sp = _controlManager.CreateDataPairLinq(representation, representation + " Population" + " Populus",
+        //         func, new ValueConverter(), allele);
 
-            var control = new AlleleControl(allele, sp, func);
-            _controls.Add(control);
-        }
+        //    var control = new AlleleControl(allele, sp, func);
+        //    _controls.Add(control);
+        //}
 
         /// <summary>
         /// Default query to determine the number of the population with a given allele representation

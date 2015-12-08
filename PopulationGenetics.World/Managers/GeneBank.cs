@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 
 namespace PopulationGenetics.Library.Managers
-{
+{//TODO: Strip the reference to the control manager from this, we don't use it!
     /// <summary>
     /// The GeneBank class contains the representation of every locus that has been introduced into the population. 
     /// Each locus will have all alleles that are registered to it. 
@@ -19,6 +19,12 @@ namespace PopulationGenetics.Library.Managers
 
         public List<ILocus> Loci => _loci;
 
+        public GeneBank(IWorld world)
+        {
+            _world = world;
+            _loci = new List<ILocus>();
+            _alleleMap = new Dictionary<Guid, IAllele>();
+        }
         public GeneBank(IControlManager controlManager, IWorld world)
         {
             _world = world;

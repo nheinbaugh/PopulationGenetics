@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using PopulationGenetics.Library.Interfaces;
 using PopulationGenetics.Library.Managers;
 
@@ -18,10 +17,8 @@ namespace PopulationGenetics.Library
         private readonly IGeneBank _registeredGenes;
         private readonly IPersonFactory _personFactory;
         private int _age;
-        private readonly IControlManager _controlManager;
         private IMortalityCurve _mortalityCurve;
         private IRandomGenerator _random;
-        private List<TextBox> fieldsToUpdate = new List<TextBox>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,26 +29,24 @@ namespace PopulationGenetics.Library
         public IMortalityCurve MortalityCurve => _mortalityCurve;
 
 
-        public World(IPopulation pop, IPersonFactory pf, IControlManager controlManager, IMortalityCurve mortalityCurve, IRandomGenerator random)
+        public World(IPopulation pop, IPersonFactory pf, IMortalityCurve mortalityCurve, IRandomGenerator random)
         {
             if (pop?.Populus?.Count > 0) pop.Populus.Clear();
             _random = random;
             _population = pop;
-            _registeredGenes = new GeneBank(controlManager, this);
+            _registeredGenes = new GeneBank(this);
             _personFactory = pf;
             _mortalityCurve = mortalityCurve;
-            _controlManager = controlManager;
-            WorldSeeds.BaseGenes(_registeredGenes, controlManager, this);
+            WorldSeeds.BaseGenes(_registeredGenes, this);
             SeedWorld(1000);
             _population?.UpdatePopulus();
         }
 
-        public World(IPopulation pop, IPersonFactory pf, IRandomGenerator random, IControlManager cm, IMortalityCurve mc)
+        public World(IPopulation pop, IPersonFactory pf, IRandomGenerator random, IMortalityCurve mc)
         {
-            _controlManager = cm;
             _mortalityCurve = mc;
             _registeredGenes = new GeneBank(this);
-            WorldSeeds.BaseGenes(_registeredGenes, _controlManager, this);
+            WorldSeeds.BaseGenes(_registeredGenes, this);
             _population = pop;
             _personFactory = pf;
             _random = random;
@@ -75,11 +70,6 @@ namespace PopulationGenetics.Library
 
         public void ProcessTurn()
         {
-            for (int i = 0; i < fieldsToUpdate.Count; i++)
-            {
-                var sender = fieldsToUpdate[i];
-                sender.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-            }
             _age++;
             CullPopulation();
             ProcessBreeding();
@@ -139,32 +129,32 @@ namespace PopulationGenetics.Library
             }
         }
 
-        public List<StackPanel> CreateWorldControls(Grid targetGrid)
-        {
-            var rowCount = targetGrid.RowDefinitions.Count;
-            var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, targetGrid, this);
-            var spList = new List<StackPanel>
-            {
-                lSelector,
-                _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", targetGrid, this),
-                _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", targetGrid, this),
-                _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", targetGrid, this),
-                _controlManager.CreateDataPair("age", "World Age", "Age", targetGrid, this)
-            };
-            for (int i = 0; i < spList.Count; i++)
-            {
-                var current = spList[i];
-                if (i >= rowCount)
-                {
-                    targetGrid.RowDefinitions.Add(new RowDefinition());
-                }
-                Grid.SetColumn(current, 1);
-                Grid.SetRow(current, i);
-                var currentTextBox= current.Children[1] as TextBox;
-                if (currentTextBox != null) fieldsToUpdate.Add(currentTextBox);
-            }
-            return spList;
-        }
+        //public List<StackPanel> CreateWorldControls(Grid targetGrid)
+        //{
+        //    var rowCount = targetGrid.RowDefinitions.Count;
+        //    var lSelector = _controlManager.CreateLocusSelector(_registeredGenes, targetGrid, this);
+        //    var spList = new List<StackPanel>
+        //    {
+        //        lSelector,
+        //        _controlManager.CreateDataPair("pop", "Populus", "Population.PopulationSize", targetGrid, this),
+        //        _controlManager.CreateDataPair("male", "Eligible Males", "Population.Males", targetGrid, this),
+        //        _controlManager.CreateDataPair("female", "Eligible Females", "Population.Females", targetGrid, this),
+        //        _controlManager.CreateDataPair("age", "World Age", "Age", targetGrid, this)
+        //    };
+        //    for (int i = 0; i < spList.Count; i++)
+        //    {
+        //        var current = spList[i];
+        //        if (i >= rowCount)
+        //        {
+        //            targetGrid.RowDefinitions.Add(new RowDefinition());
+        //        }
+        //        Grid.SetColumn(current, 1);
+        //        Grid.SetRow(current, i);
+        //        var currentTextBox= current.Children[1] as TextBox;
+        //        if (currentTextBox != null) fieldsToUpdate.Add(currentTextBox);
+        //    }
+        //    return spList;
+        //}
 
         protected void NotifyPropertyChanged(string propertyName)
         {

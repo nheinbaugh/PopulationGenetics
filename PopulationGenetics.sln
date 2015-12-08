@@ -5,13 +5,13 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Client", "PopulationGenetics.Client\PopulationGenetics.Client.csproj", "{BA804C81-B87A-4D78-85FF-FAA718D3613C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library", "PopulationGenetics.World\PopulationGenetics.Library.csproj", "{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Legacy", "PopulationGenetics.World\PopulationGenetics.Library.Legacy.csproj", "{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Common", "PopulationGenetics.Common\PopulationGenetics.Common.csproj", "{2BF28322-72BC-4101-963D-16F5AEB2B707}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Common.Legacy", "PopulationGenetics.Common\PopulationGenetics.Common.Legacy.csproj", "{2BF28322-72BC-4101-963D-16F5AEB2B707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.WpfBindings", "PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.csproj", "{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.WpfBindings.Legacy", "PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.Legacy.csproj", "{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Interfaces", "PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj", "{2892F596-4D67-46E1-B973-9C12F680F8AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Interfaces.Legacy", "PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.Legacy.csproj", "{2892F596-4D67-46E1-B973-9C12F680F8AE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53F12E73-74BC-49B7-81BC-EEE9961AE7DF}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +29,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F458A76B-5571-4D59-BF47-81A63511FAC4}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.WebApi", "PopulationGenetics.WebApi\PopulationGenetics.WebApi.xproj", "{A5D8D2C2-D6F4-4987-BCFF-72061619A208}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library", "PopulationGenetics.Library2\PopulationGenetics.Library.xproj", "{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Common", "PopulationGenetics.Common.New\PopulationGenetics.Common.xproj", "{247190D0-E874-42AE-8B63-0AE7F725E319}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{129E0432-8361-4842-800D-CD8A4987C439}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library.Interfaces", "PopulationGenetics.Library.Interfaces.New\PopulationGenetics.Library.Interfaces.xproj", "{A681B961-3AEF-4E53-A254-89F6F69A4A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,11 +182,63 @@ Global
 		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x64.Build.0 = Release|Any CPU
 		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5D8D2C2-D6F4-4987-BCFF-72061619A208}.Release|x86.Build.0 = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|x64.Build.0 = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Debug|x86.Build.0 = Debug|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|ARM.Build.0 = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|x64.ActiveCfg = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|x64.Build.0 = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|x86.ActiveCfg = Release|Any CPU
+		{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}.Release|x86.Build.0 = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|ARM.Build.0 = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|x64.Build.0 = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Debug|x86.Build.0 = Debug|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|ARM.ActiveCfg = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|ARM.Build.0 = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|x64.ActiveCfg = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|x64.Build.0 = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|x86.ActiveCfg = Release|Any CPU
+		{247190D0-E874-42AE-8B63-0AE7F725E319}.Release|x86.Build.0 = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|x64.Build.0 = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Debug|x86.Build.0 = Debug|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|ARM.Build.0 = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|x64.ActiveCfg = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|x64.Build.0 = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|x86.ActiveCfg = Release|Any CPU
+		{A681B961-3AEF-4E53-A254-89F6F69A4A74}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B} = {129E0432-8361-4842-800D-CD8A4987C439}
+		{2BF28322-72BC-4101-963D-16F5AEB2B707} = {129E0432-8361-4842-800D-CD8A4987C439}
+		{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0} = {129E0432-8361-4842-800D-CD8A4987C439}
+		{2892F596-4D67-46E1-B973-9C12F680F8AE} = {129E0432-8361-4842-800D-CD8A4987C439}
 		{A6E18976-5E28-494E-82A1-BEF348BAC3F3} = {A726ECE0-7316-4368-A9E2-587CE7AC23F2}
 		{7F892A65-A623-48AE-8F1B-DB9748C48A85} = {054F1A3D-1C14-4A50-9C64-4FCFF06DFD19}
 		{A5D8D2C2-D6F4-4987-BCFF-72061619A208} = {F458A76B-5571-4D59-BF47-81A63511FAC4}

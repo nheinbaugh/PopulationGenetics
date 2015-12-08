@@ -112,17 +112,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PopulationGenetics.Common\PopulationGenetics.Common.csproj">
+    <ProjectReference Include="..\PopulationGenetics.Common\PopulationGenetics.Common.Legacy.csproj">
       <Project>{2bf28322-72bc-4101-963d-16f5aeb2b707}</Project>
-      <Name>PopulationGenetics.Common</Name>
+      <Name>PopulationGenetics.Common.Legacy</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj">
+    <ProjectReference Include="..\PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.Legacy.csproj">
       <Project>{2892F596-4D67-46E1-B973-9C12F680F8AE}</Project>
-      <Name>PopulationGenetics.Library.Interfaces</Name>
+      <Name>PopulationGenetics.Library.Interfaces.Legacy</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.csproj">
+    <ProjectReference Include="..\PopulationGenetics.World\PopulationGenetics.Library.Legacy.csproj">
       <Project>{e91c3cc1-0a63-4e6a-a8fd-9faf06ccee4b}</Project>
-      <Name>PopulationGenetics.Library</Name>
+      <Name>PopulationGenetics.Library.Legacy</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

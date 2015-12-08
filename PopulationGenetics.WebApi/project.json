@@ -22,6 +22,11 @@
   },
 
   "frameworks": {
+    "dnxcore5": {
+      "dependencies": {
+        "PopulationGenetics.Library": "1.0.0-*"
+      }
+    },
     "dnx451": {
       "dependencies": {
         "PopulationGenetics.Library": "1.0.0-*"
