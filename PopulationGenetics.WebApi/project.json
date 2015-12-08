@@ -10,11 +10,13 @@
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
     "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.FileProviderExtensions" : "1.0.0-rc1-final",
+    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final"
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
+    "PopulationGenetics.Library.Interfaces.New": "1.0.0-*",
+    "PopulationGenetics.Library2": "1.0.0-*"
   },
 
   "commands": {
@@ -24,12 +26,11 @@
   "frameworks": {
     "dnxcore5": {
       "dependencies": {
-        "PopulationGenetics.Library": "1.0.0-*"
       }
     },
     "dnx451": {
       "dependencies": {
-        "PopulationGenetics.Library": "1.0.0-*"
+        
       }
     }
   },

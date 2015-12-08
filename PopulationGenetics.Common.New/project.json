@@ -15,16 +15,11 @@
     "System.Threading": "4.0.11-beta-23516"
   },
   "frameworks": {
-    "dnxcore5": {"dependencies": {}},
     "net451": {
       "dependencies": {
         "Ninject": "3.2.2"
       }
-    },
-    "dotnet5.4": {
-      "dependencies": {
 
-      }
     }
   }
 }

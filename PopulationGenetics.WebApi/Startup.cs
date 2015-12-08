@@ -7,9 +7,9 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using PopulationGenetics.Library.Interfaces;
-using PopulationGenetics.Library;
 using PopulationGenetics.Library.Factories;
+using PopulationGenetics.Library;
+using PopulationGenetics.Library.Interfaces;
 using PopulationGenetics.Library.Managers;
 
 namespace PopulationGenetics.WebApi

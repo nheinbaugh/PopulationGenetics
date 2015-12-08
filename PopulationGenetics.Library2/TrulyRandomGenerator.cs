@@ -2,37 +2,50 @@
 using PopulationGenetics.Library.Interfaces;
 using System.Security.Cryptography;
 
+
 namespace PopulationGenetics.Library
 {
-
-    public class TrulyRandomGenerator : IRandomGenerator
+public class TrulyRandomGenerator : RandomNumberGenerator, IRandomGenerator
     {
-        Random rando;
+        RandomNumberGenerator r;
 
         public TrulyRandomGenerator()
         {
-            CreateRandom();
+            r = RandomNumberGenerator.Create();
         }
 
-        private void CreateRandom()
-        {
-            var rng = new RandomNumberGenerator();
-            byte[] buffer = new byte[4];
-
-            rng.GetBytes(buffer);
-            int result = BitConverter.ToInt32(buffer, 0);
-
-            rando = new Random(result);
-        }
         private double Generator(int max)
         {
-            var res = rando.Next(max);
-            if(res == 0)
-            {
-                CreateRandom();
-                return Generator(max);
-            }
-            return res;
+            return Next(0, max);
+        }
+
+        ///<summary>
+        /// Fills the elements of a specified array of bytes with random numbers.
+        ///</summary>
+        ///<param name=”buffer”>An array of bytes to contain random numbers.</param>
+        public override void GetBytes(byte[] buffer)
+        {
+            r.GetBytes(buffer);
+        }
+
+        ///<summary>
+        /// Returns a random number within the specified range.
+        ///</summary>
+        ///<param name=”minValue”>The inclusive lower bound of the random number returned.</param>
+        ///<param name=”maxValue”>The exclusive upper bound of the random number returned. maxValue must be greater than or equal to minValue.</param>
+        public int Next(int minValue, int maxValue)
+        {
+            return (int)Math.Round(NextDouble() * (maxValue - minValue - 1)) + minValue;
+        }
+
+        ///<summary>
+        /// Returns a random number between 0.0 and 1.0.
+        ///</summary>
+        public double NextDouble()
+        {
+            byte[] b = new byte[4];
+            r.GetBytes(b);
+            return (double)BitConverter.ToUInt32(b, 0) / UInt32.MaxValue;
         }
 
         public double DoubleGenerator(int max)

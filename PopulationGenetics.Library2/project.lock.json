@@ -496,8 +496,6 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Collections.Concurrent": "4.0.10-beta-22416",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
@@ -505,28 +503,6 @@
         "frameworkAssemblies": [
           "WindowsBase"
         ]
-      },
-      "System.Collections/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Collections.Concurrent/4.0.10-beta-22416": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0-beta-22416",
-          "System.Threading.Tasks": "4.0.0-beta-22416"
-        },
-        "compile": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
-        }
       },
       "System.Linq/4.0.1-beta-23516": {
         "type": "package",
@@ -556,15 +532,6 @@
         }
       },
       "System.Threading/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Threading.Tasks/4.0.0-beta-23019": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -1961,8 +1928,6 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Collections.Concurrent": "4.0.10-beta-22416",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
@@ -1975,28 +1940,6 @@
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
-        }
-      },
-      "System.Collections/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Collections.Concurrent/4.0.10-beta-22416": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0-beta-22416",
-          "System.Threading.Tasks": "4.0.0-beta-22416"
-        },
-        "compile": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
         }
       },
       "System.Linq/4.0.1-beta-23516": {
@@ -2027,15 +1970,6 @@
         }
       },
       "System.Threading/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Threading.Tasks/4.0.0-beta-23019": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -2072,8 +2006,6 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Collections.Concurrent": "4.0.10-beta-22416",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
@@ -2086,28 +2018,6 @@
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
-        }
-      },
-      "System.Collections/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Collections.Concurrent/4.0.10-beta-22416": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0-beta-22416",
-          "System.Threading.Tasks": "4.0.0-beta-22416"
-        },
-        "compile": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
-        },
-        "runtime": {
-          "lib/net45/System.Collections.Concurrent.dll": {}
         }
       },
       "System.Linq/4.0.1-beta-23516": {
@@ -2138,15 +2048,6 @@
         }
       },
       "System.Threading/4.0.11-beta-23516": {
-        "type": "package",
-        "compile": {
-          "ref/net45/_._": {}
-        },
-        "runtime": {
-          "lib/net45/_._": {}
-        }
-      },
-      "System.Threading.Tasks/4.0.0-beta-23019": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -4119,22 +4020,6 @@
         "System.Threading.nuspec"
       ]
     },
-    "System.Threading.Tasks/4.0.0-beta-23019": {
-      "type": "package",
-      "sha512": "y3+puoROfucGrjJkHwvSu0BsoBvFFzFWnJvTbQnM20qgKZsH8NMPTUBEOHa/gNilkc8fTGsM7sX3Iug/QiM0Xg==",
-      "files": [
-        "lib/net45/_._",
-        "lib/win8/_._",
-        "License.rtf",
-        "ref/dotnet/System.Threading.Tasks.dll",
-        "ref/net45/_._",
-        "ref/netcore50/System.Threading.Tasks.dll",
-        "ref/win8/_._",
-        "System.Threading.Tasks.4.0.0-beta-23019.nupkg",
-        "System.Threading.Tasks.4.0.0-beta-23019.nupkg.sha512",
-        "System.Threading.Tasks.nuspec"
-      ]
-    },
     "System.Threading.Tasks/4.0.10": {
       "type": "package",
       "serviceable": true,
@@ -4213,16 +4098,16 @@
   "projectFileDependencyGroups": {
     "": [
       "PopulationGenetics.Library.Interfaces.New >= 1.0.0-*",
-      "System.Collections.Concurrent >= 4.0.10-beta-22416",
       "System.Threading.Tasks.Parallel >= 4.0.1-beta-23516",
       "Microsoft.CSharp >= 4.0.1-beta-23516",
-      "System.Collections >= 4.0.11-beta-23516",
       "System.Linq >= 4.0.1-beta-23516",
       "System.Runtime >= 4.0.21-beta-23516",
       "System.Threading >= 4.0.11-beta-23516",
       "System.Linq.Queryable >= 4.0.0"
     ],
     "DNXCore,Version=v5.0": [
+      "System.Collections >= 4.0.11-beta-23516",
+      "System.Collections.Concurrent >= 4.0.10-beta-22416",
       "System.Runtime.Serialization.Primitives >= 4.0.11-beta-23409",
       "System.Security.Cryptography.Algorithms >= 4.0.0-beta-23225",
       "System.Security.Cryptography.RandomNumberGenerator >= 4.0.0-beta-23225"
@@ -4233,6 +4118,8 @@
       "fx/WindowsBase >= 4.0.0"
     ],
     ".NETPlatform,Version=v5.4": [
+      "System.Collections >= 4.0.11-beta-23516",
+      "System.Collections.Concurrent >= 4.0.10-beta-22416",
       "System.Runtime.Serialization.Primitives >= 4.0.11-beta-23409",
       "System.Security.Cryptography.Algorithms >= 4.0.0-beta-23225"
     ]

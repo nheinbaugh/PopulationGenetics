@@ -27,6 +27,7 @@ namespace PopulationGenetics.Library
 
         public Gene(IAllele firstAllele, IAllele secondAllele, Guid locusId)
         {
+            _fitnessGain = 1;
             _locusId = locusId;
             this._firstAlleleId = firstAllele.Id;
             this._secondAlleleId = secondAllele.Id;

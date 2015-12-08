@@ -1315,8 +1315,35 @@
           "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
-        "type": "project"
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
+      "PopulationGenetics.Library2/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225",
+          "System.Security.Cryptography.RandomNumberGenerator": "4.0.0-beta-23225",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        }
       },
       "System.AppContext/4.0.0": {
         "type": "package",
@@ -1679,6 +1706,24 @@
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Linq.Queryable/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
+        }
+      },
       "System.Net.Http/4.0.0-beta-22816": {
         "type": "package",
         "dependencies": {
@@ -1984,6 +2029,19 @@
           "lib/DNXCore50/System.Runtime.Loader.dll": {}
         }
       },
+      "System.Runtime.Serialization.Primitives/4.0.11-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        }
+      },
       "System.Security.Claims/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -2039,6 +2097,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.Security.Cryptography.Primitives.dll": {}
+        }
+      },
+      "System.Security.Cryptography.RandomNumberGenerator/4.0.0-beta-23225": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.0.0",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+        },
+        "compile": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
         }
       },
       "System.Security.Cryptography.X509Certificates/4.0.0-beta-23516": {
@@ -3112,6 +3183,18 @@
           "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
         }
       },
+      "Microsoft.CSharp/4.0.1-beta-23516": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -3659,24 +3742,36 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0",
-          "PopulationGenetics.WpfBindings": "1.0.0"
-        }
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ]
       },
-      "PopulationGenetics.Library.Interfaces/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
-      },
-      "PopulationGenetics.WpfBindings/1.0.0": {
+      "PopulationGenetics.Library2/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0"
-        }
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "WindowsBase"
+        ]
       },
       "System.Collections/4.0.0": {
         "type": "package",
@@ -3756,7 +3851,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Linq/4.0.0": {
+      "System.Linq/4.0.1-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Queryable/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -3835,7 +3939,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.0.0": {
+      "System.Runtime/4.0.21-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -3880,7 +3984,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading/4.0.0": {
+      "System.Threading/4.0.11-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Parallel/4.0.1-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -5206,8 +5319,35 @@
           "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
-        "type": "project"
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
+      "PopulationGenetics.Library2/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225",
+          "System.Security.Cryptography.RandomNumberGenerator": "4.0.0-beta-23225",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        }
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
         "type": "package",
@@ -5870,6 +6010,24 @@
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Linq.Queryable/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
+        }
+      },
       "System.Net.Http/4.0.0-beta-22816": {
         "type": "package",
         "dependencies": {
@@ -6222,6 +6380,19 @@
           "lib/dotnet/System.Runtime.Numerics.dll": {}
         }
       },
+      "System.Runtime.Serialization.Primitives/4.0.11-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        }
+      },
       "System.Security.Claims/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -6320,6 +6491,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.Security.Cryptography.Primitives.dll": {}
+        }
+      },
+      "System.Security.Cryptography.RandomNumberGenerator/4.0.0-beta-23225": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.0.0",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+        },
+        "compile": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
         }
       },
       "System.Security.Cryptography.X509Certificates/4.0.0-beta-23516": {
@@ -7867,8 +8051,35 @@
           "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
-        "type": "project"
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        }
+      },
+      "PopulationGenetics.Library2/1.0.0": {
+        "type": "project",
+        "framework": "DNXCore,Version=v5.0",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Collections": "4.0.11-beta-23516",
+          "System.Collections.Concurrent": "4.0.10-beta-22416",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Serialization.Primitives": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225",
+          "System.Security.Cryptography.RandomNumberGenerator": "4.0.0-beta-23225",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        }
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
         "type": "package",
@@ -8531,6 +8742,24 @@
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Linq.Queryable/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.10",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Linq.Queryable.dll": {}
+        }
+      },
       "System.Net.Http/4.0.0-beta-22816": {
         "type": "package",
         "dependencies": {
@@ -8883,6 +9112,19 @@
           "lib/dotnet/System.Runtime.Numerics.dll": {}
         }
       },
+      "System.Runtime.Serialization.Primitives/4.0.11-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        }
+      },
       "System.Security.Claims/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -8981,6 +9223,19 @@
         },
         "runtime": {
           "lib/dotnet5.4/System.Security.Cryptography.Primitives.dll": {}
+        }
+      },
+      "System.Security.Cryptography.RandomNumberGenerator/4.0.0-beta-23225": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.0.0",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+        },
+        "compile": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
+        },
+        "runtime": {
+          "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll": {}
         }
       },
       "System.Security.Cryptography.X509Certificates/4.0.0-beta-23516": {
@@ -10070,6 +10325,18 @@
           "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
         }
       },
+      "Microsoft.CSharp/4.0.1-beta-23516": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -10617,23 +10884,41 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0",
-          "PopulationGenetics.WpfBindings": "1.0.0"
-        }
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ]
       },
-      "PopulationGenetics.Library.Interfaces/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
-      },
-      "PopulationGenetics.WpfBindings/1.0.0": {
+      "PopulationGenetics.Library2/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0"
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "WindowsBase"
+        ]
+      },
+      "runtime.win7.System.Threading/4.0.11-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/dotnet/_._": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -10714,7 +10999,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Linq/4.0.0": {
+      "System.Linq/4.0.1-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Queryable/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -10793,7 +11087,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.0.0": {
+      "System.Runtime/4.0.21-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -10838,7 +11132,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading/4.0.0": {
+      "System.Threading/4.0.11-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Parallel/4.0.1-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -11706,6 +12009,18 @@
           "lib/net45/Microsoft.CodeAnalysis.CSharp.dll": {}
         }
       },
+      "Microsoft.CSharp/4.0.1-beta-23516": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "Microsoft.Dnx.Compilation.Abstractions/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -12253,23 +12568,41 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "PopulationGenetics.Library/1.0.0": {
+      "PopulationGenetics.Library.Interfaces.New/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0",
-          "PopulationGenetics.WpfBindings": "1.0.0"
-        }
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "WindowsBase"
+        ]
       },
-      "PopulationGenetics.Library.Interfaces/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
-      },
-      "PopulationGenetics.WpfBindings/1.0.0": {
+      "PopulationGenetics.Library2/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
-          "PopulationGenetics.Library.Interfaces": "1.0.0"
+          "Microsoft.CSharp": "4.0.1-beta-23516",
+          "PopulationGenetics.Library.Interfaces.New": "1.0.0",
+          "System.Linq": "4.0.1-beta-23516",
+          "System.Linq.Queryable": "4.0.0",
+          "System.Runtime": "4.0.21-beta-23516",
+          "System.Threading": "4.0.11-beta-23516",
+          "System.Threading.Tasks.Parallel": "4.0.1-beta-23516"
+        },
+        "frameworkAssemblies": [
+          "PresentationCore",
+          "PresentationFramework",
+          "WindowsBase"
+        ]
+      },
+      "runtime.win7.System.Threading/4.0.11-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/dotnet/_._": {}
         }
       },
       "System.Collections/4.0.0": {
@@ -12350,7 +12683,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Linq/4.0.0": {
+      "System.Linq/4.0.1-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Queryable/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -12429,7 +12771,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.0.0": {
+      "System.Runtime/4.0.21-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -12474,7 +12816,16 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading/4.0.0": {
+      "System.Threading/4.0.11-beta-23516": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Threading.Tasks.Parallel/4.0.1-beta-23516": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -12486,17 +12837,13 @@
     }
   },
   "libraries": {
-    "PopulationGenetics.Library/1.0.0": {
+    "PopulationGenetics.Library.Interfaces.New/1.0.0": {
       "type": "project",
-      "path": "../wrap/PopulationGenetics.Library/project.json"
+      "path": "../PopulationGenetics.Library.Interfaces.New/project.json"
     },
-    "PopulationGenetics.Library.Interfaces/1.0.0": {
+    "PopulationGenetics.Library2/1.0.0": {
       "type": "project",
-      "path": "../wrap/PopulationGenetics.Library.Interfaces/project.json"
-    },
-    "PopulationGenetics.WpfBindings/1.0.0": {
-      "type": "project",
-      "path": "../wrap/PopulationGenetics.WpfBindings/project.json"
+      "path": "../PopulationGenetics.Library2/project.json"
     },
     "Microsoft.ApplicationInsights/1.1.1-beta": {
       "type": "package",
@@ -15261,39 +15608,6 @@
         "System.IO.FileSystem.Watcher.nuspec"
       ]
     },
-    "System.Linq/4.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "r6Hlc+ytE6m/9UBr+nNRRdoJEWjoeQiT3L3lXYFDHoXk3VYsRBCDNXrawcexw7KPLaH0zamQLiAb6avhZ50cGg==",
-      "files": [
-        "lib/dotnet/System.Linq.dll",
-        "lib/net45/_._",
-        "lib/netcore50/System.Linq.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "ref/dotnet/de/System.Linq.xml",
-        "ref/dotnet/es/System.Linq.xml",
-        "ref/dotnet/fr/System.Linq.xml",
-        "ref/dotnet/it/System.Linq.xml",
-        "ref/dotnet/ja/System.Linq.xml",
-        "ref/dotnet/ko/System.Linq.xml",
-        "ref/dotnet/ru/System.Linq.xml",
-        "ref/dotnet/System.Linq.dll",
-        "ref/dotnet/System.Linq.xml",
-        "ref/dotnet/zh-hans/System.Linq.xml",
-        "ref/dotnet/zh-hant/System.Linq.xml",
-        "ref/net45/_._",
-        "ref/netcore50/System.Linq.dll",
-        "ref/netcore50/System.Linq.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "System.Linq.4.0.0.nupkg",
-        "System.Linq.4.0.0.nupkg.sha512",
-        "System.Linq.nuspec"
-      ]
-    },
     "System.Linq/4.0.1-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -15394,6 +15708,39 @@
         "System.Linq.Expressions.4.0.11-beta-23516.nupkg",
         "System.Linq.Expressions.4.0.11-beta-23516.nupkg.sha512",
         "System.Linq.Expressions.nuspec"
+      ]
+    },
+    "System.Linq.Queryable/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "DIlvCNn3ucFvwMMzXcag4aFnFJ1fdxkQ5NqwJe9Nh7y8ozzhDm07YakQL/yoF3P1dLzY1T2cTpuwbAmVSdXyBA==",
+      "files": [
+        "lib/dotnet/System.Linq.Queryable.dll",
+        "lib/net45/_._",
+        "lib/netcore50/System.Linq.Queryable.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/dotnet/de/System.Linq.Queryable.xml",
+        "ref/dotnet/es/System.Linq.Queryable.xml",
+        "ref/dotnet/fr/System.Linq.Queryable.xml",
+        "ref/dotnet/it/System.Linq.Queryable.xml",
+        "ref/dotnet/ja/System.Linq.Queryable.xml",
+        "ref/dotnet/ko/System.Linq.Queryable.xml",
+        "ref/dotnet/ru/System.Linq.Queryable.xml",
+        "ref/dotnet/System.Linq.Queryable.dll",
+        "ref/dotnet/System.Linq.Queryable.xml",
+        "ref/dotnet/zh-hans/System.Linq.Queryable.xml",
+        "ref/dotnet/zh-hant/System.Linq.Queryable.xml",
+        "ref/net45/_._",
+        "ref/netcore50/System.Linq.Queryable.dll",
+        "ref/netcore50/System.Linq.Queryable.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "System.Linq.Queryable.4.0.0.nupkg",
+        "System.Linq.Queryable.4.0.0.nupkg.sha512",
+        "System.Linq.Queryable.nuspec"
       ]
     },
     "System.Net.Http/4.0.0-beta-22816": {
@@ -16082,54 +16429,6 @@
         "System.Resources.ResourceManager.nuspec"
       ]
     },
-    "System.Runtime/4.0.0": {
-      "type": "package",
-      "sha512": "Uq9epame8hEqJlj4KaWb67dDJvj4IM37jRFGVeFbugRdPz48bR0voyBhrbf3iSa2tAmlkg4lsa6BUOL9iwlMew==",
-      "files": [
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "License.rtf",
-        "ref/dotnet/de/System.Runtime.xml",
-        "ref/dotnet/es/System.Runtime.xml",
-        "ref/dotnet/fr/System.Runtime.xml",
-        "ref/dotnet/it/System.Runtime.xml",
-        "ref/dotnet/ja/System.Runtime.xml",
-        "ref/dotnet/ko/System.Runtime.xml",
-        "ref/dotnet/ru/System.Runtime.xml",
-        "ref/dotnet/System.Runtime.dll",
-        "ref/dotnet/System.Runtime.xml",
-        "ref/dotnet/zh-hans/System.Runtime.xml",
-        "ref/dotnet/zh-hant/System.Runtime.xml",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/de/System.Runtime.xml",
-        "ref/netcore50/es/System.Runtime.xml",
-        "ref/netcore50/fr/System.Runtime.xml",
-        "ref/netcore50/it/System.Runtime.xml",
-        "ref/netcore50/ja/System.Runtime.xml",
-        "ref/netcore50/ko/System.Runtime.xml",
-        "ref/netcore50/ru/System.Runtime.xml",
-        "ref/netcore50/System.Runtime.dll",
-        "ref/netcore50/System.Runtime.xml",
-        "ref/netcore50/zh-hans/System.Runtime.xml",
-        "ref/netcore50/zh-hant/System.Runtime.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Runtime.4.0.0.nupkg",
-        "System.Runtime.4.0.0.nupkg.sha512",
-        "System.Runtime.nuspec"
-      ]
-    },
     "System.Runtime/4.0.21-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -16515,6 +16814,38 @@
         "System.Runtime.Numerics.nuspec"
       ]
     },
+    "System.Runtime.Serialization.Primitives/4.0.11-beta-23409": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "AQywM01eG8EgYde/RRrJDVdHmOOI3KkgK9GEjLQqvTLsrWsamNHN/j7Pxwa3XX7klSSrfDpvTNfUl40855idVg==",
+      "files": [
+        "lib/dotnet/de/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/es/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/fr/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/it/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/ja/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/ko/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/ru/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/System.Runtime.Serialization.Primitives.dll",
+        "lib/dotnet/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/zh-hans/System.Runtime.Serialization.Primitives.xml",
+        "lib/dotnet/zh-hant/System.Runtime.Serialization.Primitives.xml",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/dotnet/System.Runtime.Serialization.Primitives.dll",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Runtime.Serialization.Primitives.4.0.11-beta-23409.nupkg",
+        "System.Runtime.Serialization.Primitives.4.0.11-beta-23409.nupkg.sha512",
+        "System.Runtime.Serialization.Primitives.nuspec"
+      ]
+    },
     "System.Security.Claims/4.0.1-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -16657,6 +16988,17 @@
         "System.Security.Cryptography.Primitives.4.0.0-beta-23516.nupkg",
         "System.Security.Cryptography.Primitives.4.0.0-beta-23516.nupkg.sha512",
         "System.Security.Cryptography.Primitives.nuspec"
+      ]
+    },
+    "System.Security.Cryptography.RandomNumberGenerator/4.0.0-beta-23225": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "1SazRGIR/NvjYoq5vC2GqQncGD2Qye9neYp74Rcw6kWqJp+IzwB5VS2TgwTeynfYboIj5nIf+tBw6+lVe2Jm/A==",
+      "files": [
+        "lib/DNXCore50/System.Security.Cryptography.RandomNumberGenerator.dll",
+        "System.Security.Cryptography.RandomNumberGenerator.4.0.0-beta-23225.nupkg",
+        "System.Security.Cryptography.RandomNumberGenerator.4.0.0-beta-23225.nupkg.sha512",
+        "System.Security.Cryptography.RandomNumberGenerator.nuspec"
       ]
     },
     "System.Security.Cryptography.X509Certificates/4.0.0-beta-23516": {
@@ -17036,54 +17378,6 @@
         "System.Text.RegularExpressions.4.0.11-beta-23516.nupkg",
         "System.Text.RegularExpressions.4.0.11-beta-23516.nupkg.sha512",
         "System.Text.RegularExpressions.nuspec"
-      ]
-    },
-    "System.Threading/4.0.0": {
-      "type": "package",
-      "sha512": "H6O/9gUrjPDNYanh/7OFGAZHjVXvEuITD0RcnjfvIV04HOGrOPqUBU0kmz9RIX/7YGgCQn1o1S2DX6Cuv8kVGQ==",
-      "files": [
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "License.rtf",
-        "ref/dotnet/de/System.Threading.xml",
-        "ref/dotnet/es/System.Threading.xml",
-        "ref/dotnet/fr/System.Threading.xml",
-        "ref/dotnet/it/System.Threading.xml",
-        "ref/dotnet/ja/System.Threading.xml",
-        "ref/dotnet/ko/System.Threading.xml",
-        "ref/dotnet/ru/System.Threading.xml",
-        "ref/dotnet/System.Threading.dll",
-        "ref/dotnet/System.Threading.xml",
-        "ref/dotnet/zh-hans/System.Threading.xml",
-        "ref/dotnet/zh-hant/System.Threading.xml",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/de/System.Threading.xml",
-        "ref/netcore50/es/System.Threading.xml",
-        "ref/netcore50/fr/System.Threading.xml",
-        "ref/netcore50/it/System.Threading.xml",
-        "ref/netcore50/ja/System.Threading.xml",
-        "ref/netcore50/ko/System.Threading.xml",
-        "ref/netcore50/ru/System.Threading.xml",
-        "ref/netcore50/System.Threading.dll",
-        "ref/netcore50/System.Threading.xml",
-        "ref/netcore50/zh-hans/System.Threading.xml",
-        "ref/netcore50/zh-hant/System.Threading.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Threading.4.0.0.nupkg",
-        "System.Threading.4.0.0.nupkg.sha512",
-        "System.Threading.nuspec"
       ]
     },
     "System.Threading/4.0.11-beta-23516": {
@@ -17483,13 +17777,11 @@
       "Microsoft.Extensions.Configuration.Json >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Console >= 1.0.0-rc1-final",
-      "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final"
+      "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
+      "PopulationGenetics.Library.Interfaces.New >= 1.0.0-*",
+      "PopulationGenetics.Library2 >= 1.0.0-*"
     ],
-    "DNXCore,Version=v5.0": [
-      "PopulationGenetics.Library >= 1.0.0-*"
-    ],
-    "DNX,Version=v4.5.1": [
-      "PopulationGenetics.Library >= 1.0.0-*"
-    ]
+    "DNXCore,Version=v5.0": [],
+    "DNX,Version=v4.5.1": []
   }
 }

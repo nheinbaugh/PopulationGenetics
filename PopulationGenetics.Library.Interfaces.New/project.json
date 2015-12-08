@@ -1,20 +1,24 @@
 ﻿{
   "version": "1.0.0-*",
-  "description": "PopulationGenetics.Library.Interfaces.New Class Library",
+  "description": "PopulationGenetics.Library.Interfaces Class Library",
   "authors": [ "nickh" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "dependencies": {
-    "System.Collections.Concurrent": "4.0.10-beta-22416",
+    
     "Microsoft.CSharp": "4.0.1-beta-23516",
-    "System.Collections": "4.0.11-beta-23516",
     "System.Linq": "4.0.1-beta-23516",
     "System.Runtime": "4.0.21-beta-23516",
     "System.Threading": "4.0.11-beta-23516"
   },
   "frameworks": {
-    "dnxcore5": { },
+    "dnxcore5": {
+      "dependencies": {
+        "System.Collections.Concurrent": "4.0.10-beta-22416",
+        "System.Collections": "4.0.11-beta-23516"
+      }
+    },
     "net451": {
       "frameworkAssemblies": {
         "WindowsBase": "4.0.0.0"
@@ -22,7 +26,8 @@
     },
     "dotnet5.4": {
       "dependencies": {
-
+        "System.Collections.Concurrent": "4.0.10-beta-22416",
+        "System.Collections": "4.0.11-beta-23516"
       }
     }
   }

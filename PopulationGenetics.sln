@@ -5,13 +5,13 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Client", "PopulationGenetics.Client\PopulationGenetics.Client.csproj", "{BA804C81-B87A-4D78-85FF-FAA718D3613C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Legacy", "PopulationGenetics.World\PopulationGenetics.Library.Legacy.csproj", "{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library", "PopulationGenetics.World\PopulationGenetics.Library.csproj", "{E91C3CC1-0A63-4E6A-A8FD-9FAF06CCEE4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Common.Legacy", "PopulationGenetics.Common\PopulationGenetics.Common.Legacy.csproj", "{2BF28322-72BC-4101-963D-16F5AEB2B707}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Common", "PopulationGenetics.Common\PopulationGenetics.Common.csproj", "{2BF28322-72BC-4101-963D-16F5AEB2B707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.WpfBindings.Legacy", "PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.Legacy.csproj", "{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.WpfBindings", "PopulationGenetics.WpfBindings\PopulationGenetics.WpfBindings.csproj", "{51CEFF1D-6359-4BD2-BED1-2E3C58CFFDA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Interfaces.Legacy", "PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.Legacy.csproj", "{2892F596-4D67-46E1-B973-9C12F680F8AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PopulationGenetics.Library.Interfaces", "PopulationGenetics.Library.Interfaces\PopulationGenetics.Library.Interfaces.csproj", "{2892F596-4D67-46E1-B973-9C12F680F8AE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53F12E73-74BC-49B7-81BC-EEE9961AE7DF}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,13 +30,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F458A76B-557
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.WebApi", "PopulationGenetics.WebApi\PopulationGenetics.WebApi.xproj", "{A5D8D2C2-D6F4-4987-BCFF-72061619A208}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library", "PopulationGenetics.Library2\PopulationGenetics.Library.xproj", "{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library.V2", "PopulationGenetics.Library2\PopulationGenetics.Library.V2.xproj", "{1ED7E7A0-9672-4AFA-97CE-E011D23FA1AC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Common", "PopulationGenetics.Common.New\PopulationGenetics.Common.xproj", "{247190D0-E874-42AE-8B63-0AE7F725E319}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Common.V2", "PopulationGenetics.Common.New\PopulationGenetics.Common.V2.xproj", "{247190D0-E874-42AE-8B63-0AE7F725E319}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{129E0432-8361-4842-800D-CD8A4987C439}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library.Interfaces", "PopulationGenetics.Library.Interfaces.New\PopulationGenetics.Library.Interfaces.xproj", "{A681B961-3AEF-4E53-A254-89F6F69A4A74}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PopulationGenetics.Library.V2.Interfaces", "PopulationGenetics.Library.Interfaces.New\PopulationGenetics.Library.V2.Interfaces.xproj", "{A681B961-3AEF-4E53-A254-89F6F69A4A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
